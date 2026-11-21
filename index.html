@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beachwood Quantum | Transparent Energy Valuation &amp; Asset Architecture</title>
+    <title>Beachwood Quantum | Energy Asset Valuation &amp; Direct Deal Execution</title>
     <style>
         :root {
             --bg: #faf9f6;
@@ -24,7 +23,7 @@
             background-color: var(--bg);
             color: var(--text);
             font-family: "Georgia", "Times New Roman", serif;
-            line-height: 1.7;
+            line-height: 1.72;
             max-width: 820px;
             margin: 0 auto;
             padding: 3.5rem 1.75rem;
@@ -34,7 +33,7 @@
         header {
             border-bottom: 1px solid var(--border);
             padding-bottom: 2.25rem;
-            margin-bottom: 2.75rem;
+            margin-bottom: 2.5rem;
         }
 
         .eyebrow {
@@ -55,10 +54,10 @@
         }
 
         .subtitle {
-            font-size: 1.1rem;
+            font-size: 1.08rem;
             color: var(--muted);
             font-style: italic;
-            margin: 0 0 1.5rem 0;
+            margin: 0 0 1.65rem 0;
         }
 
         .cta-row {
@@ -75,7 +74,7 @@
             letter-spacing: 0.04em;
             background-color: var(--accent);
             color: #ffffff;
-            padding: 0.7rem 1.3rem;
+            padding: 0.72rem 1.35rem;
             text-decoration: none;
             border: 1px solid var(--accent);
             display: inline-block;
@@ -91,7 +90,7 @@
             font-size: 0.85rem;
             letter-spacing: 0.03em;
             color: var(--accent);
-            padding: 0.7rem 1.2rem;
+            padding: 0.72rem 1.25rem;
             text-decoration: none;
             border: 1px solid var(--border);
             background-color: var(--surface);
@@ -102,19 +101,19 @@
             border-color: var(--accent);
         }
 
-        .charter {
+        .thesis-box {
             background-color: var(--surface);
             border-left: 3px solid var(--accent);
             padding: 1.65rem 1.9rem;
-            margin: 2.25rem 0;
-            font-size: 1.08rem;
+            margin: 2rem 0 2.75rem 0;
+            font-size: 1.04rem;
         }
 
-        .charter p {
+        .thesis-box p {
             margin: 0 0 0.9rem 0;
         }
 
-        .charter p:last-child {
+        .thesis-box p:last-child {
             margin-bottom: 0;
         }
 
@@ -124,14 +123,45 @@
             letter-spacing: 0.14em;
             text-transform: uppercase;
             color: var(--muted);
-            margin: 3rem 0 1.25rem 0;
+            margin: 2.75rem 0 1.15rem 0;
             border-bottom: 1px solid var(--border);
             padding-bottom: 0.5rem;
         }
 
+        p {
+            margin: 0 0 1.15rem 0;
+        }
+
+        .terms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .term-card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            padding: 1.15rem 1.25rem;
+        }
+
+        .term-metric {
+            font-family: "Courier New", Courier, monospace;
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .term-desc {
+            font-size: 0.93rem;
+            color: var(--muted);
+        }
+
         .scale-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
             gap: 1rem;
             margin: 1.5rem 0;
         }
@@ -156,96 +186,94 @@
             color: var(--muted);
         }
 
-        .tier-list, .venture-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .tier-list li, .venture-list li {
-            padding: 1.2rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .tier-list li:last-child, .venture-list li:last-child {
-            border-bottom: none;
-        }
-
-        .item-code {
-            font-family: "Courier New", Courier, monospace;
-            font-size: 0.82rem;
-            color: var(--accent);
-            font-weight: bold;
-            display: block;
-            margin-bottom: 0.2rem;
-        }
-
-        .item-title {
-            font-size: 1.12rem;
-            font-weight: bold;
-            display: block;
-            margin-bottom: 0.3rem;
-        }
-
-        .item-desc {
+        .benchmark-note {
+            font-size: 0.96rem;
             color: var(--muted);
-            font-size: 0.97rem;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            padding: 1.15rem 1.35rem;
+            margin-top: 1.25rem;
         }
 
-        .schedule-box {
+        .benchmark-note strong {
+            color: var(--text);
+        }
+
+        .intake-box {
             background-color: var(--surface);
             border: 1px solid var(--border);
             padding: 1.75rem 2rem;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
         }
 
-        .schedule-box h3 {
+        .intake-box h3 {
             margin: 0 0 0.5rem 0;
-            font-size: 1.2rem;
+            font-size: 1.18rem;
             font-weight: normal;
         }
 
-        .schedule-box p {
+        .intake-box p {
             margin: 0 0 1.25rem 0;
             color: var(--muted);
-            font-size: 0.98rem;
+            font-size: 0.96rem;
         }
 
-        .intake-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.25rem;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            font-size: 0.85rem;
-        }
-
-        .intake-item {
-            background-color: var(--bg);
-            border: 1px solid var(--border);
-            padding: 0.85rem 1rem;
-        }
-
-        .intake-item strong {
-            display: block;
+        .intake-list {
+            margin: 0 0 1.4rem 0;
+            padding-left: 1.25rem;
             color: var(--text);
-            margin-bottom: 0.2rem;
+            font-size: 0.96rem;
         }
 
-        .intake-item span {
+        .intake-list li {
+            margin-bottom: 0.45rem;
+        }
+
+        .intake-list span {
             color: var(--muted);
         }
 
-        .intake-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.85rem;
-            align-items: center;
+        sup {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-size: 0.72rem;
+            color: var(--accent);
+        }
+
+        .footnotes {
+            margin-top: 3.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-size: 0.82rem;
+            line-height: 1.65;
+            color: var(--muted);
+        }
+
+        .footnotes-title {
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.74rem;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .footnotes ol {
+            margin: 0;
+            padding-left: 1.2rem;
+        }
+
+        .footnotes li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footnotes strong {
+            color: var(--text);
         }
 
         footer {
-            margin-top: 4rem;
-            padding-top: 2rem;
+            margin-top: 2.5rem;
+            padding-top: 1.75rem;
             border-top: 1px solid var(--border);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             font-size: 0.85rem;
@@ -270,37 +298,57 @@
 <body>
 
     <header>
-        <div class="eyebrow">Beachwood Helix Corporation &bull; Transparent Energy Asset Management</div>
+        <div class="eyebrow">Beachwood Helix Corporation<sup>1</sup> &bull; Energy Asset Valuation &amp; Introductions</div>
         <h1>Beachwood Quantum</h1>
-        <p class="subtitle">Proof-Based Energy Valuation, Sovereign Compute Architecture &amp; Direct Deal Execution</p>
+        <p class="subtitle">Transparent Commercial Terms, Objective PV10–PV40 Asset Pricing &amp; Direct Deal Execution</p>
         <div class="cta-row">
-            <a href="#schedule" class="btn-primary">Schedule a Purposeful Meeting</a>
-            <a href="#valuation" class="btn-secondary">Explore PV10–PV40 Valuation</a>
+            <a href="agreement.html" class="btn-primary">Review Standard Fee Agreement</a>
+            <a href="#valuation" class="btn-secondary">PV10–PV40 Valuation Reality</a>
         </div>
     </header>
 
     <main>
-        <section class="charter">
-            <p><strong>Operational Mandate</strong></p>
-            <p>Beachwood Quantum replaces opaque, off-market brokerage friction with open-record, proof-based energy asset management designed to generate functional, verifiable wealth.</p>
-            <p>Every well, site, and compute unit is anchored to deterministic inputs—current production, verified seller contact, and transparent valuation math—eliminating synthetic noise and wasted capital.</p>
+        <section class="thesis-box">
+            <p><strong>Refinement in the Silence</strong></p>
+            <p>Beachwood Quantum strips away brokerage theater and red-ink delay so energy executives, operators, and capital partners can evaluate assets and engagement terms immediately.</p>
+            <p>When commercial terms are standardized upfront and asset pricing is anchored to real production economics, the math speaks for itself before a single introductory call is required.</p>
         </section>
 
-        <h2 id="valuation">Energy Asset Valuation Engine (PV10 – PV40 Scale)</h2>
-        <p>Our repository architecture evaluates physical production sites across a structured <strong>PV10 to PV40</strong> valuation progression, pairing live production baselines with direct seller attribution to compute clear, verifiable estimated sale prices.</p>
+        <h2 id="terms">Standard Commercial Terms</h2>
+        <p>Built on a twelve-year institutional engagement framework designed to eliminate legal friction and preserve buyer discretion at every step of evaluation and closing.</p>
+
+        <div class="terms-grid">
+            <div class="term-card">
+                <span class="term-metric">$3,000 / Month</span>
+                <span class="term-desc">Ongoing monthly commitment following an initial 90-day engagement period, with clean 45-day wind-down notice thereafter.</span>
+            </div>
+            <div class="term-card">
+                <span class="term-metric">3.0% Closing Fee</span>
+                <span class="term-desc">Paid upon Closing on actual Consideration invested in an introduced Interested Party or its assets, with a 12-month post-term tail.</span>
+            </div>
+            <div class="term-card">
+                <span class="term-metric">Zero Red-Ink Friction</span>
+                <span class="term-desc">Client retains sole discretion over every transaction, backed by mutual confidentiality and Oklahoma County governing terms.</span>
+            </div>
+        </div>
+
+        <p><a href="agreement.html">Read the complete Standard Form of Fee Agreement &rarr;</a></p>
+
+        <h2 id="valuation">PV10 – PV40 Valuation Reality</h2>
+        <p>Physical energy assets are evaluated across a disciplined <strong>PV10 to PV40</strong> progression—anchoring purchase-price expectations to verified production baselines, lease operating expenses, and direct seller context across more than 515,000 mapped sites.</p>
 
         <div class="scale-grid">
             <div class="scale-card">
                 <span class="scale-tag">PV10 &rarr; PV20</span>
-                <span class="scale-label">Baseline floor to common market transaction band.</span>
+                <span class="scale-label">Conservative floor to common market transaction band.</span>
             </div>
             <div class="scale-card">
                 <span class="scale-tag">PV30</span>
-                <span class="scale-label">Ideal operational and acquisition valuation target.</span>
+                <span class="scale-label">Core operational and acquisition valuation target.</span>
             </div>
             <div class="scale-card">
                 <span class="scale-tag">PV37 BENCHMARK</span>
-                <span class="scale-label">Verified beta reading (Abercrombie asset record).</span>
+                <span class="scale-label">Verified beta asset reading ($536.5k purchase / $657.8k post-workover).</span>
             </div>
             <div class="scale-card">
                 <span class="scale-tag">PV40 CEILING</span>
@@ -308,68 +356,34 @@
             </div>
         </div>
 
-        <h2>Corporate Architecture (Four Operating Tiers)</h2>
-        <ul class="tier-list">
-            <li>
-                <span class="item-code">TIER 01 &bull; ROOT ENTITY</span>
-                <span class="item-title">Beachwood (Beachwood Helix Corporation)</span>
-                <span class="item-desc">Corporate governance, intellectual property stewardship, verified shareholder records, and capital allocation strategy across all operating units.</span>
-            </li>
-            <li>
-                <span class="item-code">TIER 02 &bull; R&amp;D ENGINE</span>
-                <span class="item-title">Beachwood Research Lab</span>
-                <span class="item-desc">First-principles physical modeling, topological Kagome lattice frameworks, and subsurface physical simulations under Quantum Helix Research.</span>
-            </li>
-            <li>
-                <span class="item-code">TIER 03 &bull; HARDWARE &amp; RUNTIME</span>
-                <span class="item-title">Beachwood Systems</span>
-                <span class="item-desc">Production engineering, deterministic C++20 control runtimes, edge telemetry pipelines, the Gamified Energy Machine (GEM) platform, and GEM Console2028.</span>
-            </li>
-            <li>
-                <span class="item-code">TIER 04 &bull; PUBLIC &amp; CIVIC LAYER</span>
-                <span class="item-title">Beachwood Foundational Ecosystem</span>
-                <span class="item-desc">Public technical literacy, open-access documentation, community educational hubs, and civic infrastructure initiatives.</span>
-            </li>
-        </ul>
+        <div class="benchmark-note">
+            <strong>Market Context:</strong> Listed oil and gas producers trade around a ~5.2x U.S. median EV/EBITDA multiple (~5.5x global median), while private asset transactions typically reflect a 20%–40% illiquidity discount. Positioning acquisitions clearly along the <strong>PV10–PV40</strong> curve reconciles public market benchmarks with private field reality.
+        </div>
 
-        <h2>Active Initiatives &amp; Hardware Roadmap</h2>
-        <ul class="venture-list">
-            <li>
-                <span class="item-code">SYSTEMS &bull; TARGET DELIVERY: FEBRUARY 29, 2028</span>
-                <span class="item-title">GEM Console2028 (40-Unit Limited Production Run)</span>
-                <span class="item-desc">Deterministic Raspberry Pi control architecture housed in precision-engineered, light-integrated enclosures for individualized 2028 buyer opportunities. Reserved exclusively for verified 2022 Beachwood Helix Corporation sealed stock certificate holders.</span>
-            </li>
-            <li>
-                <span class="item-code">STANDALONE VENTURE &bull; BETA / CONCEPT STAGE</span>
-                <span class="item-title">Telescope Tuesday &amp; Tech-Forward Workstations (TFWs)</span>
-                <span class="item-desc">A separate corporate initiative exploring low-cost scholastic human connection and the transformation of legacy urban wellhead sites into transparent, community-facing STEM and cultural spaces.</span>
-            </li>
-        </ul>
-
-        <section id="schedule" class="schedule-box">
-            <h3>Inbound Scheduling &amp; Deal Intake</h3>
-            <p>Time is treated as capital requiring a clear return. Use this portal to initiate purposeful discussions around physical well acquisitions, site data, hardware partnerships, or venture allocation.</p>
-            <div class="intake-grid">
-                <div class="intake-item">
-                    <strong>1. Energy Asset &amp; Well Data</strong>
-                    <span>Submit API/GPS coordinates, current production, and direct seller contact for PV valuation.</span>
-                </div>
-                <div class="intake-item">
-                    <strong>2. GEM Console2028 &amp; Certificate Verification</strong>
-                    <span>2022 Beachwood Helix stock certificate validation and low-volume manufacturing inquiries.</span>
-                </div>
-                <div class="intake-item">
-                    <strong>3. Capital &amp; Standalone Ventures</strong>
-                    <span>Institutional inquiries regarding Beachwood Helix or standalone Telescope Tuesday structuring.</span>
-                </div>
+        <h2 id="intake">Direct Deal &amp; Valuation Intake</h2>
+        <div class="intake-box">
+            <h3>Initiate an Asset or Mandate Review</h3>
+            <p>If the standard engagement terms and valuation framework align with your acquisition mandate, submit concise site or mandate details directly.</p>
+            <ul class="intake-list">
+                <li><strong>Acquisitions &amp; Mandates:</strong> <span>Target basin, production profile, and desired deployment timeline.</span></li>
+                <li><strong>Asset &amp; Well Submissions:</strong> <span>API/GPS identifiers, current production, and direct seller contact for PV valuation.</span></li>
+            </ul>
+            <div class="cta-row">
+                <a href="agreement.html" class="btn-primary">Inspect Agreement Terms</a>
+                <a href="mailto:joshua@beachwoodquantum.com?subject=Beachwood%20Quantum%20%7C%20Asset%20or%20Mandate%20Review" class="btn-secondary">Direct Inquiry: joshua@beachwoodquantum.com</a>
             </div>
-            <div class="intake-actions">
-                <!-- Replace href with your live Calendly / Cal.com / Google Appointment Schedule URL -->
-                <a href="mailto:joshua@beachwoodquantum.com?subject=Beachwood%20Quantum%20%7C%20Purposeful%20Meeting%20Request" class="btn-primary">Book a Time Slot / Submit Inquiry</a>
-                <a href="agreement.html" class="btn-secondary">Review Standard Fee Agreement</a>
-            </div>
-        </section>
+        </div>
     </main>
+
+    <section class="footnotes" aria-label="Corporate Architecture Footnotes">
+        <div class="footnotes-title">Corporate Architecture &amp; Long-Horizon Research Notes</div>
+        <ol>
+            <li><strong>Beachwood Helix Corporation (Root Governance):</strong> Governs commercial energy asset introductions, verified shareholder records, and intellectual property across the Beachwood ecosystem.</li>
+            <li><strong>Beachwood Research Lab (Long-Horizon R&amp;D):</strong> Conducts theoretical physical modeling and topological Kagome lattice investigations on multi-decade research horizons, kept structurally separate from near-term commercial deal execution.</li>
+            <li><strong>Beachwood Systems (2028 Hardware Track):</strong> Develops deterministic edge control architectures and the 40-unit <em>GEM Console2028</em> hardware run (target delivery February 29, 2028) for verified 2022 Beachwood Helix Corporation sealed stock certificate holders.</li>
+            <li><strong>Standalone Civic &amp; Scholastic Ventures:</strong> Early-stage community infrastructure concepts—including <em>Telescope Tuesday</em> and Tech-Forward Workstations (TFWs)—are maintained in separate corporate containers independent of commercial energy transactions.</li>
+        </ol>
+    </section>
 
     <footer>
         <div>
@@ -377,7 +391,7 @@
             President &amp; Chief Executive Officer, Beachwood Helix Corporation
         </div>
         <div>
-            Direct: <a href="mailto:joshua@beachwoodquantum.com">joshua@beachwoodquantum.com</a><br>
+            Direct: joshua@beachwoodquantum.com<br>
             Voice: 667-493-5648
         </div>
     </footer>

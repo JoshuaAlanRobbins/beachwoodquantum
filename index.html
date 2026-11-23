@@ -1,839 +1,1071 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Beachwood Quantum | Energy Asset Identification & Acquisition Advisory</title>
-  <meta name="description" content="Beachwood Helix Corporation — Energy asset identification, conservative decline-curve evaluation, and buy-side deal structuring." />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-          },
-          colors: {
-            navy: {
-              950: '#0A111F',
-              900: '#0F172A',
-              800: '#1E293B',
-              700: '#334155',
-            },
-            brass: {
-              500: '#B4833E',
-              600: '#9A6D2E',
-              100: '#F7EFE2',
-            }
-          }
-        }
+  <title>Beachwood Quantum | Beachwood Helix Corporation</title>
+  <meta
+    name="description"
+    content="Beachwood Quantum — disciplined oil & gas capital recovery, portfolio structuring, and foundational systems engineering under Joshua Alan Robbins and Beachwood Helix Corporation."
+  />
+  <style>
+    :root {
+      --bg: #faf9f6;
+      --surface: #f2f0ea;
+      --surface-alt: #eae7df;
+      --text: #181816;
+      --muted: #57554f;
+      --border: #dad6cc;
+      --accent: #1d3c45;
+      --accent-hover: #142b32;
+      --sage: #3d5a4c;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: "Georgia", "Times New Roman", serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Top Navigation */
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background-color: var(--bg);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .header-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.1rem 0;
+    }
+
+    .brand {
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand-title {
+      display: block;
+      font-size: 1.15rem;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-sub {
+      display: block;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.85rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 4.25rem 0 3.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin: 0 0 0.85rem 0;
+    }
+
+    h1 {
+      font-size: 2.35rem;
+      font-weight: normal;
+      line-height: 1.22;
+      margin: 0 0 1.15rem 0;
+      letter-spacing: -0.01em;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      color: var(--muted);
+      margin: 0 0 1.75rem 0;
+      max-width: 60ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.86rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      padding: 0.78rem 1.35rem;
+      text-decoration: none;
+      border: 1px solid var(--accent);
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+      border-color: var(--accent-hover);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--accent);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--surface);
+      color: var(--accent-hover);
+    }
+
+    /* Peaceful SVG Field & Horizon Visual */
+    .hero-visual {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+    }
+
+    .hero-visual svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .visual-caption {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin: 0.85rem 0 0 0;
+      line-height: 1.5;
+    }
+
+    /* Sections */
+    section {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    h2 {
+      font-size: 1.65rem;
+      font-weight: normal;
+      line-height: 1.28;
+      margin: 0 0 0.85rem 0;
+    }
+
+    h3 {
+      font-size: 1.18rem;
+      font-weight: normal;
+      line-height: 1.35;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 68ch;
+      margin: 0 0 2rem 0;
+    }
+
+    /* Proof & Recovery Cards */
+    .card-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.65rem;
+    }
+
+    .card-tag {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin: 0 0 0.5rem 0;
+    }
+
+    .metric-line {
+      font-size: 1.35rem;
+      color: var(--text);
+      margin: 0 0 0.75rem 0;
+    }
+
+    .card p {
+      margin: 0 0 0.85rem 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight-strip {
+      margin-top: 1.5rem;
+      background-color: var(--surface-alt);
+      border-left: 3px solid var(--sage);
+      padding: 1.25rem 1.5rem;
+      font-size: 0.96rem;
+      color: var(--text);
+    }
+
+    /* Divisions Grid */
+    .divisions-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .division-card {
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      padding: 1.65rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .division-meta {
+      margin-top: 1.15rem;
+      padding-top: 0.95rem;
+      border-top: 1px solid var(--border);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.83rem;
+      color: var(--muted);
+    }
+
+    .division-meta div {
+      margin-bottom: 0.35rem;
+    }
+
+    .division-meta div:last-child {
+      margin-bottom: 0;
+    }
+
+    .division-meta strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* Commercial Boundaries & Process Flow */
+    .terms-box {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2rem;
+    }
+
+    .terms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+      margin: 1.5rem 0;
+    }
+
+    .term-item {
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      padding: 1.2rem;
+    }
+
+    .term-label {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 0.35rem 0;
+    }
+
+    .term-value {
+      font-size: 1.22rem;
+      color: var(--text);
+      margin: 0 0 0.4rem 0;
+    }
+
+    .term-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .flow-step {
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      padding: 1.1rem;
+    }
+
+    .flow-step-num {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin: 0 0 0.35rem 0;
+    }
+
+    .flow-step p {
+      margin: 0.35rem 0 0 0;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Qualification & Scheduling Panel */
+    .intake-panel {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2rem;
+    }
+
+    .intake-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .field label {
+      display: block;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 0.65rem 0.75rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.92rem;
+      color: var(--text);
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+    }
+
+    .field textarea {
+      min-height: 82px;
+      resize: vertical;
+    }
+
+    .intake-status {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.88rem;
+      color: var(--accent);
+      margin-top: 0.9rem;
+      min-height: 1.2em;
+    }
+
+    /* Embedded Post-Qualification Settlement Block */
+    .bw-retainer-rail {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 2rem;
+    }
+
+    .bw-retainer-summary {
+      font-size: 0.96rem;
+      line-height: 1.65;
+      color: var(--muted);
+      margin: 0 0 1.5rem 0;
+    }
+
+    .bw-retainer-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .bw-rail-card {
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      padding: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .bw-rail-label {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 0.45rem 0;
+    }
+
+    .bw-rail-copy {
+      font-size: 0.92rem;
+      line-height: 1.58;
+      color: var(--muted);
+      margin: 0 0 1.1rem 0;
+    }
+
+    .bw-wire-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.88rem;
+    }
+
+    .bw-wire-table td {
+      padding: 0.45rem 0;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .bw-wire-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .bw-wire-key {
+      color: var(--muted);
+      width: 40%;
+      padding-right: 0.75rem;
+    }
+
+    .bw-wire-val {
+      color: var(--text);
+      font-family: "Courier New", Courier, monospace;
+      word-break: break-word;
+    }
+
+    .bw-retainer-note {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.84rem;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background-color: var(--surface);
+      padding: 2.5rem 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .footer-inner p {
+      margin: 0.25rem 0;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid,
+      .card-grid-2,
+      .divisions-grid,
+      .terms-grid,
+      .flow-steps,
+      .intake-grid,
+      .bw-retainer-grid {
+        grid-template-columns: 1fr;
       }
-    };
-  </script>
+
+      h1 {
+        font-size: 1.95rem;
+      }
+    }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-amber-200 selection:text-slate-900">
-
-  <!-- Top Navigation Bar -->
-  <header class="bg-navy-950 text-white border-b border-slate-800 sticky top-0 z-30">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="#" class="flex items-center space-x-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-brass-500">
-        <span class="inline-flex items-center justify-center w-8 h-8 rounded-md bg-brass-500/20 border border-brass-500/50 text-amber-400 font-bold text-sm tracking-wider">
-          BQ
-        </span>
-        <div class="leading-tight">
-          <span class="block font-semibold tracking-tight text-white text-sm sm:text-base">Beachwood Quantum</span>
-          <span class="block text-[11px] uppercase tracking-widest text-slate-400">Beachwood Helix Corporation</span>
-        </div>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand">
+        <span class="brand-title">Beachwood Quantum</span>
+        <span class="brand-sub">Beachwood Helix Corporation</span>
       </a>
-
-      <nav class="flex items-center space-x-4 sm:space-x-6 text-sm">
-        <a href="#how-we-work" class="hidden sm:inline-block text-slate-300 hover:text-white transition">How We Work</a>
-        <a href="#schedule" class="inline-flex items-center px-4 py-2 rounded-lg bg-brass-500 hover:bg-brass-600 text-white font-medium transition shadow-sm">
-          Schedule Call
-        </a>
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="#capital-recovery">Capital Recovery</a>
+        <a href="#proof">Track Record</a>
+        <a href="#divisions">Architecture</a>
+        <a href="#engagement">Engagement Terms</a>
+        <a href="#qualify-schedule">Qualification &amp; Call</a>
+        <a href="#onboarding-settlement">Onboarding &amp; Wiring</a>
       </nav>
     </div>
   </header>
 
-  <!-- Section 1: Hero Header -->
-  <section class="bg-navy-900 text-white border-b border-slate-800">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-      <div class="max-w-3xl">
-        <div class="inline-flex items-center px-3 py-1 rounded-full bg-slate-800/90 border border-slate-700 text-amber-400 text-xs font-medium tracking-wide uppercase mb-6">
-          Direct Buy-Side Advisory &bull; U.S. Onshore Energy Assets
+  <main id="top">
+    <!-- Step 1: Landing & Terms Preview -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Principal: Joshua Alan Robbins</p>
+          <h1>Calm, disciplined capital recovery in oil &amp; gas—built to fund enduring systems.</h1>
+          <p class="lead">
+            Beachwood Quantum partners with operators and capital allocators to acquire, structure,
+            and manage producing energy assets around <strong>Full Principal Recovery</strong> across
+            a 60-month conventional oil price cycle—creating post-payback reserve leverage without
+            unnecessary friction.
+          </p>
+          <div class="hero-actions">
+            <a href="#qualify-schedule" class="btn btn-primary">
+              Qualify &amp; Schedule a Call
+            </a>
+            <a href="agreement.html" class="btn btn-secondary">
+              Review Standard Engagement Terms
+            </a>
+          </div>
         </div>
-        <h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white leading-[1.15] mb-6">
-          Beachwood Quantum &mdash; Energy Asset Identification &amp; Acquisition Advisory
-        </h1>
-        <p class="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
-          Over 12 years of U.S. oil and gas asset mapping, conservative decline-curve evaluation, and disciplined buy-side deal structuring for operators, family offices, and enterprise power buyers.
-        </p>
-        <div class="flex flex-col sm:flex-row sm:items-center gap-4">
-          <a href="#schedule" class="inline-flex items-center justify-center px-6 py-3.5 rounded-lg bg-brass-500 hover:bg-brass-600 text-white font-semibold text-base transition shadow-md">
-            Schedule an Introductory Call
-            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-          <a href="#how-we-work" class="inline-flex items-center justify-center px-6 py-3.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium text-base border border-slate-700 transition">
-            Review Engagement Terms
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Section 2: Three-Column "How We Work" Block -->
-  <section id="how-we-work" class="py-16 sm:py-20 bg-white border-b border-slate-200">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mb-12">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-brass-600 mb-2">Process &amp; Commercial Alignment</h2>
-        <h3 class="text-2xl sm:text-3xl font-bold text-navy-900 tracking-tight">How We Work</h3>
-        <p class="text-slate-600 mt-3 text-base leading-relaxed">
-          Clear asset baselines, verified buyer readiness, and straightforward fee structures before heavy engineering or negotiation begins.
-        </p>
+        <aside class="hero-visual" aria-label="60-Month Principal Recovery Horizon Illustration">
+          <svg viewBox="0 0 360 220" role="img" aria-labelledby="horizon-title horizon-desc">
+            <title id="horizon-title">Full Principal Recovery Horizon</title>
+            <desc id="horizon-desc">
+              A calm horizon diagram illustrating accelerated principal recovery at 12 and 22 months compared to a 60-month conventional commodity cycle.
+            </desc>
+            <rect x="0" y="0" width="360" height="220" fill="#faf9f6" />
+            <rect x="0" y="148" width="360" height="72" fill="#eae7df" />
+            <line x1="24" y1="148" x2="336" y2="148" stroke="#3d5a4c" stroke-width="1.5" />
+            <path
+              d="M 32 186 Q 115 112 205 148 T 328 118"
+              fill="none"
+              stroke="#1d3c45"
+              stroke-width="2"
+            />
+            <circle cx="96" cy="148" r="4.5" fill="#3d5a4c" />
+            <text x="96" y="134" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#181816">
+              Beta One (12m)
+            </text>
+            <circle cx="164" cy="148" r="4.5" fill="#3d5a4c" />
+            <text x="164" y="168" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#181816">
+              Beta Two (22m)
+            </text>
+            <circle cx="296" cy="148" r="4.5" fill="#1d3c45" />
+            <text x="296" y="134" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#57554f">
+              60m Cycle
+            </text>
+          </svg>
+          <p class="visual-caption">
+            <strong>Full Principal Recovery Horizon:</strong> Structured to bring invested capital
+            back cleanly within a 60-month cycle—or ahead of schedule through active field work and
+            disciplined portfolio structuring.
+          </p>
+        </aside>
       </div>
+    </section>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Column 1 -->
-        <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-7 flex flex-col justify-between shadow-sm">
-          <div>
-            <div class="w-10 h-10 rounded-lg bg-navy-900 text-amber-400 flex items-center justify-center font-bold text-sm mb-5">
-              01
-            </div>
-            <h4 class="text-lg font-bold text-navy-900 mb-3">Conservative Asset Evaluation</h4>
-            <p class="text-slate-600 text-sm leading-relaxed">
-              Every prospect is anchored in verified well histories, conservative decline-curve projections, net revenue interest checks, and realistic operating cost baselines—not promotional upside assumptions.
+    <!-- Capital Recovery Thesis -->
+    <section id="capital-recovery">
+      <div class="container">
+        <p class="eyebrow">Underwriting Discipline</p>
+        <h2>Full Principal Recovery &amp; Post-Payback Reserve Leverage</h2>
+        <p class="section-intro">
+          Acquisitions are evaluated against a 60-month conventional oil price swing with a single
+          priority: recovering initial principal completely so remaining estimated field reserves
+          operate free of capital drag.
+        </p>
+
+        <div class="card-grid-2">
+          <div class="card">
+            <p class="card-tag">Phase I &bull; Capital Protection</p>
+            <h3>60-Month Cycle Alignment</h3>
+            <p>
+              Every asset or mandate is underwritten to achieve Full Principal Recovery across a
+              five-year commodity window—prioritizing durable cash flow, realistic decline curves,
+              and clean entry basis over speculative price assumptions.
             </p>
           </div>
-          <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-medium text-slate-500">
-            Real production data &bull; Audited LOE &bull; PV10 sensitivity
-          </div>
-        </div>
-
-        <!-- Column 2 -->
-        <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-7 flex flex-col justify-between shadow-sm">
-          <div>
-            <div class="w-10 h-10 rounded-lg bg-navy-900 text-amber-400 flex items-center justify-center font-bold text-sm mb-5">
-              02
-            </div>
-            <h4 class="text-lg font-bold text-navy-900 mb-3">Capital &amp; Execution Alignment</h4>
-            <p class="text-slate-600 text-sm leading-relaxed">
-              We qualify engagements around defined basin or power-offtake criteria, operational execution plans, and verified proof-of-funds or bank memo readiness so sellers and working-interest partners deal with capable buyers.
+          <div class="card">
+            <p class="card-tag">Phase II &bull; Unencumbered Upside</p>
+            <h3>Post-Payback Reserve Leverage</h3>
+            <p>
+              Once principal is recovered, remaining producing reserves and development locations
+              become an unencumbered balance-sheet asset—supporting reinvestment, selective
+              expansion, or strategic exit without forced timelines.
             </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-medium text-slate-500">
-            Defined target criteria &bull; Verified capital backing
-          </div>
-        </div>
-
-        <!-- Column 3 -->
-        <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-7 flex flex-col justify-between shadow-sm">
-          <div>
-            <div class="w-10 h-10 rounded-lg bg-navy-900 text-amber-400 flex items-center justify-center font-bold text-sm mb-5">
-              03
-            </div>
-            <h4 class="text-lg font-bold text-navy-900 mb-3">Transparent Engagement Terms</h4>
-            <p class="text-slate-600 text-sm leading-relaxed">
-              Initial advisory retainers are structured at <strong class="text-navy-900">$9,000 for 3 months ($3,000/month)</strong> paired with a <strong class="text-navy-900">3% success fee at closing</strong>. Direct alignment from initial screening through transaction execution.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-medium text-slate-500">
-            $3,000/mo (3-month initial term) + 3% at closing
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Section 3 & 4: Built-In Interactive Booking Calendar Widget & Confirmation -->
-  <section id="schedule" class="py-16 sm:py-24 bg-slate-100">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mb-10">
-        <h2 class="text-xs font-semibold uppercase tracking-widest text-brass-600 mb-2">Direct Scheduling &bull; No Third-Party Redirects</h2>
-        <h3 class="text-2xl sm:text-3xl font-bold text-navy-900 tracking-tight">Schedule an Introductory Call</h3>
-        <p class="text-slate-600 mt-3 text-base leading-relaxed">
-          Select a weekday, choose a 30-minute window in your time zone, and share your target asset criteria. No external account login or email permission access is required.
+    <!-- Proof Points -->
+    <section id="proof">
+      <div class="container">
+        <p class="eyebrow">Demonstrated Execution</p>
+        <h2>Field &amp; Structuring Proof</h2>
+        <p class="section-intro">
+          Two representative transactions showing how hands-on operational focus and thoughtful
+          portfolio structuring compress recovery timelines well ahead of a 60-month schedule.
         </p>
+
+        <div class="card-grid-2">
+          <article class="card">
+            <p class="card-tag">Beta One &bull; Active Field Management</p>
+            <p class="metric-line">12-Month Principal Recovery</p>
+            <p>
+              Recovered nearly all initial capital in <strong>12 months</strong>—48 months ahead of a
+              standard 60-month cycle—through direct operational oversight and a targeted workover
+              program that unlocked immediate production response.
+            </p>
+          </article>
+
+          <article class="card">
+            <p class="card-tag">Beta Two &bull; Delaware Basin Horizontal Deal</p>
+            <p class="metric-line">22-Month Recovery via Portfolio Structuring</p>
+            <p>
+              In a Delaware Basin horizontal transaction, <strong>$2.2 million</strong> was deployed
+              into an immediately paying drilling well to accelerate initial recovery rather than
+              waiting two years on a single wellbore, while <strong>Advanced Energy Partners</strong>
+              assumed the well and acreage to build a central portfolio position and later sold the
+              company for over <strong>$1 billion</strong>.
+            </p>
+          </article>
+        </div>
+
+        <div class="highlight-strip">
+          <strong>Core Principle:</strong> Clear boundaries, honest engineering, and steady execution
+          remove friction for serious operators and capital partners—creating sustainable margin that
+          supports long-horizon research and foundational infrastructure.
+        </div>
       </div>
+    </section>
 
-      <!-- Booking Container -->
-      <div id="bookingWidget" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-        <div class="grid grid-cols-1 lg:grid-cols-12">
+    <!-- Four Divisions -->
+    <section id="divisions">
+      <div class="container">
+        <p class="eyebrow">Beachwood Helix Corporation</p>
+        <h2>Four-Division Corporate Architecture</h2>
+        <p class="section-intro">
+          Commercial advisory and energy execution under Beachwood Helix Corporation directly anchor
+          a four-part architecture—each built with a clear operating pathway toward independent
+          self-sufficiency.
+        </p>
 
-          <!-- Left Panel: Date & Time Selection (7 cols) -->
-          <div class="lg:col-span-7 p-6 sm:p-8 border-b lg:border-b-0 lg:border-r border-slate-200">
-            <!-- Header Controls: Month Navigation & Time Zone -->
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-6 border-b border-slate-200">
-              <div class="flex items-center space-x-3">
-                <button type="button" id="prevMonthBtn" aria-label="Previous Month"
-                  class="p-2.5 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                  </svg>
-                </button>
-                <h4 id="monthYearLabel" class="text-lg font-bold text-navy-900 min-w-[165px] text-center">
-                  November 2026
-                </h4>
-                <button type="button" id="nextMonthBtn" aria-label="Next Month"
-                  class="p-2.5 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-100 transition">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-              </div>
-
-              <!-- Time Zone Selector -->
-              <div class="flex items-center space-x-2">
-                <label for="timezoneSelect" class="text-xs font-semibold uppercase tracking-wider text-slate-500">Time Zone:</label>
-                <select id="timezoneSelect"
-                  class="rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-sm font-medium text-navy-900 focus:outline-none focus:ring-2 focus:ring-brass-500">
-                  <option value="America/New_York" data-abbr="ET">Eastern Time (ET)</option>
-                  <option value="America/Chicago" data-abbr="CT">Central Time (CT)</option>
-                  <option value="America/Denver" data-abbr="MT">Mountain Time (MT)</option>
-                  <option value="America/Los_Angeles" data-abbr="PT">Pacific Time (PT)</option>
-                </select>
-              </div>
+        <div class="divisions-grid">
+          <article class="division-card">
+            <div>
+              <p class="card-tag">Division 01 &bull; Root Operating Entity</p>
+              <h3>Beachwood Helix Corporation</h3>
+              <p>
+                The root governance and commercial holding entity housing Beachwood Quantum energy
+                advisory, acquisition mandates, capital structuring, and cross-division stewardship.
+              </p>
             </div>
+            <div class="division-meta">
+              <div><strong>Income Pathway:</strong> $3,000/month ongoing cadence after an initial 90-day commitment, plus a 3.0% closing fee on Consideration.</div>
+              <div><strong>Self-Sufficiency Timeline:</strong> Immediate — active commercial foundation funding core operations.</div>
+            </div>
+          </article>
 
-            <!-- Calendar Grid -->
-            <div class="mt-6">
-              <div class="grid grid-cols-7 text-center text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">
-                <div>Sun</div>
-                <div>Mon</div>
-                <div>Tue</div>
-                <div>Wed</div>
-                <div>Thu</div>
-                <div>Fri</div>
-                <div>Sat</div>
-              </div>
-              <div id="calendarDaysGrid" class="grid grid-cols-7 gap-1.5 sm:gap-2">
-                <!-- Populated by JavaScript -->
-              </div>
-              <p class="mt-3 text-xs text-slate-500">
-                Available Monday through Friday. Past dates and weekends are disabled.
+          <article class="division-card">
+            <div>
+              <p class="card-tag">Division 02 &bull; Applied Science &amp; IP</p>
+              <h3>Beachwood Research Lab</h3>
+              <p>
+                Dedicated to low-friction energy frameworks, applied physical research, technical
+                monographs, and structured intellectual property development.
+              </p>
+            </div>
+            <div class="division-meta">
+              <div><strong>Income Pathway:</strong> Technical publishing, licensed research briefs, and commercialization partnerships.</div>
+              <div><strong>Self-Sufficiency Timeline:</strong> 12–18 months via publication releases and sponsored research licensing.</div>
+            </div>
+          </article>
+
+          <article class="division-card">
+            <div>
+              <p class="card-tag">Division 03 &bull; Hardware &amp; Systems</p>
+              <h3>Beachwood Systems</h3>
+              <p>
+                Focused on physical systems architecture, field instrumentation, the GEM Hardware
+                &amp; Partnership Dossier, and development toward <strong>GEM Console2028</strong>.
+              </p>
+            </div>
+            <div class="division-meta">
+              <div><strong>Income Pathway:</strong> Strategic hardware co-development partnerships, licensing dossiers, and system deployments.</div>
+              <div><strong>Self-Sufficiency Timeline:</strong> 24–36 months aligned with the GEM Console2028 hardware roadmap.</div>
+            </div>
+          </article>
+
+          <article class="division-card">
+            <div>
+              <p class="card-tag">Division 04 &bull; Resilient Living &amp; Energy</p>
+              <h3>Beachwood Foundational Ecosystem</h3>
+              <p>
+                Real-world physical deployment advancing durable local energy and foundational
+                infrastructure—guided by a concise one-page concept and capital-fit brief.
+              </p>
+            </div>
+            <div class="division-meta">
+              <div><strong>Income Pathway:</strong> Direct project builds and module deployments structured on transparent <strong>cost &times; 2</strong> pricing.</div>
+              <div><strong>Self-Sufficiency Timeline:</strong> 18–30 months upon initial capital-fit deployment milestones.</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Aligned Commercial Terms & 4-Step Flow -->
+    <section id="engagement">
+      <div class="container">
+        <div class="terms-box">
+          <p class="eyebrow">Step 1 &amp; Step 2 &bull; Commercial Terms &amp; Agreement</p>
+          <h2>Transparent Mandate Terms</h2>
+          <p class="section-intro">
+            Every mandate is governed by a <strong>$3,000/month ongoing cadence</strong> after an
+            initial <strong>90-day commitment</strong>, a <strong>3.0% closing fee</strong> on
+            Consideration, and a <strong>12-month post-term tail</strong>. Review and execute the full
+            agreement before or alongside scheduling.
+          </p>
+
+          <div class="terms-grid">
+            <div class="term-item">
+              <p class="term-label">Ongoing Cadence</p>
+              <p class="term-value">$3,000/month</p>
+              <p class="term-desc">
+                Ongoing monthly cadence following an initial 90-day commitment period.
               </p>
             </div>
 
-            <!-- Time Slots Selection -->
-            <div class="mt-8 pt-6 border-t border-slate-200">
-              <div class="flex items-center justify-between mb-4">
-                <h5 class="text-sm font-bold text-navy-900">
-                  Available 30-Minute Windows
-                </h5>
-                <span id="selectedDateBadge" class="text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">
-                  Select a date
-                </span>
-              </div>
+            <div class="term-item">
+              <p class="term-label">Transaction Closing Fee</p>
+              <p class="term-value">3.0% on Consideration</p>
+              <p class="term-desc">
+                Payable upon closing of an introduced transaction or investment involving an Interested Party or its assets.
+              </p>
+            </div>
 
-              <div id="timeSlotsGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-                <!-- Populated by JavaScript -->
-              </div>
+            <div class="term-item">
+              <p class="term-label">Post-Term Protection</p>
+              <p class="term-value">12-month post-term tail</p>
+              <p class="term-desc">
+                Twelve (12) months following expiration or termination for covered counterparties and opportunities.
+              </p>
             </div>
           </div>
 
-          <!-- Right Panel: Qualification & Intake Form (5 cols) -->
-          <div class="lg:col-span-5 p-6 sm:p-8 bg-slate-50/60">
-            <h4 class="text-lg font-bold text-navy-900 mb-1">Call &amp; Asset Brief</h4>
-            <p class="text-xs text-slate-500 mb-6">All fields marked with * are required to confirm your time slot.</p>
-
-            <!-- Inline Validation Banner -->
-            <div id="formErrorBanner" class="hidden mb-5 p-3.5 rounded-lg bg-red-50 border border-red-200 text-red-800 text-xs font-medium">
-              Please select a date and time slot, and complete all required fields below.
-            </div>
-
-            <form id="bookingForm" novalidate class="space-y-4">
-              <div>
-                <label for="fullName" class="block text-xs font-semibold uppercase tracking-wide text-slate-700 mb-1.5">Full Name *</label>
-                <input type="text" id="fullName" name="fullName" required placeholder="Jane Doe"
-                  class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brass-500 focus:border-brass-500" />
-              </div>
-
-              <div>
-                <label for="company" class="block text-xs font-semibold uppercase tracking-wide text-slate-700 mb-1.5">Company / Entity *</label>
-                <input type="text" id="company" name="company" required placeholder="Basin Partners LLC"
-                  class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brass-500 focus:border-brass-500" />
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label for="email" class="block text-xs font-semibold uppercase tracking-wide text-slate-700 mb-1.5">Email *</label>
-                  <input type="email" id="email" name="email" required placeholder="name@company.com"
-                    class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brass-500 focus:border-brass-500" />
-                </div>
-                <div>
-                  <label for="phone" class="block text-xs font-semibold uppercase tracking-wide text-slate-700 mb-1.5">Phone *</label>
-                  <input type="tel" id="phone" name="phone" required placeholder="(555) 234-5678"
-                    class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brass-500 focus:border-brass-500" />
-                </div>
-              </div>
-
-              <div>
-                <label for="targetAsset" class="block text-xs font-semibold uppercase tracking-wide text-slate-700 mb-1.5">Target Basin / Asset Type *</label>
-                <select id="targetAsset" name="targetAsset" required
-                  class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-brass-500 focus:border-brass-500">
-                  <option value="">Select target asset profile...</option>
-                  <option value="Oklahoma Gas / Liquids">Oklahoma Gas / Liquids</option>
-                  <option value="Montana Oil">Montana Oil</option>
-                  <option value="Texas / Permian / Eagle Ford">Texas / Permian / Eagle Ford</option>
-                  <option value="Multi-Basin Operated / Non-Op">Multi-Basin Operated / Non-Op</option>
-                  <option value="Power / Data Center Offtake">Power / Data Center Offtake</option>
-                  <option value="Other U.S. Energy Asset">Other U.S. Energy Asset</option>
-                </select>
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label for="capitalTier" class="block text-xs font-semibold uppercase tracking-wide text-slate-700 mb-1.5">Capital Tier *</label>
-                  <select id="capitalTier" name="capitalTier" required
-                    class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-brass-500 focus:border-brass-500">
-                    <option value="">Select bracket...</option>
-                    <option value="Sub-$10M">Sub-$10M</option>
-                    <option value="$10M–$50M">$10M&ndash;$50M</option>
-                    <option value="$50M+">$50M+</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label for="pofStatus" class="block text-xs font-semibold uppercase tracking-wide text-slate-700 mb-1.5">Proof of Funds / Bank Memo *</label>
-                  <select id="pofStatus" name="pofStatus" required
-                    class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-brass-500 focus:border-brass-500">
-                    <option value="">Select status...</option>
-                    <option value="Ready Now">Ready Now</option>
-                    <option value="In Progress">In Progress</option>
-                    <option value="Exploratory">Exploratory</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label for="dealObjective" class="block text-xs font-semibold uppercase tracking-wide text-slate-700 mb-1.5">Brief Deal Objective *</label>
-                <textarea id="dealObjective" name="dealObjective" rows="3" required
-                  placeholder="Describe target production profile, acquisition timeline, or operational goals..."
-                  class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brass-500 focus:border-brass-500"></textarea>
-              </div>
-
-              <button type="submit"
-                class="w-full mt-2 py-3.5 px-5 rounded-lg bg-navy-900 hover:bg-navy-800 text-white font-semibold text-sm transition shadow-sm focus:outline-none focus:ring-2 focus:ring-brass-500 focus:ring-offset-2">
-                Confirm 30-Minute Introductory Call
-              </button>
-            </form>
+          <div class="hero-actions">
+            <a href="agreement.html" class="btn btn-primary">
+              Open &amp; Sign Agreement (agreement.html)
+            </a>
+            <a href="#qualify-schedule" class="btn btn-secondary">
+              Proceed to Pre-Call Qualification
+            </a>
           </div>
 
+          <div class="flow-steps" aria-label="Four-Step Agreement and Booking Flow">
+            <div class="flow-step">
+              <p class="flow-step-num">Step 1 &bull; Preview</p>
+              <h3>Landing &amp; Terms</h3>
+              <p>Review mandate scope and core terms on the main page before booking.</p>
+            </div>
+            <div class="flow-step">
+              <p class="flow-step-num">Step 2 &bull; Execute</p>
+              <h3>Agreement Review</h3>
+              <p>Sign electronically and print/save PDF via the dedicated agreement page.</p>
+            </div>
+            <div class="flow-step">
+              <p class="flow-step-num">Step 3 &bull; Qualify</p>
+              <h3>Intake &amp; Scheduling</h3>
+              <p>Submit target asset, execution plan, and capital backing for a scheduled call.</p>
+            </div>
+            <div class="flow-step">
+              <p class="flow-step-num">Step 4 &bull; Onboard</p>
+              <h3>Post-Qualification</h3>
+              <p>Settle the $3,000/month ongoing cadence via payment link or bank transfer.</p>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Section 4: Instant On-Page Booking Confirmation Card (Hidden until submission) -->
-      <div id="confirmationCard" class="hidden bg-white rounded-2xl border border-slate-200 shadow-md overflow-hidden">
-        <div class="bg-navy-900 text-white px-6 sm:px-8 py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-800">
-          <div class="flex items-center space-x-3.5">
-            <div class="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-400/50 text-emerald-300 flex items-center justify-center shrink-0">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <div>
-              <span class="text-xs font-semibold uppercase tracking-wider text-amber-400">Booking Confirmed</span>
-              <h4 class="text-xl font-bold text-white">Introductory Advisory Call Scheduled</h4>
-            </div>
-          </div>
-          <div class="text-xs text-slate-300 bg-slate-800/80 px-3.5 py-2 rounded-lg border border-slate-700 font-mono" id="bookingRefCode">
-            REF: BQ-000000
-          </div>
-        </div>
-
-        <div class="p-6 sm:p-8">
-          <p class="text-sm text-slate-600 mb-6 leading-relaxed">
-            Your session details are recorded below. Download the <strong class="text-navy-900">.ics calendar file</strong> to add this meeting directly to Apple Calendar, Outlook, or Google Calendar without granting third-party account access.
+    <!-- Step 3: Pre-Call Qualification & Scheduling -->
+    <section id="qualify-schedule">
+      <div class="container">
+        <div class="intake-panel">
+          <p class="eyebrow">Step 3 &bull; Pre-Call Qualification &amp; Scheduling</p>
+          <h2>Asset, Execution &amp; Capital Fit Intake</h2>
+          <p class="section-intro">
+            Calls are scheduled in 30-minute windows (with a 24-hour minimum notice and 15-minute
+            buffer) around a specific target asset, operational execution plan, and verified capital
+            backing. Complete this brief or launch your calendar link directly.
           </p>
 
-          <!-- Summary Grid -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-5 rounded-xl bg-slate-50 border border-slate-200 mb-6 text-sm">
-            <div>
-              <span class="block text-xs font-semibold uppercase tracking-wider text-slate-500">Date &amp; Time</span>
-              <span id="confDateTime" class="font-bold text-navy-900 mt-0.5 block">&mdash;</span>
+          <form id="bw-intake-form" novalidate>
+            <div class="intake-grid">
+              <div class="field">
+                <label for="intake-name">Full Name</label>
+                <input id="intake-name" name="name" type="text" required placeholder="Your name" />
+              </div>
+              <div class="field">
+                <label for="intake-role">Counterparty Role</label>
+                <select id="intake-role" name="role" required>
+                  <option value="">Select role</option>
+                  <option value="Operator / Asset Owner">Operator / Asset Owner</option>
+                  <option value="Capital Partner / Buyer">Capital Partner / Buyer</option>
+                  <option value="Infrastructure / Power Buyer">Infrastructure / Power Buyer</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="intake-asset">Target Asset / Basin</label>
+                <input id="intake-asset" name="asset" type="text" required placeholder="e.g., Delaware Basin horizontal, Mid-Con conventional" />
+              </div>
+              <div class="field">
+                <label for="intake-capital">Capital Backing &amp; Proof of Funds Status</label>
+                <select id="intake-capital" name="capital" required>
+                  <option value="">Select capital status</option>
+                  <option value="Bank Memo / Proof of Funds Ready (Sub-$10M)">Bank Memo / Proof of Funds Ready (Sub-$10M)</option>
+                  <option value="Bank Memo / Proof of Funds Ready ($10M–$50M)">Bank Memo / Proof of Funds Ready ($10M–$50M)</option>
+                  <option value="Bank Memo / Proof of Funds Ready ($50M+)">Bank Memo / Proof of Funds Ready ($50M+)</option>
+                  <option value="Structuring / Co-Investment Alignment">Structuring / Co-Investment Alignment</option>
+                </select>
+              </div>
             </div>
-            <div>
-              <span class="block text-xs font-semibold uppercase tracking-wider text-slate-500">Participant</span>
-              <span id="confNameEntity" class="font-semibold text-navy-900 mt-0.5 block">&mdash;</span>
-            </div>
-            <div>
-              <span class="block text-xs font-semibold uppercase tracking-wider text-slate-500">Contact</span>
-              <span id="confContact" class="font-medium text-slate-700 mt-0.5 block">&mdash;</span>
-            </div>
-            <div>
-              <span class="block text-xs font-semibold uppercase tracking-wider text-slate-500">Target Basin / Asset</span>
-              <span id="confAsset" class="font-semibold text-navy-900 mt-0.5 block">&mdash;</span>
-            </div>
-            <div>
-              <span class="block text-xs font-semibold uppercase tracking-wider text-slate-500">Capital Tier</span>
-              <span id="confCapital" class="font-semibold text-navy-900 mt-0.5 block">&mdash;</span>
-            </div>
-            <div>
-              <span class="block text-xs font-semibold uppercase tracking-wider text-slate-500">Proof of Funds Status</span>
-              <span id="confPof" class="font-semibold text-navy-900 mt-0.5 block">&mdash;</span>
-            </div>
-            <div class="sm:col-span-2 lg:col-span-3 pt-3 border-t border-slate-200">
-              <span class="block text-xs font-semibold uppercase tracking-wider text-slate-500">Deal Objective</span>
-              <span id="confObjective" class="text-slate-800 mt-1 block leading-relaxed">&mdash;</span>
-            </div>
-          </div>
 
-          <!-- Copy Feedback Toast -->
-          <div id="copyStatusMessage" class="hidden mb-4 px-4 py-2.5 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold">
-            Booking summary copied to clipboard.
-          </div>
+            <div class="field">
+              <label for="intake-plan">Execution Plan &amp; Recovery Objective</label>
+              <textarea id="intake-plan" name="plan" required placeholder="Summarize your operational/technical execution plan, target recovery timeline, and call objective."></textarea>
+            </div>
 
-          <!-- Action Buttons -->
-          <div class="flex flex-col sm:flex-row flex-wrap gap-3">
-            <button type="button" id="downloadIcsBtn"
-              class="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-brass-500 hover:bg-brass-600 text-white font-semibold text-sm transition shadow-sm">
-              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-              Download .ICS Calendar File
-            </button>
+            <div class="hero-actions" style="margin-top: 1.1rem;">
+              <button type="submit" class="btn btn-primary">Prepare Pre-Call Brief</button>
+              <a
+                id="bw-calendar-link"
+                href="mailto:joshua@beachwoodquantum.com?subject=Beachwood%20Quantum%20%7C%20Scheduled%20Call%20Request"
+                class="btn btn-secondary"
+              >
+                Open Calendar / Scheduling Link
+              </a>
+            </div>
 
-            <button type="button" id="copySummaryBtn"
-              class="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-navy-900 hover:bg-navy-800 text-white font-semibold text-sm transition">
-              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-              </svg>
-              Copy Booking Summary
-            </button>
-
-            <button type="button" id="resetBookingBtn"
-              class="inline-flex items-center justify-center px-5 py-3 rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-medium text-sm transition sm:ml-auto">
-              Book Another Time
-            </button>
-          </div>
+            <p id="bw-intake-status" class="intake-status" role="status" aria-live="polite"></p>
+          </form>
         </div>
       </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- Step 4: Embedded Post-Qualification Onboarding & Settlement Block -->
+    <section id="onboarding-settlement">
+      <div class="container">
+        <div class="bw-retainer-rail" aria-labelledby="bw-retainer-heading">
+          <p class="eyebrow">Step 4 &bull; Post-Qualification Onboarding &amp; Settlement</p>
+          <h2 id="bw-retainer-heading">Retainer &amp; Settlement Rail</h2>
+          <p class="bw-retainer-summary">
+            For qualified, executed mandates under <strong>Joshua Alan Robbins</strong> and
+            <strong>Beachwood Helix Corporation</strong>, terms govern a
+            <strong>$3,000/month ongoing cadence</strong> after an initial <strong>90-day commitment</strong>,
+            a <strong>3.0% closing fee</strong> on Consideration, and a <strong>12-month post-term tail</strong>.
+          </p>
 
-  <!-- Footer -->
-  <footer class="bg-navy-950 text-slate-400 border-t border-slate-800 py-10">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs">
-      <div>
-        <p class="text-white font-semibold text-sm">Beachwood Helix Corporation</p>
-        <p class="mt-1">BeachwoodQuantum.com &mdash; Energy Asset Identification &amp; Acquisition Advisory</p>
+          <div class="bw-retainer-grid">
+            <div class="bw-rail-card">
+              <div>
+                <p class="bw-rail-label">Card / Automated Billing</p>
+                <p class="bw-rail-copy">
+                  Settle the <strong>$3,000/month</strong> ongoing cadence following the initial
+                  90-day commitment via your live Stripe payment link or client invoice.
+                </p>
+              </div>
+              <a href="#REPLACE_WITH_STRIPE_PAYMENT_LINK" class="btn btn-primary" rel="noopener noreferrer">
+                Open Payment Link ($3,000/month)
+              </a>
+            </div>
+
+            <div class="bw-rail-card">
+              <div>
+                <p class="bw-rail-label">Direct ACH / Domestic Wire</p>
+                <p class="bw-rail-copy">
+                  Include your entity name and mandate reference on all bank transfers:
+                </p>
+                <table class="bw-wire-table" aria-label="ACH and Wire Settlement Details">
+                  <tr>
+                    <td class="bw-wire-key">Beneficiary</td>
+                    <td class="bw-wire-val">Beachwood Helix Corporation</td>
+                  </tr>
+                  <tr>
+                    <td class="bw-wire-key">Address</td>
+                    <td class="bw-wire-val">1137 Mermaid Drive, Annapolis, MD 21409</td>
+                  </tr>
+                  <tr>
+                    <td class="bw-wire-key">Bank</td>
+                    <td class="bw-wire-val">First United Bank and Trust</td>
+                  </tr>
+                  <tr>
+                    <td class="bw-wire-key">Account</td>
+                    <td class="bw-wire-val">6706037</td>
+                  </tr>
+                  <tr>
+                    <td class="bw-wire-key">Routing</td>
+                    <td class="bw-wire-val">103100881</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <p class="bw-retainer-note">
+            Post-qualification billing or closing-fee inquiries:
+            <a href="mailto:joshua@beachwoodquantum.com?subject=Beachwood%20Quantum%20%7C%20Onboarding%20%26%20Settlement">joshua@beachwoodquantum.com</a>
+            &bull; 667-493-5648.
+          </p>
+        </div>
       </div>
-      <div class="text-slate-500">
-        &copy; <span id="footerYear"></span> Beachwood Helix Corporation. All rights reserved.
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p><strong>Beachwood Quantum</strong> &mdash; Beachwood Helix Corporation</p>
+        <p>1137 Mermaid Drive, Annapolis, MD 21409 &bull; Principal: Joshua Alan Robbins</p>
+      </div>
+      <div>
+        <p>Direct: 667-493-5648 &bull; <a href="mailto:joshua@beachwoodquantum.com">joshua@beachwoodquantum.com</a></p>
+        <p><a href="agreement.html">Commercial Advisory &amp; Transaction Fee Agreement</a></p>
       </div>
     </div>
   </footer>
 
-  <!-- Client-Side Calendar, Time Zone, Validation & .ICS Generator Logic -->
   <script>
     (function () {
-      'use strict';
+      const form = document.getElementById("bw-intake-form");
+      const statusEl = document.getElementById("bw-intake-status");
+      const calLink = document.getElementById("bw-calendar-link");
 
-      // Set current copyright year
-      document.getElementById('footerYear').textContent = new Date().getFullYear();
+      if (!form || !statusEl) return;
 
-      // Standard 30-minute consultation windows (local to selected timezone)
-      const TIME_SLOTS = [
-        { hour: 9, minute: 0, label: '09:00 AM' },
-        { hour: 9, minute: 30, label: '09:30 AM' },
-        { hour: 10, minute: 0, label: '10:00 AM' },
-        { hour: 10, minute: 30, label: '10:30 AM' },
-        { hour: 11, minute: 0, label: '11:00 AM' },
-        { hour: 11, minute: 30, label: '11:30 AM' },
-        { hour: 13, minute: 30, label: '01:30 PM' },
-        { hour: 14, minute: 0, label: '02:00 PM' },
-        { hour: 14, minute: 30, label: '02:30 PM' },
-        { hour: 15, minute: 0, label: '03:00 PM' },
-        { hour: 15, minute: 30, label: '03:30 PM' },
-        { hour: 16, minute: 0, label: '04:00 PM' }
-      ];
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const name = document.getElementById("intake-name").value.trim();
+        const role = document.getElementById("intake-role").value;
+        const asset = document.getElementById("intake-asset").value.trim();
+        const capital = document.getElementById("intake-capital").value;
+        const plan = document.getElementById("intake-plan").value.trim();
 
-      // Standard UTC offsets (non-DST / standard reference for clean ICS generation)
-      const TZ_OFFSETS = {
-        'America/New_York': -5,
-        'America/Chicago': -6,
-        'America/Denver': -7,
-        'America/Los_Angeles': -8
-      };
-
-      // Normalize "today" at local midnight
-      const now = new Date();
-      const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-
-      // Find the next valid business day (Mon-Fri, strictly >= today)
-      function getNextBusinessDay(startDate) {
-        const candidate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
-        while (candidate.getDay() === 0 || candidate.getDay() === 6) {
-          candidate.setDate(candidate.getDate() + 1);
-        }
-        return candidate;
-      }
-
-      const defaultSelectedDate = getNextBusinessDay(todayMidnight);
-
-      // Application State
-      const state = {
-        viewYear: defaultSelectedDate.getFullYear(),
-        viewMonth: defaultSelectedDate.getMonth(),
-        selectedDate: defaultSelectedDate,
-        selectedSlot: TIME_SLOTS[2], // Default to 10:00 AM
-        lastBooking: null
-      };
-
-      // DOM Elements
-      const monthYearLabel = document.getElementById('monthYearLabel');
-      const prevMonthBtn = document.getElementById('prevMonthBtn');
-      const nextMonthBtn = document.getElementById('nextMonthBtn');
-      const calendarDaysGrid = document.getElementById('calendarDaysGrid');
-      const timeSlotsGrid = document.getElementById('timeSlotsGrid');
-      const selectedDateBadge = document.getElementById('selectedDateBadge');
-      const timezoneSelect = document.getElementById('timezoneSelect');
-      const bookingForm = document.getElementById('bookingForm');
-      const formErrorBanner = document.getElementById('formErrorBanner');
-      const bookingWidget = document.getElementById('bookingWidget');
-      const confirmationCard = document.getElementById('confirmationCard');
-
-      // Formatting Helpers
-      const MONTH_NAMES = [
-        'January', 'February', 'March', 'April', 'May', 'June',
-        'July', 'August', 'September', 'October', 'November', 'December'
-      ];
-      const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
-      function isSameDay(a, b) {
-        return a && b &&
-          a.getFullYear() === b.getFullYear() &&
-          a.getMonth() === b.getMonth() &&
-          a.getDate() === b.getDate();
-      }
-
-      function formatReadableDate(dateObj) {
-        if (!dateObj) return 'Select a date';
-        return `${DAY_NAMES[dateObj.getDay()]}, ${MONTH_NAMES[dateObj.getMonth()]} ${dateObj.getDate()}, ${dateObj.getFullYear()}`;
-      }
-
-      function getSelectedTzAbbr() {
-        const opt = timezoneSelect.options[timezoneSelect.selectedIndex];
-        return opt ? opt.getAttribute('data-abbr') : 'ET';
-      }
-
-      // Render Monthly Calendar Grid
-      function renderCalendar() {
-        monthYearLabel.textContent = `${MONTH_NAMES[state.viewMonth]} ${state.viewYear}`;
-
-        // Disable navigating before the current real-world month
-        const isCurrentOrPastMonth =
-          state.viewYear < todayMidnight.getFullYear() ||
-          (state.viewYear === todayMidnight.getFullYear() && state.viewMonth <= todayMidnight.getMonth());
-        prevMonthBtn.disabled = isCurrentOrPastMonth;
-
-        calendarDaysGrid.innerHTML = '';
-
-        const firstDayOfMonth = new Date(state.viewYear, state.viewMonth, 1).getDay();
-        const daysInMonth = new Date(state.viewYear, state.viewMonth + 1, 0).getDate();
-
-        // Leading blank cells
-        for (let i = 0; i < firstDayOfMonth; i++) {
-          const blank = document.createElement('div');
-          blank.className = 'h-11';
-          calendarDaysGrid.appendChild(blank);
-        }
-
-        // Day buttons
-        for (let day = 1; day <= daysInMonth; day++) {
-          const cellDate = new Date(state.viewYear, state.viewMonth, day);
-          const dayOfWeek = cellDate.getDay();
-          const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
-          const isPast = cellDate < todayMidnight;
-          const isDisabled = isWeekend || isPast;
-          const isSelected = isSameDay(cellDate, state.selectedDate);
-          const isToday = isSameDay(cellDate, todayMidnight);
-
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.textContent = day;
-          btn.disabled = isDisabled;
-
-          if (isDisabled) {
-            btn.className = 'h-11 rounded-lg text-sm font-normal text-slate-300 bg-slate-50/50 cursor-not-allowed';
-          } else if (isSelected) {
-            btn.className = 'h-11 rounded-lg text-sm font-bold bg-navy-900 text-white ring-2 ring-brass-500 shadow-sm transition';
-          } else {
-            btn.className = 'h-11 rounded-lg text-sm font-medium text-slate-800 bg-white border border-slate-200 hover:border-brass-500 hover:bg-amber-50/40 transition' +
-              (isToday ? ' underline decoration-brass-500 decoration-2 underline-offset-4' : '');
-          }
-
-          if (!isDisabled) {
-            btn.addEventListener('click', function () {
-              state.selectedDate = cellDate;
-              renderCalendar();
-              renderTimeSlots();
-            });
-          }
-
-          calendarDaysGrid.appendChild(btn);
-        }
-      }
-
-      // Render 30-Minute Time Slots
-      function renderTimeSlots() {
-        selectedDateBadge.textContent = formatReadableDate(state.selectedDate);
-        timeSlotsGrid.innerHTML = '';
-        const tzAbbr = getSelectedTzAbbr();
-
-        TIME_SLOTS.forEach(function (slot) {
-          const isSelected = state.selectedSlot &&
-            state.selectedSlot.hour === slot.hour &&
-            state.selectedSlot.minute === slot.minute;
-
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.textContent = `${slot.label} ${tzAbbr}`;
-          btn.className = isSelected
-            ? 'py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold bg-brass-500 text-white shadow-sm transition'
-            : 'py-2.5 px-3 rounded-lg text-xs sm:text-sm font-medium bg-white border border-slate-300 text-slate-800 hover:border-navy-900 hover:bg-slate-50 transition';
-
-          btn.addEventListener('click', function () {
-            state.selectedSlot = slot;
-            renderTimeSlots();
-          });
-
-          timeSlotsGrid.appendChild(btn);
-        });
-      }
-
-      // Month Navigation Events
-      prevMonthBtn.addEventListener('click', function () {
-        if (state.viewMonth === 0) {
-          state.viewMonth = 11;
-          state.viewYear -= 1;
-        } else {
-          state.viewMonth -= 1;
-        }
-        renderCalendar();
-      });
-
-      nextMonthBtn.addEventListener('click', function () {
-        if (state.viewMonth === 11) {
-          state.viewMonth = 0;
-          state.viewYear += 1;
-        } else {
-          state.viewMonth += 1;
-        }
-        renderCalendar();
-      });
-
-      timezoneSelect.addEventListener('change', function () {
-        renderTimeSlots();
-      });
-
-      // Pad number to 2 digits
-      function pad2(n) {
-        return String(n).padStart(2, '0');
-      }
-
-      // Format UTC Date for ICS (YYYYMMDDTHHMMSSZ)
-      function toIcsUtcString(dateObj) {
-        return (
-          dateObj.getUTCFullYear() +
-          pad2(dateObj.getUTCMonth() + 1) +
-          pad2(dateObj.getUTCDate()) +
-          'T' +
-          pad2(dateObj.getUTCHours()) +
-          pad2(dateObj.getUTCMinutes()) +
-          pad2(dateObj.getUTCSeconds()) +
-          'Z'
-        );
-      }
-
-      // Escape text values per RFC 5545 (.ics spec)
-      function escapeIcsText(str) {
-        return String(str || '')
-          .replace(/\\/g, '\\\\')
-          .replace(/;/g, '\\;')
-          .replace(/,/g, '\\,')
-          .replace(/\r?\n/g, '\\n');
-      }
-
-      // Build RFC 5545 compliant .ICS file content
-      function buildIcsContent(booking) {
-        const offsetHours = TZ_OFFSETS[booking.timezoneId] !== undefined ? TZ_OFFSETS[booking.timezoneId] : -5;
-        // Convert selected wall-clock time in chosen timezone to UTC
-        const startUtcMs = Date.UTC(
-          booking.date.getFullYear(),
-          booking.date.getMonth(),
-          booking.date.getDate(),
-          booking.slot.hour - offsetHours,
-          booking.slot.minute,
-          0
-        );
-        const endUtcMs = startUtcMs + 30 * 60 * 1000;
-
-        const dtStamp = toIcsUtcString(new Date());
-        const dtStart = toIcsUtcString(new Date(startUtcMs));
-        const dtEnd = toIcsUtcString(new Date(endUtcMs));
-        const uid = `${booking.refCode.toLowerCase()}-${Date.now()}@beachwoodquantum.com`;
-
-        const descriptionLines = [
-          `Reference: ${booking.refCode}`,
-          `Participant: ${booking.fullName} (${booking.company})`,
-          `Email: ${booking.email} | Phone: ${booking.phone}`,
-          `Target Basin / Asset: ${booking.targetAsset}`,
-          `Capital Tier: ${booking.capitalTier}`,
-          `Proof of Funds / Bank Memo: ${booking.pofStatus}`,
-          `Deal Objective: ${booking.dealObjective}`,
-          '',
-          'Advisory Terms Overview: $9,000 initial 3-month engagement ($3,000/mo) + 3% success fee at closing.'
-        ].join('\n');
-
-        return [
-          'BEGIN:VCALENDAR',
-          'VERSION:2.0',
-          'PRODID:-//Beachwood Helix Corporation//BeachwoodQuantum.com//EN',
-          'CALSCALE:GREGORIAN',
-          'METHOD:PUBLISH',
-          'BEGIN:VEVENT',
-          `UID:${uid}`,
-          `DTSTAMP:${dtStamp}`,
-          `DTSTART:${dtStart}`,
-          `DTEND:${dtEnd}`,
-          `SUMMARY:${escapeIcsText('Beachwood Quantum — Introductory Advisory Call (' + booking.company + ')')}`,
-          `DESCRIPTION:${escapeIcsText(descriptionLines)}`,
-          `LOCATION:${escapeIcsText('Phone / Direct Conference — Beachwood Helix Corporation')}`,
-          'STATUS:CONFIRMED',
-          'END:VEVENT',
-          'END:VCALENDAR'
-        ].join('\r\n');
-      }
-
-      // Form Submission Handler
-      bookingForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        formErrorBanner.classList.add('hidden');
-
-        const fullName = document.getElementById('fullName').value.trim();
-        const company = document.getElementById('company').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const phone = document.getElementById('phone').value.trim();
-        const targetAsset = document.getElementById('targetAsset').value;
-        const capitalTier = document.getElementById('capitalTier').value;
-        const pofStatus = document.getElementById('pofStatus').value;
-        const dealObjective = document.getElementById('dealObjective').value.trim();
-
-        const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-        if (!state.selectedDate || !state.selectedSlot || !fullName || !company || !emailValid || !phone || !targetAsset || !capitalTier || !pofStatus || !dealObjective) {
-          formErrorBanner.classList.remove('hidden');
-          formErrorBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        if (!name || !role || !asset || !capital || !plan) {
+          statusEl.textContent =
+            "Complete your name, role, target asset/basin, capital status, and execution plan to prepare your pre-call brief.";
           return;
         }
 
-        const refCode = 'BQ-' + Math.floor(100000 + Math.random() * 900000);
-        const tzId = timezoneSelect.value;
-        const tzAbbr = getSelectedTzAbbr();
+        const subject = encodeURIComponent(
+          "Beachwood Quantum Call | " + role + " — " + asset
+        );
+        const body = encodeURIComponent(
+          "Name: " + name +
+          "\nRole: " + role +
+          "\nTarget Asset / Basin: " + asset +
+          "\nCapital / Proof of Funds: " + capital +
+          "\nExecution Plan & Objective: " + plan
+        );
 
-        const booking = {
-          refCode: refCode,
-          date: state.selectedDate,
-          dateFormatted: formatReadableDate(state.selectedDate),
-          slot: state.selectedSlot,
-          timezoneId: tzId,
-          tzAbbr: tzAbbr,
-          fullName: fullName,
-          company: company,
-          email: email,
-          phone: phone,
-          targetAsset: targetAsset,
-          capitalTier: capitalTier,
-          pofStatus: pofStatus,
-          dealObjective: dealObjective
-        };
-
-        state.lastBooking = booking;
-
-        // Populate Confirmation Card
-        document.getElementById('bookingRefCode').textContent = `REF: ${booking.refCode}`;
-        document.getElementById('confDateTime').textContent = `${booking.dateFormatted} at ${booking.slot.label} ${booking.tzAbbr} (30 min)`;
-        document.getElementById('confNameEntity').textContent = `${booking.fullName} — ${booking.company}`;
-        document.getElementById('confContact').textContent = `${booking.email} | ${booking.phone}`;
-        document.getElementById('confAsset').textContent = booking.targetAsset;
-        document.getElementById('confCapital').textContent = booking.capitalTier;
-        document.getElementById('confPof').textContent = booking.pofStatus;
-        document.getElementById('confObjective').textContent = booking.dealObjective;
-
-        // Swap Widget -> Confirmation Card
-        bookingWidget.classList.add('hidden');
-        confirmationCard.classList.remove('hidden');
-        document.getElementById('copyStatusMessage').classList.add('hidden');
-        confirmationCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-
-      // Download .ICS File via Local Blob
-      document.getElementById('downloadIcsBtn').addEventListener('click', function () {
-        if (!state.lastBooking) return;
-        const icsData = buildIcsContent(state.lastBooking);
-        const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
-        const url = URL.createObjectURL(blob);
-
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `Beachwood-Quantum-Call-${state.lastBooking.refCode}.ics`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        setTimeout(function () {
-          URL.revokeObjectURL(url);
-        }, 1000);
-      });
-
-      // Copy Booking Summary to Clipboard
-      document.getElementById('copySummaryBtn').addEventListener('click', function () {
-        if (!state.lastBooking) return;
-        const b = state.lastBooking;
-        const summaryText = [
-          `Beachwood Quantum — Introductory Advisory Call (${b.refCode})`,
-          `Date & Time: ${b.dateFormatted} at ${b.slot.label} ${b.tzAbbr} (30 min)`,
-          `Participant: ${b.fullName} (${b.company})`,
-          `Contact: ${b.email} | ${b.phone}`,
-          `Target Basin / Asset: ${b.targetAsset}`,
-          `Capital Tier: ${b.capitalTier}`,
-          `Proof of Funds / Bank Memo: ${b.pofStatus}`,
-          `Deal Objective: ${b.dealObjective}`
-        ].join('\n');
-
-        const tempArea = document.createElement('textarea');
-        tempArea.value = summaryText;
-        tempArea.style.position = 'fixed';
-        tempArea.style.opacity = '0';
-        document.body.appendChild(tempArea);
-        tempArea.select();
-        try {
-          document.execCommand('copy');
-          const statusEl = document.getElementById('copyStatusMessage');
-          statusEl.classList.remove('hidden');
-        } catch (err) {
-          // Fallback ignored silently if blocked
+        if (calLink) {
+          calLink.setAttribute(
+            "href",
+            "mailto:joshua@beachwoodquantum.com?subject=" + subject + "&body=" + body
+          );
         }
-        document.body.removeChild(tempArea);
-      });
 
-      // Reset to Book Another Time
-      document.getElementById('resetBookingBtn').addEventListener('click', function () {
-        bookingForm.reset();
-        formErrorBanner.classList.add('hidden');
-        confirmationCard.classList.add('hidden');
-        bookingWidget.classList.remove('hidden');
-        bookingWidget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        statusEl.textContent =
+          "Pre-call intake ready for " + name + " (" + role + " — " + asset + ", " + capital + "). Use Open Calendar / Scheduling Link to dispatch or attach to your booked slot.";
       });
-
-      // Initial Render
-      renderCalendar();
-      renderTimeSlots();
     })();
   </script>
 </body>

@@ -1,363 +1,840 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beachwood Quantum | Capital Recovery &amp; Beachwood Helix Divisions</title>
-    <style>
-        :root {
-            --bg: #faf9f6;
-            --surface: #f3f1ec;
-            --text: #141413;
-            --muted: #5a5955;
-            --border: #dcdad3;
-            --accent: #1b365d;
-            --accent-hover: #132744;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beachwood Quantum | Energy Asset Identification & Acquisition Advisory</title>
+  <meta name="description" content="Beachwood Helix Corporation — Energy asset identification, conservative decline-curve evaluation, and buy-side deal structuring." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          colors: {
+            navy: {
+              950: '#0A111F',
+              900: '#0F172A',
+              800: '#1E293B',
+              700: '#334155',
+            },
+            brass: {
+              500: '#B4833E',
+              600: '#9A6D2E',
+              100: '#F7EFE2',
+            }
+          }
         }
-
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: "Georgia", "Times New Roman", serif;
-            line-height: 1.72;
-            max-width: 820px;
-            margin: 0 auto;
-            padding: 3.5rem 1.75rem;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        header {
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 2.25rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .eyebrow {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 0.75rem;
-        }
-
-        h1 {
-            font-size: 2.35rem;
-            font-weight: normal;
-            letter-spacing: -0.02em;
-            line-height: 1.18;
-            margin: 0 0 0.75rem 0;
-        }
-
-        .subtitle {
-            font-size: 1.08rem;
-            color: var(--muted);
-            font-style: italic;
-            margin: 0 0 1.65rem 0;
-        }
-
-        .cta-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.85rem;
-            align-items: center;
-        }
-
-        .btn-primary {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            background-color: var(--accent);
-            color: #ffffff;
-            padding: 0.72rem 1.35rem;
-            text-decoration: none;
-            border: 1px solid var(--accent);
-            display: inline-block;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--accent-hover);
-            border-bottom: 1px solid var(--accent-hover);
-        }
-
-        .btn-secondary {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            font-size: 0.85rem;
-            letter-spacing: 0.03em;
-            color: var(--accent);
-            padding: 0.72rem 1.25rem;
-            text-decoration: none;
-            border: 1px solid var(--border);
-            background-color: var(--surface);
-            display: inline-block;
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--accent);
-        }
-
-        .thesis-box {
-            background-color: var(--surface);
-            border-left: 3px solid var(--accent);
-            padding: 1.65rem 1.9rem;
-            margin: 2rem 0 2.75rem 0;
-            font-size: 1.04rem;
-        }
-
-        .thesis-box p {
-            margin: 0 0 0.9rem 0;
-        }
-
-        .thesis-box p:last-child {
-            margin-bottom: 0;
-        }
-
-        h2 {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            font-size: 0.82rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin: 2.75rem 0 1.15rem 0;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.5rem;
-        }
-
-        p {
-            margin: 0 0 1.15rem 0;
-        }
-
-        .terms-grid,
-        .scale-grid,
-        .divisions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        .card {
-            background-color: var(--surface);
-            border: 1px solid var(--border);
-            padding: 1.15rem 1.25rem;
-        }
-
-        .card-tag {
-            font-family: "Courier New", Courier, monospace;
-            font-size: 0.92rem;
-            font-weight: bold;
-            color: var(--accent);
-            display: block;
-            margin-bottom: 0.35rem;
-        }
-
-        .card-title {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text);
-            display: block;
-            margin-bottom: 0.35rem;
-        }
-
-        .card-desc {
-            font-size: 0.93rem;
-            color: var(--muted);
-            margin: 0;
-        }
-
-        .benchmark-note {
-            font-size: 0.96rem;
-            color: var(--muted);
-            background-color: var(--surface);
-            border: 1px solid var(--border);
-            padding: 1.15rem 1.35rem;
-            margin-top: 1.25rem;
-        }
-
-        .benchmark-note strong {
-            color: var(--text);
-        }
-
-        .intake-box {
-            background-color: var(--surface);
-            border: 1px solid var(--border);
-            padding: 1.75rem 2rem;
-            margin-top: 1.5rem;
-        }
-
-        .intake-box h3 {
-            margin: 0 0 0.5rem 0;
-            font-size: 1.18rem;
-            font-weight: normal;
-        }
-
-        .intake-box p {
-            margin: 0 0 1.25rem 0;
-            color: var(--muted);
-            font-size: 0.96rem;
-        }
-
-        .intake-list {
-            margin: 0 0 1.4rem 0;
-            padding-left: 1.25rem;
-            color: var(--text);
-            font-size: 0.96rem;
-        }
-
-        .intake-list li {
-            margin-bottom: 0.45rem;
-        }
-
-        .intake-list span {
-            color: var(--muted);
-        }
-
-        footer {
-            margin-top: 3rem;
-            padding-top: 1.75rem;
-            border-top: 1px solid var(--border);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            font-size: 0.85rem;
-            color: var(--muted);
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 1rem;
-        }
-
-        a {
-            color: var(--accent);
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-        }
-
-        a:hover {
-            border-bottom: 1px solid var(--accent);
-        }
-    </style>
+      }
+    };
+  </script>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-amber-200 selection:text-slate-900">
 
-    <header>
-        <div class="eyebrow">Beachwood Helix Corporation &bull; Buyer-Goal Acquisition &amp; Direct Deal Execution</div>
-        <h1>Beachwood Quantum</h1>
-        <p class="subtitle">Buying Correctly in Any Market, Returning Capital to $0 &amp; Governing Self-Sufficient Divisions</p>
-        <div class="cta-row">
-            <a href="agreement.html" class="btn-primary">Review Standard Fee Agreement</a>
-            <a href="#recovery" class="btn-secondary">Capital Recovery &amp; Proof</a>
+  <!-- Top Navigation Bar -->
+  <header class="bg-navy-950 text-white border-b border-slate-800 sticky top-0 z-30">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center space-x-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-brass-500">
+        <span class="inline-flex items-center justify-center w-8 h-8 rounded-md bg-brass-500/20 border border-brass-500/50 text-amber-400 font-bold text-sm tracking-wider">
+          BQ
+        </span>
+        <div class="leading-tight">
+          <span class="block font-semibold tracking-tight text-white text-sm sm:text-base">Beachwood Quantum</span>
+          <span class="block text-[11px] uppercase tracking-widest text-slate-400">Beachwood Helix Corporation</span>
         </div>
-    </header>
+      </a>
 
-    <main>
-        <section class="thesis-box">
-            <p><strong>Refinement in the Silence</strong></p>
-            <p>Beachwood Quantum strips away brokerage theater and static reserve assumptions so buyers can underwrite to real capital recovery across shifting geopolitical and commodity environments.</p>
-            <p>The primary objective is returning 100% of invested capital to a <strong>$0 unrecovered basis ("the profitability mark")</strong> within <strong>60 months (5 years)</strong>—absorbing a standard conventional oil price swing—and treating remaining field reserves as a leverageable asset once capital is returned.</p>
-        </section>
+      <nav class="flex items-center space-x-4 sm:space-x-6 text-sm">
+        <a href="#how-we-work" class="hidden sm:inline-block text-slate-300 hover:text-white transition">How We Work</a>
+        <a href="#schedule" class="inline-flex items-center px-4 py-2 rounded-lg bg-brass-500 hover:bg-brass-600 text-white font-medium transition shadow-sm">
+          Schedule Call
+        </a>
+      </nav>
+    </div>
+  </header>
 
-        <h2 id="recovery">Buyer-Goal Underwriting &amp; Proof of Concept</h2>
-        <p>A static PV10 yardstick can overprice an asset relative to a buyer's risk and timing reality. Underwriting around the buyer's objective separates passive holding from active capital compression:</p>
-
-        <div class="scale-grid">
-            <div class="card">
-                <span class="card-tag">60-Month Cycle</span>
-                <span class="card-desc">Standard conventional oil price swing target to return 100% of capital to a $0 unrecovered basis.</span>
-            </div>
-            <div class="card">
-                <span class="card-tag">12-Month Beta</span>
-                <span class="card-desc">Recovered nearly all initial capital in 12 months—48 months ahead of schedule—via management and targeted workover.</span>
-            </div>
-            <div class="card">
-                <span class="card-tag">22-Month Delaware</span>
-                <span class="card-desc">Devon/Advance horizontal well deal achieved a 22-month recovery, proving unconventional assets fit the same scale.</span>
-            </div>
-            <div class="card">
-                <span class="card-tag">$0 &rarr; Leverage</span>
-                <span class="card-desc">Once capital reaches $0, remaining estimated field reserves become a leverageable asset base.</span>
-            </div>
+  <!-- Section 1: Hero Header -->
+  <section class="bg-navy-900 text-white border-b border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center px-3 py-1 rounded-full bg-slate-800/90 border border-slate-700 text-amber-400 text-xs font-medium tracking-wide uppercase mb-6">
+          Direct Buy-Side Advisory &bull; U.S. Onshore Energy Assets
         </div>
-
-        <div class="benchmark-note">
-            <strong>Market &amp; Valuation Context:</strong> Where PV10 acts as a high ceiling reference and PV20–PV40 calibrates buyer underwriting (including our PV37 reference reading of $536,450.00 purchase / $657,826.40 post-workover), timing and geopolitical context govern how fast capital returns to $0. Listed producers trade around ~5.2x U.S. / ~5.5x global median EV/EBITDA, while private deals commonly reflect a 20%–40% illiquidity discount.
+        <h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white leading-[1.15] mb-6">
+          Beachwood Quantum &mdash; Energy Asset Identification &amp; Acquisition Advisory
+        </h1>
+        <p class="text-lg sm:text-xl text-slate-300 leading-relaxed mb-8">
+          Over 12 years of U.S. oil and gas asset mapping, conservative decline-curve evaluation, and disciplined buy-side deal structuring for operators, family offices, and enterprise power buyers.
+        </p>
+        <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+          <a href="#schedule" class="inline-flex items-center justify-center px-6 py-3.5 rounded-lg bg-brass-500 hover:bg-brass-600 text-white font-semibold text-base transition shadow-md">
+            Schedule an Introductory Call
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a href="#how-we-work" class="inline-flex items-center justify-center px-6 py-3.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium text-base border border-slate-700 transition">
+            Review Engagement Terms
+          </a>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <h2 id="terms">Standard Commercial Terms</h2>
-        <p>Direct commercial mandates operate through <strong>agreement.html</strong> with single-signature attribution to <strong>Joshua Alan Robbins</strong>:</p>
+  <!-- Section 2: Three-Column "How We Work" Block -->
+  <section id="how-we-work" class="py-16 sm:py-20 bg-white border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-12">
+        <h2 class="text-xs font-semibold uppercase tracking-widest text-brass-600 mb-2">Process &amp; Commercial Alignment</h2>
+        <h3 class="text-2xl sm:text-3xl font-bold text-navy-900 tracking-tight">How We Work</h3>
+        <p class="text-slate-600 mt-3 text-base leading-relaxed">
+          Clear asset baselines, verified buyer readiness, and straightforward fee structures before heavy engineering or negotiation begins.
+        </p>
+      </div>
 
-        <div class="terms-grid">
-            <div class="card">
-                <span class="card-tag">$3,000 / Month</span>
-                <span class="card-desc">Ongoing monthly cadence following the initial 90-day commitment, with clean wind-down terms.</span>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Column 1 -->
+        <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-7 flex flex-col justify-between shadow-sm">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-navy-900 text-amber-400 flex items-center justify-center font-bold text-sm mb-5">
+              01
             </div>
-            <div class="card">
-                <span class="card-tag">3.0% Closing Fee</span>
-                <span class="card-desc">Paid on Consideration for introduced transactions, backed by a 12-month post-term tail.</span>
-            </div>
-            <div class="card">
-                <span class="card-tag">Buyer Discretion</span>
-                <span class="card-desc">Client retains sole transaction discretion under clear terms and mutual confidentiality.</span>
-            </div>
-        </div>
-
-        <p><a href="agreement.html">Read the complete Standard Form of Fee Agreement &rarr;</a></p>
-
-        <h2 id="divisions">Beachwood Helix Corporation Divisions</h2>
-        <p>Every division must operate on a functional wealth-generating pathway and a defined timeline to self-sufficiency—no division exists on theory or unmonetized overhead alone.</p>
-
-        <div class="divisions-grid">
-            <div class="card">
-                <span class="card-tag">01 &bull; Root Entity</span>
-                <span class="card-title">Beachwood (Beachwood Helix Corporation)</span>
-                <p class="card-desc">Governance, IP, and capital execution via <strong>agreement.html</strong> ($3,000/month ongoing after initial 90-day commitment + 3.0% closing fee on Consideration), funded directly through commercial deal flow.</p>
-            </div>
-            <div class="card">
-                <span class="card-tag">02 &bull; R&amp;D Pathway</span>
-                <span class="card-title">Beachwood Research Lab</span>
-                <p class="card-desc">First-principles R&amp;D paired with a defined publishing, licensing, and commercialization pathway to monetize ideas on a set self-sufficiency timeline.</p>
-            </div>
-            <div class="card">
-                <span class="card-tag">03 &bull; Hardware &amp; Systems</span>
-                <span class="card-title">Beachwood Systems</span>
-                <p class="card-desc">Engineering, GEM platform, and the <strong>GEM Console2028</strong> hardware track—anchored by the <em>GEM System Hardware &amp; Partnership Dossier</em> for sourcing, builds, and partnerships.</p>
-            </div>
-            <div class="card">
-                <span class="card-tag">04 &bull; Urban &amp; Civic</span>
-                <span class="card-title">Beachwood Foundational Ecosystem</span>
-                <p class="card-desc">Concise one-page concept and capital-fit brief reclaiming legacy urban wellhead sites into local, STEM, and cultural hubs using a cost &times; 2 pricing model and structured daily schedule.</p>
-            </div>
+            <h4 class="text-lg font-bold text-navy-900 mb-3">Conservative Asset Evaluation</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Every prospect is anchored in verified well histories, conservative decline-curve projections, net revenue interest checks, and realistic operating cost baselines—not promotional upside assumptions.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-medium text-slate-500">
+            Real production data &bull; Audited LOE &bull; PV10 sensitivity
+          </div>
         </div>
 
-        <h2 id="intake">Direct Deal &amp; Mandate Intake</h2>
-        <div class="intake-box">
-            <h3>Initiate an Asset or Mandate Review</h3>
-            <p>Share concise site, deal, or division details tied to your capital-recovery target and timeline.</p>
-            <ul class="intake-list">
-                <li><strong>Acquisitions &amp; Mandates:</strong> <span>Target basin, conventional or horizontal profile, and payback/workover objective.</span></li>
-                <li><strong>Asset &amp; Well Submissions:</strong> <span>API/GPS identifiers, current production baseline, status, notes, and next step.</span></li>
-            </ul>
-            <div class="cta-row">
-                <a href="agreement.html" class="btn-primary">Inspect Agreement Terms</a>
-                <a href="mailto:joshua@beachwoodquantum.com?subject=Beachwood%20Quantum%20%7C%20Asset%20or%20Mandate%20Review" class="btn-secondary">Direct Inquiry: joshua@beachwoodquantum.com</a>
+        <!-- Column 2 -->
+        <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-7 flex flex-col justify-between shadow-sm">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-navy-900 text-amber-400 flex items-center justify-center font-bold text-sm mb-5">
+              02
             </div>
+            <h4 class="text-lg font-bold text-navy-900 mb-3">Capital &amp; Execution Alignment</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              We qualify engagements around defined basin or power-offtake criteria, operational execution plans, and verified proof-of-funds or bank memo readiness so sellers and working-interest partners deal with capable buyers.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-medium text-slate-500">
+            Defined target criteria &bull; Verified capital backing
+          </div>
         </div>
-    </main>
 
-    <footer>
-        <div>
-            <strong>Joshua Alan Robbins</strong><br>
-            President &amp; Chief Executive Officer, Beachwood Helix Corporation
+        <!-- Column 3 -->
+        <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-7 flex flex-col justify-between shadow-sm">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-navy-900 text-amber-400 flex items-center justify-center font-bold text-sm mb-5">
+              03
+            </div>
+            <h4 class="text-lg font-bold text-navy-900 mb-3">Transparent Engagement Terms</h4>
+            <p class="text-slate-600 text-sm leading-relaxed">
+              Initial advisory retainers are structured at <strong class="text-navy-900">$9,000 for 3 months ($3,000/month)</strong> paired with a <strong class="text-navy-900">3% success fee at closing</strong>. Direct alignment from initial screening through transaction execution.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-200 text-xs font-medium text-slate-500">
+            $3,000/mo (3-month initial term) + 3% at closing
+          </div>
         </div>
-        <div>
-            Direct: joshua@beachwoodquantum.com<br>
-            Voice: 667-493-5648
-        </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
+  <!-- Section 3 & 4: Built-In Interactive Booking Calendar Widget & Confirmation -->
+  <section id="schedule" class="py-16 sm:py-24 bg-slate-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-10">
+        <h2 class="text-xs font-semibold uppercase tracking-widest text-brass-600 mb-2">Direct Scheduling &bull; No Third-Party Redirects</h2>
+        <h3 class="text-2xl sm:text-3xl font-bold text-navy-900 tracking-tight">Schedule an Introductory Call</h3>
+        <p class="text-slate-600 mt-3 text-base leading-relaxed">
+          Select a weekday, choose a 30-minute window in your time zone, and share your target asset criteria. No external account login or email permission access is required.
+        </p>
+      </div>
+
+      <!-- Booking Container -->
+      <div id="bookingWidget" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12">
+
+          <!-- Left Panel: Date & Time Selection (7 cols) -->
+          <div class="lg:col-span-7 p-6 sm:p-8 border-b lg:border-b-0 lg:border-r border-slate-200">
+            <!-- Header Controls: Month Navigation & Time Zone -->
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-6 border-b border-slate-200">
+              <div class="flex items-center space-x-3">
+                <button type="button" id="prevMonthBtn" aria-label="Previous Month"
+                  class="p-2.5 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <h4 id="monthYearLabel" class="text-lg font-bold text-navy-900 min-w-[165px] text-center">
+                  November 2026
+                </h4>
+                <button type="button" id="nextMonthBtn" aria-label="Next Month"
+                  class="p-2.5 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-100 transition">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Time Zone Selector -->
+              <div class="flex items-center space-x-2">
+                <label for="timezoneSelect" class="text-xs font-semibold uppercase tracking-wider text-slate-500">Time Zone:</label>
+                <select id="timezoneSelect"
+                  class="rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-sm font-medium text-navy-900 focus:outline-none focus:ring-2 focus:ring-brass-500">
+                  <option value="America/New_York" data-abbr="ET">Eastern Time (ET)</option>
+                  <option value="America/Chicago" data-abbr="CT">Central Time (CT)</option>
+                  <option value="America/Denver" data-abbr="MT">Mountain Time (MT)</option>
+                  <option value="America/Los_Angeles" data-abbr="PT">Pacific Time (PT)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Calendar Grid -->
+            <div class="mt-6">
+              <div class="grid grid-cols-7 text-center text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+              </div>
+              <div id="calendarDaysGrid" class="grid grid-cols-7 gap-1.5 sm:gap-2">
+                <!-- Populated by JavaScript -->
+              </div>
+              <p class="mt-3 text-xs text-slate-500">
+                Available Monday through Friday. Past dates and weekends are disabled.
+              </p>
+            </div>
+
+            <!-- Time Slots Selection -->
+            <div class="mt-8 pt-6 border-t border-slate-200">
+              <div class="flex items-center justify-between mb-4">
+                <h5 class="text-sm font-bold text-navy-900">
+                  Available 30-Minute Windows
+                </h5>
+                <span id="selectedDateBadge" class="text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">
+                  Select a date
+                </span>
+              </div>
+
+              <div id="timeSlotsGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                <!-- Populated by JavaScript -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Panel: Qualification & Intake Form (5 cols) -->
+          <div class="lg:col-span-5 p-6 sm:p-8 bg-slate-50/60">
+            <h4 class="text-lg font-bold text-navy-900 mb-1">Call &amp; Asset Brief</h4>
+            <p class="text-xs text-slate-500 mb-6">All fields marked with * are required to confirm your time slot.</p>
+
+            <!-- Inline Validation Banner -->
+            <div id="formErrorBanner" class="hidden mb-5 p-3.5 rounded-lg bg-red-50 border border-red-200 text-red-800 text-xs font-medium">
+              Please select a date and time slot, and complete all required fields below.
+            </div>
+
+            <form id="bookingForm" novalidate class="space-y-4">
+              <div>
+                <label for="fullName" class="block text-xs font-semibold uppercase tracking-wide text-slate-700 mb-1.5">Full Name *</label>
+                <input type="text" id="fullName" name="fullName" required placeholder="Jane Doe"
+                  class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brass-500 focus:border-brass-500" />
+              </div>
+
+              <div>
+                <label for="company" class="block text-xs font-semibold uppercase tracking-wide text-slate-700 mb-1.5">Company / Entity *</label>
+                <input type="text" id="company" name="company" required placeholder="Basin Partners LLC"
+                  class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brass-500 focus:border-brass-500" />
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="email" class="block text-xs font-semibold uppercase tracking-wide text-slate-700 mb-1.5">Email *</label>
+                  <input type="email" id="email" name="email" required placeholder="name@company.com"
+                    class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brass-500 focus:border-brass-500" />
+                </div>
+                <div>
+                  <label for="phone" class="block text-xs font-semibold uppercase tracking-wide text-slate-700 mb-1.5">Phone *</label>
+                  <input type="tel" id="phone" name="phone" required placeholder="(555) 234-5678"
+                    class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brass-500 focus:border-brass-500" />
+                </div>
+              </div>
+
+              <div>
+                <label for="targetAsset" class="block text-xs font-semibold uppercase tracking-wide text-slate-700 mb-1.5">Target Basin / Asset Type *</label>
+                <select id="targetAsset" name="targetAsset" required
+                  class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-brass-500 focus:border-brass-500">
+                  <option value="">Select target asset profile...</option>
+                  <option value="Oklahoma Gas / Liquids">Oklahoma Gas / Liquids</option>
+                  <option value="Montana Oil">Montana Oil</option>
+                  <option value="Texas / Permian / Eagle Ford">Texas / Permian / Eagle Ford</option>
+                  <option value="Multi-Basin Operated / Non-Op">Multi-Basin Operated / Non-Op</option>
+                  <option value="Power / Data Center Offtake">Power / Data Center Offtake</option>
+                  <option value="Other U.S. Energy Asset">Other U.S. Energy Asset</option>
+                </select>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="capitalTier" class="block text-xs font-semibold uppercase tracking-wide text-slate-700 mb-1.5">Capital Tier *</label>
+                  <select id="capitalTier" name="capitalTier" required
+                    class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-brass-500 focus:border-brass-500">
+                    <option value="">Select bracket...</option>
+                    <option value="Sub-$10M">Sub-$10M</option>
+                    <option value="$10M–$50M">$10M&ndash;$50M</option>
+                    <option value="$50M+">$50M+</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="pofStatus" class="block text-xs font-semibold uppercase tracking-wide text-slate-700 mb-1.5">Proof of Funds / Bank Memo *</label>
+                  <select id="pofStatus" name="pofStatus" required
+                    class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-brass-500 focus:border-brass-500">
+                    <option value="">Select status...</option>
+                    <option value="Ready Now">Ready Now</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Exploratory">Exploratory</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="dealObjective" class="block text-xs font-semibold uppercase tracking-wide text-slate-700 mb-1.5">Brief Deal Objective *</label>
+                <textarea id="dealObjective" name="dealObjective" rows="3" required
+                  placeholder="Describe target production profile, acquisition timeline, or operational goals..."
+                  class="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brass-500 focus:border-brass-500"></textarea>
+              </div>
+
+              <button type="submit"
+                class="w-full mt-2 py-3.5 px-5 rounded-lg bg-navy-900 hover:bg-navy-800 text-white font-semibold text-sm transition shadow-sm focus:outline-none focus:ring-2 focus:ring-brass-500 focus:ring-offset-2">
+                Confirm 30-Minute Introductory Call
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Section 4: Instant On-Page Booking Confirmation Card (Hidden until submission) -->
+      <div id="confirmationCard" class="hidden bg-white rounded-2xl border border-slate-200 shadow-md overflow-hidden">
+        <div class="bg-navy-900 text-white px-6 sm:px-8 py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-800">
+          <div class="flex items-center space-x-3.5">
+            <div class="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-400/50 text-emerald-300 flex items-center justify-center shrink-0">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <span class="text-xs font-semibold uppercase tracking-wider text-amber-400">Booking Confirmed</span>
+              <h4 class="text-xl font-bold text-white">Introductory Advisory Call Scheduled</h4>
+            </div>
+          </div>
+          <div class="text-xs text-slate-300 bg-slate-800/80 px-3.5 py-2 rounded-lg border border-slate-700 font-mono" id="bookingRefCode">
+            REF: BQ-000000
+          </div>
+        </div>
+
+        <div class="p-6 sm:p-8">
+          <p class="text-sm text-slate-600 mb-6 leading-relaxed">
+            Your session details are recorded below. Download the <strong class="text-navy-900">.ics calendar file</strong> to add this meeting directly to Apple Calendar, Outlook, or Google Calendar without granting third-party account access.
+          </p>
+
+          <!-- Summary Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-5 rounded-xl bg-slate-50 border border-slate-200 mb-6 text-sm">
+            <div>
+              <span class="block text-xs font-semibold uppercase tracking-wider text-slate-500">Date &amp; Time</span>
+              <span id="confDateTime" class="font-bold text-navy-900 mt-0.5 block">&mdash;</span>
+            </div>
+            <div>
+              <span class="block text-xs font-semibold uppercase tracking-wider text-slate-500">Participant</span>
+              <span id="confNameEntity" class="font-semibold text-navy-900 mt-0.5 block">&mdash;</span>
+            </div>
+            <div>
+              <span class="block text-xs font-semibold uppercase tracking-wider text-slate-500">Contact</span>
+              <span id="confContact" class="font-medium text-slate-700 mt-0.5 block">&mdash;</span>
+            </div>
+            <div>
+              <span class="block text-xs font-semibold uppercase tracking-wider text-slate-500">Target Basin / Asset</span>
+              <span id="confAsset" class="font-semibold text-navy-900 mt-0.5 block">&mdash;</span>
+            </div>
+            <div>
+              <span class="block text-xs font-semibold uppercase tracking-wider text-slate-500">Capital Tier</span>
+              <span id="confCapital" class="font-semibold text-navy-900 mt-0.5 block">&mdash;</span>
+            </div>
+            <div>
+              <span class="block text-xs font-semibold uppercase tracking-wider text-slate-500">Proof of Funds Status</span>
+              <span id="confPof" class="font-semibold text-navy-900 mt-0.5 block">&mdash;</span>
+            </div>
+            <div class="sm:col-span-2 lg:col-span-3 pt-3 border-t border-slate-200">
+              <span class="block text-xs font-semibold uppercase tracking-wider text-slate-500">Deal Objective</span>
+              <span id="confObjective" class="text-slate-800 mt-1 block leading-relaxed">&mdash;</span>
+            </div>
+          </div>
+
+          <!-- Copy Feedback Toast -->
+          <div id="copyStatusMessage" class="hidden mb-4 px-4 py-2.5 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold">
+            Booking summary copied to clipboard.
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-col sm:flex-row flex-wrap gap-3">
+            <button type="button" id="downloadIcsBtn"
+              class="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-brass-500 hover:bg-brass-600 text-white font-semibold text-sm transition shadow-sm">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              Download .ICS Calendar File
+            </button>
+
+            <button type="button" id="copySummaryBtn"
+              class="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-navy-900 hover:bg-navy-800 text-white font-semibold text-sm transition">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+              Copy Booking Summary
+            </button>
+
+            <button type="button" id="resetBookingBtn"
+              class="inline-flex items-center justify-center px-5 py-3 rounded-lg border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-medium text-sm transition sm:ml-auto">
+              Book Another Time
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-navy-950 text-slate-400 border-t border-slate-800 py-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs">
+      <div>
+        <p class="text-white font-semibold text-sm">Beachwood Helix Corporation</p>
+        <p class="mt-1">BeachwoodQuantum.com &mdash; Energy Asset Identification &amp; Acquisition Advisory</p>
+      </div>
+      <div class="text-slate-500">
+        &copy; <span id="footerYear"></span> Beachwood Helix Corporation. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Client-Side Calendar, Time Zone, Validation & .ICS Generator Logic -->
+  <script>
+    (function () {
+      'use strict';
+
+      // Set current copyright year
+      document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+      // Standard 30-minute consultation windows (local to selected timezone)
+      const TIME_SLOTS = [
+        { hour: 9, minute: 0, label: '09:00 AM' },
+        { hour: 9, minute: 30, label: '09:30 AM' },
+        { hour: 10, minute: 0, label: '10:00 AM' },
+        { hour: 10, minute: 30, label: '10:30 AM' },
+        { hour: 11, minute: 0, label: '11:00 AM' },
+        { hour: 11, minute: 30, label: '11:30 AM' },
+        { hour: 13, minute: 30, label: '01:30 PM' },
+        { hour: 14, minute: 0, label: '02:00 PM' },
+        { hour: 14, minute: 30, label: '02:30 PM' },
+        { hour: 15, minute: 0, label: '03:00 PM' },
+        { hour: 15, minute: 30, label: '03:30 PM' },
+        { hour: 16, minute: 0, label: '04:00 PM' }
+      ];
+
+      // Standard UTC offsets (non-DST / standard reference for clean ICS generation)
+      const TZ_OFFSETS = {
+        'America/New_York': -5,
+        'America/Chicago': -6,
+        'America/Denver': -7,
+        'America/Los_Angeles': -8
+      };
+
+      // Normalize "today" at local midnight
+      const now = new Date();
+      const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+      // Find the next valid business day (Mon-Fri, strictly >= today)
+      function getNextBusinessDay(startDate) {
+        const candidate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+        while (candidate.getDay() === 0 || candidate.getDay() === 6) {
+          candidate.setDate(candidate.getDate() + 1);
+        }
+        return candidate;
+      }
+
+      const defaultSelectedDate = getNextBusinessDay(todayMidnight);
+
+      // Application State
+      const state = {
+        viewYear: defaultSelectedDate.getFullYear(),
+        viewMonth: defaultSelectedDate.getMonth(),
+        selectedDate: defaultSelectedDate,
+        selectedSlot: TIME_SLOTS[2], // Default to 10:00 AM
+        lastBooking: null
+      };
+
+      // DOM Elements
+      const monthYearLabel = document.getElementById('monthYearLabel');
+      const prevMonthBtn = document.getElementById('prevMonthBtn');
+      const nextMonthBtn = document.getElementById('nextMonthBtn');
+      const calendarDaysGrid = document.getElementById('calendarDaysGrid');
+      const timeSlotsGrid = document.getElementById('timeSlotsGrid');
+      const selectedDateBadge = document.getElementById('selectedDateBadge');
+      const timezoneSelect = document.getElementById('timezoneSelect');
+      const bookingForm = document.getElementById('bookingForm');
+      const formErrorBanner = document.getElementById('formErrorBanner');
+      const bookingWidget = document.getElementById('bookingWidget');
+      const confirmationCard = document.getElementById('confirmationCard');
+
+      // Formatting Helpers
+      const MONTH_NAMES = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+      ];
+      const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+      function isSameDay(a, b) {
+        return a && b &&
+          a.getFullYear() === b.getFullYear() &&
+          a.getMonth() === b.getMonth() &&
+          a.getDate() === b.getDate();
+      }
+
+      function formatReadableDate(dateObj) {
+        if (!dateObj) return 'Select a date';
+        return `${DAY_NAMES[dateObj.getDay()]}, ${MONTH_NAMES[dateObj.getMonth()]} ${dateObj.getDate()}, ${dateObj.getFullYear()}`;
+      }
+
+      function getSelectedTzAbbr() {
+        const opt = timezoneSelect.options[timezoneSelect.selectedIndex];
+        return opt ? opt.getAttribute('data-abbr') : 'ET';
+      }
+
+      // Render Monthly Calendar Grid
+      function renderCalendar() {
+        monthYearLabel.textContent = `${MONTH_NAMES[state.viewMonth]} ${state.viewYear}`;
+
+        // Disable navigating before the current real-world month
+        const isCurrentOrPastMonth =
+          state.viewYear < todayMidnight.getFullYear() ||
+          (state.viewYear === todayMidnight.getFullYear() && state.viewMonth <= todayMidnight.getMonth());
+        prevMonthBtn.disabled = isCurrentOrPastMonth;
+
+        calendarDaysGrid.innerHTML = '';
+
+        const firstDayOfMonth = new Date(state.viewYear, state.viewMonth, 1).getDay();
+        const daysInMonth = new Date(state.viewYear, state.viewMonth + 1, 0).getDate();
+
+        // Leading blank cells
+        for (let i = 0; i < firstDayOfMonth; i++) {
+          const blank = document.createElement('div');
+          blank.className = 'h-11';
+          calendarDaysGrid.appendChild(blank);
+        }
+
+        // Day buttons
+        for (let day = 1; day <= daysInMonth; day++) {
+          const cellDate = new Date(state.viewYear, state.viewMonth, day);
+          const dayOfWeek = cellDate.getDay();
+          const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+          const isPast = cellDate < todayMidnight;
+          const isDisabled = isWeekend || isPast;
+          const isSelected = isSameDay(cellDate, state.selectedDate);
+          const isToday = isSameDay(cellDate, todayMidnight);
+
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.textContent = day;
+          btn.disabled = isDisabled;
+
+          if (isDisabled) {
+            btn.className = 'h-11 rounded-lg text-sm font-normal text-slate-300 bg-slate-50/50 cursor-not-allowed';
+          } else if (isSelected) {
+            btn.className = 'h-11 rounded-lg text-sm font-bold bg-navy-900 text-white ring-2 ring-brass-500 shadow-sm transition';
+          } else {
+            btn.className = 'h-11 rounded-lg text-sm font-medium text-slate-800 bg-white border border-slate-200 hover:border-brass-500 hover:bg-amber-50/40 transition' +
+              (isToday ? ' underline decoration-brass-500 decoration-2 underline-offset-4' : '');
+          }
+
+          if (!isDisabled) {
+            btn.addEventListener('click', function () {
+              state.selectedDate = cellDate;
+              renderCalendar();
+              renderTimeSlots();
+            });
+          }
+
+          calendarDaysGrid.appendChild(btn);
+        }
+      }
+
+      // Render 30-Minute Time Slots
+      function renderTimeSlots() {
+        selectedDateBadge.textContent = formatReadableDate(state.selectedDate);
+        timeSlotsGrid.innerHTML = '';
+        const tzAbbr = getSelectedTzAbbr();
+
+        TIME_SLOTS.forEach(function (slot) {
+          const isSelected = state.selectedSlot &&
+            state.selectedSlot.hour === slot.hour &&
+            state.selectedSlot.minute === slot.minute;
+
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.textContent = `${slot.label} ${tzAbbr}`;
+          btn.className = isSelected
+            ? 'py-2.5 px-3 rounded-lg text-xs sm:text-sm font-bold bg-brass-500 text-white shadow-sm transition'
+            : 'py-2.5 px-3 rounded-lg text-xs sm:text-sm font-medium bg-white border border-slate-300 text-slate-800 hover:border-navy-900 hover:bg-slate-50 transition';
+
+          btn.addEventListener('click', function () {
+            state.selectedSlot = slot;
+            renderTimeSlots();
+          });
+
+          timeSlotsGrid.appendChild(btn);
+        });
+      }
+
+      // Month Navigation Events
+      prevMonthBtn.addEventListener('click', function () {
+        if (state.viewMonth === 0) {
+          state.viewMonth = 11;
+          state.viewYear -= 1;
+        } else {
+          state.viewMonth -= 1;
+        }
+        renderCalendar();
+      });
+
+      nextMonthBtn.addEventListener('click', function () {
+        if (state.viewMonth === 11) {
+          state.viewMonth = 0;
+          state.viewYear += 1;
+        } else {
+          state.viewMonth += 1;
+        }
+        renderCalendar();
+      });
+
+      timezoneSelect.addEventListener('change', function () {
+        renderTimeSlots();
+      });
+
+      // Pad number to 2 digits
+      function pad2(n) {
+        return String(n).padStart(2, '0');
+      }
+
+      // Format UTC Date for ICS (YYYYMMDDTHHMMSSZ)
+      function toIcsUtcString(dateObj) {
+        return (
+          dateObj.getUTCFullYear() +
+          pad2(dateObj.getUTCMonth() + 1) +
+          pad2(dateObj.getUTCDate()) +
+          'T' +
+          pad2(dateObj.getUTCHours()) +
+          pad2(dateObj.getUTCMinutes()) +
+          pad2(dateObj.getUTCSeconds()) +
+          'Z'
+        );
+      }
+
+      // Escape text values per RFC 5545 (.ics spec)
+      function escapeIcsText(str) {
+        return String(str || '')
+          .replace(/\\/g, '\\\\')
+          .replace(/;/g, '\\;')
+          .replace(/,/g, '\\,')
+          .replace(/\r?\n/g, '\\n');
+      }
+
+      // Build RFC 5545 compliant .ICS file content
+      function buildIcsContent(booking) {
+        const offsetHours = TZ_OFFSETS[booking.timezoneId] !== undefined ? TZ_OFFSETS[booking.timezoneId] : -5;
+        // Convert selected wall-clock time in chosen timezone to UTC
+        const startUtcMs = Date.UTC(
+          booking.date.getFullYear(),
+          booking.date.getMonth(),
+          booking.date.getDate(),
+          booking.slot.hour - offsetHours,
+          booking.slot.minute,
+          0
+        );
+        const endUtcMs = startUtcMs + 30 * 60 * 1000;
+
+        const dtStamp = toIcsUtcString(new Date());
+        const dtStart = toIcsUtcString(new Date(startUtcMs));
+        const dtEnd = toIcsUtcString(new Date(endUtcMs));
+        const uid = `${booking.refCode.toLowerCase()}-${Date.now()}@beachwoodquantum.com`;
+
+        const descriptionLines = [
+          `Reference: ${booking.refCode}`,
+          `Participant: ${booking.fullName} (${booking.company})`,
+          `Email: ${booking.email} | Phone: ${booking.phone}`,
+          `Target Basin / Asset: ${booking.targetAsset}`,
+          `Capital Tier: ${booking.capitalTier}`,
+          `Proof of Funds / Bank Memo: ${booking.pofStatus}`,
+          `Deal Objective: ${booking.dealObjective}`,
+          '',
+          'Advisory Terms Overview: $9,000 initial 3-month engagement ($3,000/mo) + 3% success fee at closing.'
+        ].join('\n');
+
+        return [
+          'BEGIN:VCALENDAR',
+          'VERSION:2.0',
+          'PRODID:-//Beachwood Helix Corporation//BeachwoodQuantum.com//EN',
+          'CALSCALE:GREGORIAN',
+          'METHOD:PUBLISH',
+          'BEGIN:VEVENT',
+          `UID:${uid}`,
+          `DTSTAMP:${dtStamp}`,
+          `DTSTART:${dtStart}`,
+          `DTEND:${dtEnd}`,
+          `SUMMARY:${escapeIcsText('Beachwood Quantum — Introductory Advisory Call (' + booking.company + ')')}`,
+          `DESCRIPTION:${escapeIcsText(descriptionLines)}`,
+          `LOCATION:${escapeIcsText('Phone / Direct Conference — Beachwood Helix Corporation')}`,
+          'STATUS:CONFIRMED',
+          'END:VEVENT',
+          'END:VCALENDAR'
+        ].join('\r\n');
+      }
+
+      // Form Submission Handler
+      bookingForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        formErrorBanner.classList.add('hidden');
+
+        const fullName = document.getElementById('fullName').value.trim();
+        const company = document.getElementById('company').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const targetAsset = document.getElementById('targetAsset').value;
+        const capitalTier = document.getElementById('capitalTier').value;
+        const pofStatus = document.getElementById('pofStatus').value;
+        const dealObjective = document.getElementById('dealObjective').value.trim();
+
+        const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+        if (!state.selectedDate || !state.selectedSlot || !fullName || !company || !emailValid || !phone || !targetAsset || !capitalTier || !pofStatus || !dealObjective) {
+          formErrorBanner.classList.remove('hidden');
+          formErrorBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          return;
+        }
+
+        const refCode = 'BQ-' + Math.floor(100000 + Math.random() * 900000);
+        const tzId = timezoneSelect.value;
+        const tzAbbr = getSelectedTzAbbr();
+
+        const booking = {
+          refCode: refCode,
+          date: state.selectedDate,
+          dateFormatted: formatReadableDate(state.selectedDate),
+          slot: state.selectedSlot,
+          timezoneId: tzId,
+          tzAbbr: tzAbbr,
+          fullName: fullName,
+          company: company,
+          email: email,
+          phone: phone,
+          targetAsset: targetAsset,
+          capitalTier: capitalTier,
+          pofStatus: pofStatus,
+          dealObjective: dealObjective
+        };
+
+        state.lastBooking = booking;
+
+        // Populate Confirmation Card
+        document.getElementById('bookingRefCode').textContent = `REF: ${booking.refCode}`;
+        document.getElementById('confDateTime').textContent = `${booking.dateFormatted} at ${booking.slot.label} ${booking.tzAbbr} (30 min)`;
+        document.getElementById('confNameEntity').textContent = `${booking.fullName} — ${booking.company}`;
+        document.getElementById('confContact').textContent = `${booking.email} | ${booking.phone}`;
+        document.getElementById('confAsset').textContent = booking.targetAsset;
+        document.getElementById('confCapital').textContent = booking.capitalTier;
+        document.getElementById('confPof').textContent = booking.pofStatus;
+        document.getElementById('confObjective').textContent = booking.dealObjective;
+
+        // Swap Widget -> Confirmation Card
+        bookingWidget.classList.add('hidden');
+        confirmationCard.classList.remove('hidden');
+        document.getElementById('copyStatusMessage').classList.add('hidden');
+        confirmationCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      // Download .ICS File via Local Blob
+      document.getElementById('downloadIcsBtn').addEventListener('click', function () {
+        if (!state.lastBooking) return;
+        const icsData = buildIcsContent(state.lastBooking);
+        const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `Beachwood-Quantum-Call-${state.lastBooking.refCode}.ics`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setTimeout(function () {
+          URL.revokeObjectURL(url);
+        }, 1000);
+      });
+
+      // Copy Booking Summary to Clipboard
+      document.getElementById('copySummaryBtn').addEventListener('click', function () {
+        if (!state.lastBooking) return;
+        const b = state.lastBooking;
+        const summaryText = [
+          `Beachwood Quantum — Introductory Advisory Call (${b.refCode})`,
+          `Date & Time: ${b.dateFormatted} at ${b.slot.label} ${b.tzAbbr} (30 min)`,
+          `Participant: ${b.fullName} (${b.company})`,
+          `Contact: ${b.email} | ${b.phone}`,
+          `Target Basin / Asset: ${b.targetAsset}`,
+          `Capital Tier: ${b.capitalTier}`,
+          `Proof of Funds / Bank Memo: ${b.pofStatus}`,
+          `Deal Objective: ${b.dealObjective}`
+        ].join('\n');
+
+        const tempArea = document.createElement('textarea');
+        tempArea.value = summaryText;
+        tempArea.style.position = 'fixed';
+        tempArea.style.opacity = '0';
+        document.body.appendChild(tempArea);
+        tempArea.select();
+        try {
+          document.execCommand('copy');
+          const statusEl = document.getElementById('copyStatusMessage');
+          statusEl.classList.remove('hidden');
+        } catch (err) {
+          // Fallback ignored silently if blocked
+        }
+        document.body.removeChild(tempArea);
+      });
+
+      // Reset to Book Another Time
+      document.getElementById('resetBookingBtn').addEventListener('click', function () {
+        bookingForm.reset();
+        formErrorBanner.classList.add('hidden');
+        confirmationCard.classList.add('hidden');
+        bookingWidget.classList.remove('hidden');
+        bookingWidget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      // Initial Render
+      renderCalendar();
+      renderTimeSlots();
+    })();
+  </script>
 </body>
 </html>

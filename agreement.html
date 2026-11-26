@@ -3,29 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Commercial Advisory &amp; Transaction Fee Agreement | Beachwood Helix Corporation</title>
+  <title>Engagement Terms, Onboarding &amp; Settlement | Beachwood Helix Corporation</title>
   <style>
-    .bw-agreement-block {
+    :root {
       --bw-bg: #faf9f6;
       --bw-surface: #f3f1ec;
+      --bw-surface-alt: #eae7df;
       --bw-text: #141413;
       --bw-muted: #5a5955;
       --bw-border: #dcdad3;
       --bw-accent: #1b365d;
       --bw-accent-hover: #132744;
+      --bw-sage: #3d5a4c;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
       background-color: var(--bw-bg);
       color: var(--bw-text);
       font-family: "Georgia", "Times New Roman", serif;
       line-height: 1.65;
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
+      padding: 2rem 1.5rem 3.5rem 1.5rem;
     }
 
-    .bw-agreement-block *,
-    .bw-agreement-block *::before,
-    .bw-agreement-block *::after {
-      box-sizing: border-box;
+    .bw-page {
+      max-width: 840px;
+      margin: 0 auto;
+    }
+
+    .bw-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--bw-border);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.85rem;
+    }
+
+    .bw-topbar a {
+      color: var(--bw-accent);
+      text-decoration: none;
+    }
+
+    .bw-topbar a:hover {
+      text-decoration: underline;
     }
 
     .bw-doc-header {
@@ -43,40 +74,81 @@
       margin: 0 0 0.4rem 0;
     }
 
-    .bw-agreement-block h1,
-    .bw-agreement-block h2 {
+    h1,
+    h2,
+    h3 {
       font-family: "Georgia", "Times New Roman", serif;
       font-weight: normal;
       color: var(--bw-text);
       margin: 0 0 0.65rem 0;
     }
 
-    .bw-agreement-block h1 {
-      font-size: 1.75rem;
+    h1 {
+      font-size: 1.8rem;
       line-height: 1.25;
     }
 
-    .bw-agreement-block h2 {
-      font-size: 1.15rem;
-      margin-top: 1.5rem;
-      padding-bottom: 0.35rem;
+    h2 {
+      font-size: 1.25rem;
+      margin-top: 2rem;
+      padding-bottom: 0.4rem;
       border-bottom: 1px solid var(--bw-border);
     }
 
+    h3 {
+      font-size: 1.05rem;
+    }
+
+    .bw-terms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0 1.5rem 0;
+    }
+
+    .bw-term-card {
+      background-color: var(--bw-surface);
+      border: 1px solid var(--bw-border);
+      padding: 1.1rem;
+    }
+
+    .bw-term-label {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--bw-muted);
+      margin: 0 0 0.3rem 0;
+    }
+
+    .bw-term-val {
+      font-size: 1.2rem;
+      color: var(--bw-text);
+      margin: 0 0 0.35rem 0;
+    }
+
+    .bw-term-copy {
+      font-size: 0.88rem;
+      color: var(--bw-muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
     .bw-terms-list {
-      margin: 0.75rem 0 1.25rem 0;
+      margin: 0.75rem 0 1.5rem 0;
       padding-left: 1.25rem;
     }
 
     .bw-terms-list li {
-      margin-bottom: 0.65rem;
+      margin-bottom: 0.7rem;
     }
 
-    .bw-sig-panel {
+    .bw-panel {
       background-color: var(--bw-surface);
       border: 1px solid var(--bw-border);
       padding: 1.5rem;
-      margin-top: 1.5rem;
+      margin-top: 1.25rem;
     }
 
     .bw-grid {
@@ -135,12 +207,14 @@
     }
 
     .bw-btn {
+      display: inline-block;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       font-size: 0.85rem;
       font-weight: 600;
       letter-spacing: 0.03em;
-      padding: 0.7rem 1.25rem;
+      padding: 0.72rem 1.25rem;
       border: 1px solid var(--bw-accent);
+      text-decoration: none;
       cursor: pointer;
     }
 
@@ -152,6 +226,7 @@
     .bw-btn-primary:hover {
       background-color: var(--bw-accent-hover);
       border-color: var(--bw-accent-hover);
+      color: #ffffff;
     }
 
     .bw-btn-secondary {
@@ -160,7 +235,7 @@
     }
 
     .bw-btn-secondary:hover {
-      background-color: var(--bw-surface);
+      background-color: var(--bw-surface-alt);
     }
 
     .bw-status {
@@ -169,6 +244,52 @@
       color: var(--bw-accent);
       margin-top: 0.85rem;
       min-height: 1.2em;
+    }
+
+    .bw-settlement-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .bw-settlement-card {
+      background-color: var(--bw-bg);
+      border: 1px solid var(--bw-border);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .bw-wire-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.88rem;
+      margin-top: 0.5rem;
+    }
+
+    .bw-wire-table td {
+      padding: 0.45rem 0;
+      border-bottom: 1px solid var(--bw-border);
+      vertical-align: top;
+    }
+
+    .bw-wire-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .bw-wire-key {
+      color: var(--bw-muted);
+      width: 36%;
+      padding-right: 0.75rem;
+    }
+
+    .bw-wire-val {
+      color: var(--bw-text);
+      font-family: "Courier New", Courier, monospace;
+      word-break: break-word;
     }
 
     .bw-principal-signoff {
@@ -180,25 +301,32 @@
       color: var(--bw-muted);
     }
 
+    @media (max-width: 760px) {
+      .bw-terms-grid,
+      .bw-settlement-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media print {
-      .bw-agreement-block {
+      body {
         background-color: #ffffff;
         color: #000000;
-        max-width: 100%;
         padding: 0;
-        margin: 0;
       }
 
-      .bw-sig-panel {
+      .bw-topbar,
+      .bw-actions,
+      .bw-status {
+        display: none !important;
+      }
+
+      .bw-panel,
+      .bw-term-card,
+      .bw-settlement-card {
         background-color: #ffffff;
         border: 1px solid #000000;
         break-inside: avoid;
-      }
-
-      .bw-actions,
-      .bw-status,
-      .bw-no-print {
-        display: none !important;
       }
 
       .bw-field input {
@@ -211,34 +339,66 @@
   </style>
 </head>
 <body>
-  <section class="bw-agreement-block" aria-labelledby="bw-agreement-title">
+  <main class="bw-page" aria-labelledby="bw-agreement-title">
+    <div class="bw-topbar">
+      <span><strong>Beachwood Helix Corporation</strong> &bull; Onboarding &amp; Settlement</span>
+      <a href="index.html">&larr; Return to Beachwood Quantum Index</a>
+    </div>
+
     <header class="bw-doc-header">
-      <p class="bw-eyebrow">Beachwood Helix Corporation &bull; Standard Engagement Terms</p>
-      <h1 id="bw-agreement-title">Commercial Advisory &amp; Transaction Fee Agreement</h1>
-      <p>Principal &amp; Authorized Signatory: <strong>Joshua Alan Robbins</strong>, Beachwood Helix Corporation.</p>
+      <p class="bw-eyebrow">Post-Qualification Mandate Execution</p>
+      <h1 id="bw-agreement-title">Commercial Advisory, Onboarding &amp; Settlement</h1>
+      <p>
+        Principal &amp; Authorized Signatory: <strong>Joshua Alan Robbins</strong>,
+        Beachwood Helix Corporation.
+      </p>
     </header>
 
-    <h2>Core Commercial Terms</h2>
+    <h2>1. Core Commercial Terms</h2>
+    <div class="bw-terms-grid">
+      <div class="bw-term-card">
+        <p class="bw-term-label">Ongoing Cadence</p>
+        <p class="bw-term-val">$3,000/month</p>
+        <p class="bw-term-copy">
+          Following an initial 90-day commitment period.
+        </p>
+      </div>
+      <div class="bw-term-card">
+        <p class="bw-term-label">Closing Fee</p>
+        <p class="bw-term-val">3.0% on Consideration</p>
+        <p class="bw-term-copy">
+          Payable upon closing of an introduced transaction or investment.
+        </p>
+      </div>
+      <div class="bw-term-card">
+        <p class="bw-term-label">Post-Term Tail</p>
+        <p class="bw-term-val">12-Month Tail</p>
+        <p class="bw-term-copy">
+          Twelve (12) months post-expiration or termination for covered parties.
+        </p>
+      </div>
+    </div>
+
     <ul class="bw-terms-list">
       <li>
         <strong>Monthly Retainer Cadence ($3,000/month):</strong> Following an initial 90-day
-        commitment period, ongoing engagement continues at a <strong>$3,000/month</strong> ongoing cadence
-        unless concluded in accordance with applicable wind-down terms.
+        commitment period, ongoing advisory continues at a <strong>$3,000/month</strong> cadence
+        unless concluded under applicable wind-down terms.
       </li>
       <li>
-        <strong>Closing Fee (3.0% of Consideration):</strong> Upon Closing of an introduced transaction
-        or investment involving an Interested Party or its assets, Client pays a <strong>3.0% closing fee</strong>
-        on Consideration.
+        <strong>Closing Fee (3.0% of Consideration):</strong> Upon closing of an introduced
+        transaction or investment involving an Interested Party or its assets, Client pays a
+        <strong>3.0% closing fee</strong> on Consideration.
       </li>
       <li>
-        <strong>Post-Term Tail (12 Months):</strong> The 3.0% closing fee obligation remains in effect
-        for a <strong>12-month post-term tail</strong> (twelve (12) months) following expiration or
-        termination of this agreement with respect to covered counterparties and opportunities.
+        <strong>Post-Term Tail (12 Months):</strong> The 3.0% closing fee obligation remains in
+        effect for a <strong>12-month post-term tail</strong> following expiration or termination
+        with respect to covered counterparties and opportunities.
       </li>
     </ul>
 
-    <div class="bw-sig-panel">
-      <h2>Client Execution &amp; Date</h2>
+    <h2>2. Client Execution &amp; Date</h2>
+    <div class="bw-panel">
       <form id="bw-agreement-form" novalidate>
         <div class="bw-grid">
           <div class="bw-field">
@@ -269,9 +429,9 @@
         <label class="bw-consent">
           <input id="bw-agree-check" type="checkbox" required />
           <span>
-            I accept the terms above—including a $3,000/month ongoing cadence after an initial 90-day
-            commitment, a 3.0% closing fee on Consideration, and a 12-month post-term tail—and intend
-            my typed signature and date to serve as my electronic execution.
+            I accept the terms above—including a $3,000/month ongoing cadence after an initial
+            90-day commitment, a 3.0% closing fee on Consideration, and a 12-month post-term
+            tail—and intend my typed signature and date to serve as my electronic execution.
           </span>
         </label>
 
@@ -282,45 +442,106 @@
 
         <p id="bw-status" class="bw-status" role="status" aria-live="polite"></p>
       </form>
+    </div>
+
+    <h2>3. Post-Qualification Settlement Rails</h2>
+    <div class="bw-panel">
+      <p>
+        For approved, executed mandates under <strong>Beachwood Helix Corporation</strong>,
+        settlement is supported via automated card billing or direct bank transfer. Replace the
+        payment link placeholder once your live billing URL is ready.
+      </p>
+
+      <div class="bw-settlement-grid">
+        <div class="bw-settlement-card">
+          <div>
+            <h3>Automated Card Billing</h3>
+            <p class="bw-term-copy">
+              Settle the <strong>$3,000/month</strong> ongoing cadence following the initial
+              90-day commitment via your active payment link or issued invoice.
+            </p>
+          </div>
+          <div style="margin-top: 1rem;">
+            <a href="#REPLACE_WITH_STRIPE_PAYMENT_LINK" class="bw-btn bw-btn-primary" rel="noopener noreferrer">
+              Open Billing Link ($3,000/month)
+            </a>
+          </div>
+        </div>
+
+        <div class="bw-settlement-card">
+          <div>
+            <h3>Direct ACH / Domestic Wire</h3>
+            <p class="bw-term-copy">
+              Include your entity name and mandate reference on all transfers:
+            </p>
+            <table class="bw-wire-table" aria-label="ACH and Wire Settlement Details">
+              <tr>
+                <td class="bw-wire-key">Beneficiary</td>
+                <td class="bw-wire-val">Beachwood Helix Corporation</td>
+              </tr>
+              <tr>
+                <td class="bw-wire-key">Address</td>
+                <td class="bw-wire-val">1137 Mermaid Drive, Annapolis, MD 21409</td>
+              </tr>
+              <tr>
+                <td class="bw-wire-key">Bank</td>
+                <td class="bw-wire-val">First United Bank and Trust</td>
+              </tr>
+              <tr>
+                <td class="bw-wire-key">Account</td>
+                <td class="bw-wire-val">6706037</td>
+              </tr>
+              <tr>
+                <td class="bw-wire-key">Routing</td>
+                <td class="bw-wire-val">103100881</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
 
       <div class="bw-principal-signoff">
         <strong>Authorized Counterparty:</strong> Joshua Alan Robbins &mdash; Beachwood Helix Corporation
+        &bull; <a href="mailto:joshua@beachwoodquantum.com">joshua@beachwoodquantum.com</a>
+        &bull; 667-493-5648
       </div>
     </div>
+  </main>
 
-    <script>
-      (function () {
-        const form = document.getElementById("bw-agreement-form");
-        const dateInput = document.getElementById("bw-sig-date");
-        const sigInput = document.getElementById("bw-typed-sig");
-        const nameInput = document.getElementById("bw-client-name");
-        const checkInput = document.getElementById("bw-agree-check");
-        const printBtn = document.getElementById("bw-print-btn");
-        const statusEl = document.getElementById("bw-status");
+  <script>
+    (function () {
+      const form = document.getElementById("bw-agreement-form");
+      const dateInput = document.getElementById("bw-sig-date");
+      const sigInput = document.getElementById("bw-typed-sig");
+      const nameInput = document.getElementById("bw-client-name");
+      const checkInput = document.getElementById("bw-agree-check");
+      const printBtn = document.getElementById("bw-print-btn");
+      const statusEl = document.getElementById("bw-status");
 
-        if (dateInput && !dateInput.value) {
-          dateInput.value = new Date().toISOString().slice(0, 10);
+      if (dateInput && !dateInput.value) {
+        dateInput.value = new Date().toISOString().slice(0, 10);
+      }
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const signer = sigInput.value.trim() || nameInput.value.trim();
+        const signedOn = dateInput.value;
+
+        if (!signer || !signedOn || !checkInput.checked) {
+          statusEl.textContent =
+            "Complete client details, typed signature, date, and acceptance box before recording.";
+          return;
         }
 
-        form.addEventListener("submit", function (event) {
-          event.preventDefault();
-          const signer = sigInput.value.trim() || nameInput.value.trim();
-          const signedOn = dateInput.value;
+        statusEl.textContent =
+          "Executed electronically by " + signer + " on " + signedOn +
+          ". Use Print / Save as PDF to retain a copy.";
+      });
 
-          if (!signer || !signedOn || !checkInput.checked) {
-            statusEl.textContent = "Complete client details, typed signature, date, and acceptance box before recording.";
-            return;
-          }
-
-          statusEl.textContent =
-            "Executed electronically by " + signer + " on " + signedOn + ". Use Print / Save as PDF to retain a copy.";
-        });
-
-        printBtn.addEventListener("click", function () {
-          window.print();
-        });
-      })();
-    </script>
-  </section>
+      printBtn.addEventListener("click", function () {
+        window.print();
+      });
+    })();
+  </script>
 </body>
 </html>

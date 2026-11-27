@@ -1,0 +1,2439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gamified Energy Machine (GEM) System | Beachwood Quantum</title>
+  <meta
+    name="description"
+    content="The Gamified Energy Machine (GEM) System maps 515,000 Lower 48 oil assets into living API well files—uniting banking, first-party field economics, and Full Principal Recovery."
+  />
+  <style>
+    :root {
+      --bg: #faf9f6;
+      --surface: #f2f0ea;
+      --surface-alt: #eae7df;
+      --text: #181816;
+      --muted: #57554f;
+      --border: #dad6cc;
+      --accent: #1d3c45;
+      --accent-hover: #142b32;
+      --sage: #3d5a4c;
+      --brass: #9a7432;
+
+      /* Contrasting Dark Instrument Enclosure (GEM API Well File & Console) */
+      --console-bg: #10191d;
+      --console-panel: #152227;
+      --console-panel-elev: #1b2c32;
+      --console-border: #273c44;
+      --console-text: #eef2ef;
+      --console-muted: #9ab0b5;
+      --console-teal: #58b8a6;
+      --console-amber: #d6aa56;
+      --console-rust: #d47b5a;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: "Georgia", "Times New Roman", serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+    }
+
+    .sans {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .container {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Header */
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background-color: rgba(250, 249, 246, 0.96);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .header-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.05rem 0;
+    }
+
+    .brand {
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand-title {
+      display: block;
+      font-size: 1.15rem;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-sub {
+      display: block;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.85rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      transition: color 0.15s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 4rem 0 3.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.32fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin: 0 0 0.85rem 0;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      font-weight: normal;
+      line-height: 1.2;
+      margin: 0 0 1.1rem 0;
+      letter-spacing: -0.015em;
+    }
+
+    h2 {
+      font-size: 1.66rem;
+      font-weight: normal;
+      line-height: 1.28;
+      margin: 0 0 0.85rem 0;
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: normal;
+      line-height: 1.35;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .lead {
+      font-size: 1.06rem;
+      color: var(--muted);
+      margin: 0 0 1.5rem 0;
+      max-width: 58ch;
+    }
+
+    .principle-quote {
+      margin: 0 0 1.75rem 0;
+      padding: 0.9rem 1.2rem;
+      background-color: var(--surface);
+      border-left: 3px solid var(--accent);
+      font-style: italic;
+      color: var(--text);
+      font-size: 0.98rem;
+      max-width: 58ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.86rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      padding: 0.78rem 1.35rem;
+      text-decoration: none;
+      border: 1px solid var(--accent);
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+      border-color: var(--accent-hover);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--accent);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--surface);
+      color: var(--accent-hover);
+    }
+
+    /* Hero Graded Asset Specimen Card */
+    .specimen-card {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.45rem;
+    }
+
+    .specimen-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1rem;
+    }
+
+    .specimen-label {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sage);
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .specimen-title {
+      font-size: 1.25rem;
+      color: var(--text);
+      margin: 0;
+    }
+
+    .grade-seal {
+      background-color: var(--accent);
+      color: #ffffff;
+      padding: 0.45rem 0.75rem;
+      text-align: center;
+      min-width: 78px;
+      flex-shrink: 0;
+    }
+
+    .grade-seal-top {
+      display: block;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.64rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #b7d4cc;
+    }
+
+    .grade-seal-num {
+      display: block;
+      font-size: 1.22rem;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .specimen-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+      margin-bottom: 1rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    .specimen-stat {
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      padding: 0.7rem 0.85rem;
+    }
+
+    .specimen-stat-k {
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .specimen-stat-v {
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-top: 0.15rem;
+    }
+
+    .visual-caption {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    section {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 68ch;
+      margin: 0 0 2rem 0;
+    }
+
+    .card-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.35rem;
+    }
+
+    .card {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.55rem;
+    }
+
+    .card-tag {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin: 0 0 0.5rem 0;
+    }
+
+    .card p {
+      margin: 0 0 0.75rem 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight-strip {
+      margin-top: 1.5rem;
+      background-color: var(--surface-alt);
+      border-left: 3px solid var(--sage);
+      padding: 1.2rem 1.45rem;
+      font-size: 0.96rem;
+      color: var(--text);
+    }
+
+    /* ============================================================
+       Interactive GEM API Well File & Common-Language Console
+       ============================================================ */
+    .console-section {
+      background-color: var(--surface);
+    }
+
+    .console-frame {
+      background-color: var(--console-bg);
+      color: var(--console-text);
+      border: 1px solid var(--console-border);
+      box-shadow: 0 18px 40px rgba(16, 25, 29, 0.14);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      overflow: hidden;
+    }
+
+    .console-topbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.85rem;
+      padding: 1rem 1.35rem;
+      background-color: var(--console-panel);
+      border-bottom: 1px solid var(--console-border);
+    }
+
+    .console-id {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .status-indicator {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: var(--console-teal);
+      flex-shrink: 0;
+    }
+
+    .console-title {
+      font-size: 0.84rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--console-text);
+    }
+
+    .console-sub {
+      font-size: 0.75rem;
+      color: var(--console-muted);
+    }
+
+    /* Lens Switcher */
+    .lens-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .lens-btn {
+      background-color: transparent;
+      color: var(--console-muted);
+      border: 1px solid var(--console-border);
+      padding: 0.42rem 0.78rem;
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .lens-btn:hover {
+      color: var(--console-text);
+      border-color: #3f5e69;
+    }
+
+    .lens-btn.active {
+      background-color: #1f3942;
+      color: var(--console-text);
+      border-color: var(--console-teal);
+    }
+
+    /* Selectable API Well Files */
+    .asset-selector {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-bottom: 1px solid var(--console-border);
+      background-color: #121e23;
+    }
+
+    .asset-card-btn {
+      text-align: left;
+      background-color: transparent;
+      color: var(--console-text);
+      border: none;
+      border-right: 1px solid var(--console-border);
+      padding: 0.95rem 1.05rem;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+    }
+
+    .asset-card-btn:last-child {
+      border-right: none;
+    }
+
+    .asset-card-btn:hover {
+      background-color: #17272d;
+    }
+
+    .asset-card-btn.active {
+      background-color: #1c3138;
+      box-shadow: inset 0 -2px 0 var(--console-teal);
+    }
+
+    .asset-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .asset-basin {
+      font-size: 0.7rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--console-muted);
+    }
+
+    .asset-grade-pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.14rem 0.45rem;
+      background-color: #10191d;
+      border: 1px solid var(--console-amber);
+      color: var(--console-amber);
+    }
+
+    .asset-name {
+      font-size: 0.87rem;
+      font-weight: 600;
+      color: var(--console-text);
+      margin-bottom: 0.2rem;
+    }
+
+    .asset-meta {
+      font-size: 0.73rem;
+      color: var(--console-muted);
+    }
+
+    /* Telemetry KPI Strip */
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-bottom: 1px solid var(--console-border);
+      background-color: #0e161a;
+    }
+
+    .kpi-cell {
+      padding: 1rem 1.2rem;
+      border-right: 1px solid var(--console-border);
+    }
+
+    .kpi-cell:last-child {
+      border-right: none;
+    }
+
+    .kpi-label {
+      font-size: 0.71rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--console-muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .kpi-value {
+      font-size: 1.32rem;
+      font-weight: 600;
+      color: var(--console-text);
+      line-height: 1.2;
+    }
+
+    .kpi-value.teal {
+      color: var(--console-teal);
+    }
+
+    .kpi-value.amber {
+      color: var(--console-amber);
+    }
+
+    .kpi-value.rust {
+      color: var(--console-rust);
+    }
+
+    .kpi-note {
+      font-size: 0.74rem;
+      color: var(--console-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* Main Console Workspace */
+    .console-body {
+      display: grid;
+      grid-template-columns: 335px minmax(0, 1fr);
+    }
+
+    .console-controls {
+      padding: 1.35rem;
+      border-right: 1px solid var(--console-border);
+      background-color: var(--console-panel);
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+    }
+
+    .control-group label {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--console-text);
+      margin-bottom: 0.35rem;
+    }
+
+    .control-val {
+      color: var(--console-teal);
+      font-weight: 600;
+      font-size: 0.82rem;
+    }
+
+    .control-help {
+      font-size: 0.74rem;
+      color: var(--console-muted);
+      margin-top: 0.25rem;
+      line-height: 1.42;
+    }
+
+    input[type="range"].gem-slider {
+      width: 100%;
+      accent-color: var(--console-teal);
+      cursor: pointer;
+      height: 5px;
+      background: #23363e;
+      border-radius: 2px;
+    }
+
+    .wrench-box {
+      background-color: #111c21;
+      border: 1px solid var(--console-border);
+      border-left: 3px solid var(--console-amber);
+      padding: 0.85rem 0.95rem;
+      font-size: 0.78rem;
+      line-height: 1.5;
+      color: var(--console-muted);
+    }
+
+    .wrench-box strong {
+      display: block;
+      color: var(--console-amber);
+      font-size: 0.71rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+
+    .console-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+
+    .console-btn {
+      background-color: var(--console-panel-elev);
+      color: var(--console-text);
+      border: 1px solid var(--console-border);
+      padding: 0.62rem 0.65rem;
+      font-size: 0.76rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .console-btn:hover {
+      background-color: #213740;
+      border-color: var(--console-teal);
+    }
+
+    .console-btn.primary {
+      background-color: #1f4844;
+      border-color: var(--console-teal);
+      color: #ffffff;
+    }
+
+    .console-btn.primary:hover {
+      background-color: #275a55;
+    }
+
+    /* Right Visual Column */
+    .console-visuals {
+      padding: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+      min-width: 0;
+    }
+
+    .viz-panel {
+      background-color: var(--console-panel);
+      border: 1px solid var(--console-border);
+      padding: 1.05rem 1.15rem;
+    }
+
+    .viz-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .viz-title {
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--console-text);
+    }
+
+    .viz-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      font-size: 0.73rem;
+      color: var(--console-muted);
+    }
+
+    .legend-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin-right: 0.32rem;
+      vertical-align: middle;
+    }
+
+    .chart-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Living Well File Development Plan & BOM */
+    .well-file-banner {
+      background-color: #111c21;
+      border: 1px solid #243840;
+      border-left: 3px solid var(--console-teal);
+      padding: 0.75rem 0.95rem;
+      margin-bottom: 0.85rem;
+      font-size: 0.8rem;
+      color: var(--console-text);
+      line-height: 1.5;
+    }
+
+    .well-file-banner span {
+      color: var(--console-teal);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.71rem;
+      letter-spacing: 0.09em;
+      margin-right: 0.45rem;
+    }
+
+    .bom-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .bom-card {
+      background-color: #111c21;
+      border: 1px solid #22353d;
+      padding: 0.8rem 0.9rem;
+      font-size: 0.77rem;
+      line-height: 1.48;
+      color: var(--console-muted);
+    }
+
+    .bom-cat {
+      font-size: 0.69rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--console-amber);
+      margin-bottom: 0.3rem;
+    }
+
+    .bom-spec {
+      color: var(--console-text);
+      margin-bottom: 0.4rem;
+    }
+
+    .bom-source {
+      font-size: 0.71rem;
+      color: var(--console-teal);
+      border-top: 1px solid #1d2d34;
+      padding-top: 0.35rem;
+    }
+
+    /* Common Language Side-by-Side Translation */
+    .translation-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .translation-grid.single-col {
+      grid-template-columns: 1fr;
+    }
+
+    .lang-card {
+      background-color: #111c21;
+      border: 1px solid var(--console-border);
+      padding: 0.95rem 1.05rem;
+    }
+
+    .lang-card.hidden {
+      display: none;
+    }
+
+    .lang-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.45rem;
+    }
+
+    .lang-eyebrow.bank {
+      color: var(--console-amber);
+    }
+
+    .lang-eyebrow.field {
+      color: var(--console-teal);
+    }
+
+    .lang-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      font-size: 0.79rem;
+      color: var(--console-muted);
+    }
+
+    .lang-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 1px solid #1d2d34;
+    }
+
+    .lang-list li:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .lang-list strong {
+      color: var(--console-text);
+      font-weight: 600;
+      text-align: right;
+    }
+
+    /* Knowledge Transfer Checklist */
+    .transfer-bar {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.65rem;
+      margin-top: 0.75rem;
+    }
+
+    .transfer-step {
+      background-color: #111c21;
+      border: 1px solid #22353d;
+      padding: 0.65rem 0.75rem;
+      font-size: 0.76rem;
+      color: var(--console-muted);
+    }
+
+    .transfer-step.unlocked {
+      border-color: #2f6058;
+      color: var(--console-text);
+    }
+
+    .transfer-step-head {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+
+    .transfer-step.unlocked .transfer-status {
+      color: var(--console-teal);
+      font-weight: 700;
+    }
+
+    /* ============================================================
+       4-Layer Architecture Explorer
+       ============================================================ */
+    .arch-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.35rem;
+    }
+
+    .arch-tab {
+      text-align: left;
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1rem 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .arch-tab:hover {
+      background-color: var(--surface-alt);
+    }
+
+    .arch-tab.active {
+      background-color: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .arch-tab-num {
+      display: block;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 0.25rem;
+      font-weight: 600;
+    }
+
+    .arch-tab.active .arch-tab-num {
+      color: #a8d4ca;
+    }
+
+    .arch-tab-title {
+      display: block;
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 0.98rem;
+      color: var(--text);
+    }
+
+    .arch-tab.active .arch-tab-title {
+      color: #ffffff;
+    }
+
+    .arch-detail {
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      padding: 1.85rem;
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 2rem;
+    }
+
+    .arch-detail h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .arch-detail p {
+      color: var(--muted);
+      margin: 0 0 1rem 0;
+    }
+
+    .spec-box {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.25rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.85rem;
+    }
+
+    .spec-box h4 {
+      margin: 0 0 0.75rem 0;
+      font-size: 0.74rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage);
+    }
+
+    .spec-list {
+      margin: 0;
+      padding-left: 1.1rem;
+      color: var(--muted);
+    }
+
+    .spec-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .spec-list strong {
+      color: var(--text);
+    }
+
+    /* Roadmap & Invitation */
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.35rem;
+      margin-bottom: 2rem;
+    }
+
+    .stage-pill {
+      display: inline-block;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.55rem;
+      border: 1px solid var(--border);
+      background-color: var(--bg);
+      color: var(--accent);
+      margin-bottom: 0.65rem;
+    }
+
+    .stage-pill.live {
+      background-color: var(--sage);
+      border-color: var(--sage);
+      color: #ffffff;
+    }
+
+    .cta-box {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .cta-box p {
+      margin: 0.35rem 0 0 0;
+      color: var(--muted);
+      max-width: 58ch;
+    }
+
+    /* Future Horizon R&D Panel */
+    .horizon-panel {
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      padding: 1.85rem;
+      margin-bottom: 2rem;
+    }
+
+    .horizon-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.75rem;
+      padding-bottom: 1rem;
+      margin-bottom: 1.35rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .horizon-badge {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.65rem;
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--brass);
+    }
+
+    .horizon-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1.15fr;
+      gap: 1.75rem;
+    }
+
+    .horizon-col h3 {
+      margin: 0 0 0.6rem 0;
+    }
+
+    .horizon-col p {
+      color: var(--muted);
+      font-size: 0.94rem;
+      margin: 0 0 0.9rem 0;
+    }
+
+    .strata-strip {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.65rem;
+      margin-top: 0.9rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.8rem;
+    }
+
+    .strata-cell {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.65rem 0.8rem;
+    }
+
+    .strata-cell strong {
+      display: block;
+      color: var(--accent);
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.15rem;
+    }
+
+    .strata-cell span {
+      color: var(--muted);
+    }
+
+    .rd-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .rd-list li {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 0.75rem 0.95rem;
+      line-height: 1.5;
+    }
+
+    .rd-list strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 0.18rem;
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background-color: var(--surface);
+      padding: 2.35rem 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .footer-inner p {
+      margin: 0.25rem 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .hero-grid,
+      .console-body,
+      .arch-detail,
+      .horizon-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .console-controls {
+        border-right: none;
+        border-bottom: 1px solid var(--console-border);
+      }
+
+      .asset-selector,
+      .kpi-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .asset-card-btn:nth-child(2),
+      .kpi-cell:nth-child(2) {
+        border-right: none;
+      }
+
+      .asset-card-btn:nth-child(1),
+      .asset-card-btn:nth-child(2),
+      .kpi-cell:nth-child(1),
+      .kpi-cell:nth-child(2) {
+        border-bottom: 1px solid var(--console-border);
+      }
+
+      .arch-tabs {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .roadmap-grid,
+      .transfer-bar,
+      .bom-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .card-grid-2,
+      .translation-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 1.9rem;
+      }
+
+      .asset-selector,
+      .kpi-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .asset-card-btn,
+      .kpi-cell {
+        border-right: none;
+        border-bottom: 1px solid var(--console-border);
+      }
+
+      .asset-card-btn:last-child,
+      .kpi-cell:last-child {
+        border-bottom: none;
+      }
+
+      .arch-tabs {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-title">Beachwood Quantum</span>
+        <span class="brand-sub">Beachwood Helix Corporation</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="index.html">Overview</a>
+        <a href="#system-overview">Why GEM</a>
+        <a href="#well-file-explorer" class="active">API Well File Prototype</a>
+        <a href="#architecture">4-Layer Stack</a>
+        <a href="#roadmap">Evolution</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Beachwood Systems &bull; GEM Iteration 2024&ndash;2026</p>
+          <h1>515,000 individually mapped oil assets&mdash;one common language for banking and the field.</h1>
+          <p class="lead">
+            The <strong>Gamified Energy Machine (GEM) System</strong> gives every individual API well
+            number across the Lower 48 an ever-developing well file—combining graded asset valuation,
+            first-party equipment quotes, operational plans, and transparent job economics so capital
+            and field operators can revive mismanaged wells together.
+          </p>
+          <blockquote class="principle-quote">
+            &ldquo;In a digital world, a physical wrench is not a risk element of energy
+            extraction&mdash;it is a tool that allows the surface to reconnect with the subsurface.&rdquo;
+          </blockquote>
+          <div class="hero-actions">
+            <a href="#well-file-explorer" class="btn btn-primary">Inspect a Live API Well File</a>
+            <a href="#system-overview" class="btn btn-secondary">Transparent Economics</a>
+          </div>
+        </div>
+
+        <!-- Specimen Card -->
+        <aside class="specimen-card" aria-label="GEM Lower 48 Mapped Universe Summary">
+          <div class="specimen-head">
+            <div>
+              <div class="specimen-label">Lower 48 API Well Directory</div>
+              <h2 class="specimen-title">GEM Graded Reference Index</h2>
+            </div>
+            <div class="grade-seal">
+              <span class="grade-seal-top">ITERATION</span>
+              <span class="grade-seal-num mono">2024&ndash;26</span>
+            </div>
+          </div>
+
+          <div class="specimen-stats">
+            <div class="specimen-stat">
+              <div class="specimen-stat-k">Mapped API Assets</div>
+              <div class="specimen-stat-v mono">515,000+</div>
+            </div>
+            <div class="specimen-stat">
+              <div class="specimen-stat-k">Cost Verification</div>
+              <div class="specimen-stat-v">First-Party Quotes</div>
+            </div>
+            <div class="specimen-stat">
+              <div class="specimen-stat-k">Underwriting Lens</div>
+              <div class="specimen-stat-v mono">60-Month Cycle</div>
+            </div>
+            <div class="specimen-stat">
+              <div class="specimen-stat-k">Allocation Metric</div>
+              <div class="specimen-stat-v">Success / Dollar</div>
+            </div>
+          </div>
+
+          <p class="visual-caption">
+            <strong>Built like a graded valuation guide, backed by field iron:</strong> Every API file
+            organizes historical data, logs, designs, graphs, and first-party job quotes—turning
+            opaque liability backlogs into legible, fundable operating plans.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Plain-Language Overview -->
+    <section id="system-overview">
+      <div class="container">
+        <p class="eyebrow">Transparent Economics &amp; Knowledge Transfer</p>
+        <h2>Turning 200 Years of Misunderstood &ldquo;Liabilities&rdquo; Into Legible Well Files</h2>
+        <p class="section-intro">
+          Headline estimates often paint aging Lower 48 wells as a 200-year liability backlog. In
+          practice, the deeper crisis is human: veteran operational craft is leaving the field without
+          being transferred, leaving the next generation unsure how to optimize—or even turn on—producing
+          assets. GEM bridges that gap at the individual API level.
+        </p>
+
+        <div class="card-grid-2">
+          <article class="card">
+            <p class="card-tag">01 &bull; Living API Well Files</p>
+            <h3>Costs, Plans, Logs &amp; Optimization per Well</h3>
+            <p>
+              Each mapped API well develops a living file containing tangible job costs, surface
+              designs, historical production points, logs, graphs, and field optimization plans—giving
+              banking and operations one shared reference record.
+            </p>
+          </article>
+
+          <article class="card">
+            <p class="card-tag">02 &bull; Transparent Economics</p>
+            <h3>Probability of Success per Dollar Spent</h3>
+            <p>
+              Using first-party equipment quotes and supply sources, future expenses are known up front.
+              Lower-cost, high-probability jobs validate and fund larger, more capital-intensive
+              projects based on tangible profitability.
+            </p>
+          </article>
+
+          <article class="card">
+            <p class="card-tag">03 &bull; Operational Brilliance</p>
+            <h3>Preserving Hands-On Field Craft</h3>
+            <p>
+              Knowing the exact heater-treater, concrete pad scope, line pipe joints, check valves, and
+              700 lb ball valves needed to make oil readily saleable is operational brilliance—now
+              structured so a new generation can execute cleanly.
+            </p>
+          </article>
+
+          <article class="card">
+            <p class="card-tag">04 &bull; Reconnecting Surface &amp; Subsurface</p>
+            <h3>Banking &amp; Energy in One Common Language</h3>
+            <p>
+              A graded valuation framework lets lenders underwrite around <strong>Full Principal
+              Recovery</strong> across a 60-month cycle while operators execute clear, well-by-well
+              mechanical plans with zero ambiguity.
+            </p>
+          </article>
+        </div>
+
+        <div class="highlight-strip">
+          <strong>Real-World Transferability:</strong> The flagship interactive file below is modeled
+          directly on a live field development plan—installing a reconditioned 4&prime;&times;20&prime;
+          upright 3-phase heater-treater and 2&Prime; surface iron so separated oil sells cleanly and
+          more frequently throughout the year.
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Prototype: GEM Living API Well File Explorer -->
+    <section id="well-file-explorer" class="console-section">
+      <div class="container">
+        <p class="eyebrow">Interactive Prototype &bull; Living API Well File Explorer</p>
+        <h2>Graded Well Guide, First-Party Scope &amp; Common-Language Translator</h2>
+        <p class="section-intro">
+          Inspect how a real-world surface development plan and three transferable Lower 48 well
+          archetypes appear inside GEM. Toggle between the <strong>Unified GEM Language</strong>,
+          <strong>Banking Lens</strong>, and <strong>Field &amp; Wrench Lens</strong>, and adjust
+          execution levers to see how <em>probability of success per dollar spent</em> drives
+          Full Principal Recovery.
+        </p>
+
+        <div class="console-frame" role="region" aria-label="GEM Interactive API Well File Explorer">
+          <!-- Top Bar -->
+          <div class="console-topbar">
+            <div class="console-id">
+              <span class="status-indicator" aria-hidden="true"></span>
+              <div>
+                <div class="console-title">GEM API WELL FILE // GRADED VALUATION &amp; TRANSPARENT ECONOMICS</div>
+                <div class="console-sub mono">UNIVERSE: 515,000 LOWER 48 APIs &bull; FIRST-PARTY QUOTE FRAMEWORK</div>
+              </div>
+            </div>
+            <div class="lens-bar" role="group" aria-label="Perspective Lens">
+              <button type="button" class="lens-btn active" data-lens="unified">Unified GEM Language</button>
+              <button type="button" class="lens-btn" data-lens="banking">Banking Lens</button>
+              <button type="button" class="lens-btn" data-lens="field">Field &amp; Wrench Lens</button>
+            </div>
+          </div>
+
+          <!-- 4 Selectable API Well Files -->
+          <div class="asset-selector" role="group" aria-label="Transferable Lower 48 API Well Files">
+            <button type="button" class="asset-card-btn active" data-asset="heater">
+              <div class="asset-card-top">
+                <span class="asset-basin mono">LIVE FIELD PATTERN</span>
+                <span class="asset-grade-pill mono" id="pill-heater">GEM 9.0</span>
+              </div>
+              <div class="asset-name">Surface Heater-Treater Plan</div>
+              <div class="asset-meta">4&times;20 upright 3-phase &bull; Sales velocity</div>
+            </button>
+
+            <button type="button" class="asset-card-btn" data-asset="permian">
+              <div class="asset-card-top">
+                <span class="asset-basin mono">SHALLOW SHELF</span>
+                <span class="asset-grade-pill mono" id="pill-permian">GEM 8.6</span>
+              </div>
+              <div class="asset-name">Rod &amp; Tubing Reconnect</div>
+              <div class="asset-meta">Idle 14 mo &bull; Mechanical workover</div>
+            </button>
+
+            <button type="button" class="asset-card-btn" data-asset="appalachia">
+              <div class="asset-card-top">
+                <span class="asset-basin mono">LEGACY STRIPPER</span>
+                <span class="asset-grade-pill mono" id="pill-appalachia">GEM 7.8</span>
+              </div>
+              <div class="asset-name">Shut-In Turn-On Revival</div>
+              <div class="asset-meta">Mismanaged &bull; Next-gen turn-on guide</div>
+            </button>
+
+            <button type="button" class="asset-card-btn" data-asset="gulf">
+              <div class="asset-card-top">
+                <span class="asset-basin mono">PORTFOLIO ANCHOR</span>
+                <span class="asset-grade-pill mono" id="pill-gulf">GEM 9.3</span>
+              </div>
+              <div class="asset-name">Immediate-Pay Producer</div>
+              <div class="asset-meta">Cash-flowing base &bull; Scales next phase</div>
+            </button>
+          </div>
+
+          <!-- Live KPI Strip -->
+          <div class="kpi-strip">
+            <div class="kpi-cell">
+              <div class="kpi-label">GEM Reference Grade</div>
+              <div id="kpi-grade" class="kpi-value amber mono">GEM 9.0 / 10</div>
+              <div id="kpi-grade-note" class="kpi-note">High-Probability First-Party Plan</div>
+            </div>
+            <div class="kpi-cell">
+              <div class="kpi-label">Success Prob. / Dollar</div>
+              <div id="kpi-prob" class="kpi-value teal mono">89% High</div>
+              <div id="kpi-prob-note" class="kpi-note">Low-cost job validates larger capex</div>
+            </div>
+            <div class="kpi-cell">
+              <div class="kpi-label">Projected Principal Recovery</div>
+              <div id="kpi-payback" class="kpi-value teal mono">15.4 mo</div>
+              <div id="kpi-payback-note" class="kpi-note">44.6 mo ahead of 60m cycle</div>
+            </div>
+            <div class="kpi-cell">
+              <div class="kpi-label">Asset Readiness State</div>
+              <div id="kpi-status" class="kpi-value teal">SALE-READY</div>
+              <div id="kpi-status-note" class="kpi-note">Surface reconnected to subsurface</div>
+            </div>
+          </div>
+
+          <!-- Main Console Workspace -->
+          <div class="console-body">
+            <!-- Left Controls -->
+            <div class="console-controls">
+              <div class="control-group">
+                <label for="slider-wrench">
+                  <span>Physical Execution (&ldquo;The Wrench&rdquo;)</span>
+                  <span id="val-wrench" class="control-val mono">84%</span>
+                </label>
+                <input id="slider-wrench" class="gem-slider" type="range" min="0" max="100" value="84" />
+                <div class="control-help">Disciplined surface hookup, valve installation, and mechanical reconnection.</div>
+              </div>
+
+              <div class="control-group">
+                <label for="slider-quotes">
+                  <span>First-Party Quote &amp; Cost Verification</span>
+                  <span id="val-quotes" class="control-val mono">88%</span>
+                </label>
+                <input id="slider-quotes" class="gem-slider" type="range" min="15" max="100" value="88" />
+                <div class="control-help">Known expenses sourced directly from verified equipment, crew, and supply quotes.</div>
+              </div>
+
+              <div class="control-group">
+                <label for="slider-knowledge">
+                  <span>Generational Playbook Transfer</span>
+                  <span id="val-knowledge" class="control-val mono">78%</span>
+                </label>
+                <input id="slider-knowledge" class="gem-slider" type="range" min="10" max="100" value="78" />
+                <div class="control-help">Documented turn-on steps and operational brilliance preserved inside the API well file.</div>
+              </div>
+
+              <div class="wrench-box">
+                <strong>Operational Brilliance Note</strong>
+                <span id="wrench-note">
+                  Cleanly separating and heating oil on location removes sales friction and increases the number of tank runs sold per year—validating larger development capital with real cash flow.
+                </span>
+              </div>
+
+              <div class="console-actions">
+                <button id="btn-neglect" type="button" class="console-btn">View Unmanaged State</button>
+                <button id="btn-revive" type="button" class="console-btn primary">Apply GEM Well Plan</button>
+              </div>
+            </div>
+
+            <!-- Right Visuals -->
+            <div class="console-visuals">
+              <!-- Living Well File Plan & First-Party Bill of Materials -->
+              <div class="viz-panel">
+                <div class="viz-header">
+                  <div class="viz-title" id="file-header-title">API Living Well File &mdash; Surface Heater-Treater Development Plan</div>
+                  <span id="file-capex-tier" class="mono" style="font-size:0.73rem;color:#d6aa56;">TIER: LOW-COST HIGH-PROBABILITY VALIDATOR</span>
+                </div>
+
+                <div class="well-file-banner">
+                  <span>Success Defined:</span>
+                  <em id="success-defined">Heated, separated oil allows for ease of sale, increasing the number of sales made per year.</em>
+                </div>
+
+                <div id="bom-grid" class="bom-grid">
+                  <!-- Populated dynamically per selected API file -->
+                </div>
+              </div>
+
+              <!-- Recovery Curve -->
+              <div class="viz-panel">
+                <div class="viz-header">
+                  <div class="viz-title" id="chart-title">60-Month Full Principal Recovery Profile</div>
+                  <div class="viz-legend">
+                    <span><span class="legend-dot" style="background:#58b8a6;"></span>GEM Active Plan</span>
+                    <span><span class="legend-dot" style="background:#6c8288;"></span>60m Conventional Baseline</span>
+                    <span><span class="legend-dot" style="background:#d6aa56;"></span>100% Principal Line</span>
+                  </div>
+                </div>
+                <svg id="recovery-chart" class="chart-svg" viewBox="0 0 600 190" role="img" aria-label="Interactive 60-month principal recovery chart">
+                  <line x1="46" y1="20" x2="580" y2="20" stroke="#22353d" stroke-width="1" />
+                  <line x1="46" y1="64" x2="580" y2="64" stroke="#22353d" stroke-width="1" />
+                  <line x1="46" y1="108" x2="580" y2="108" stroke="#d6aa56" stroke-width="1.2" stroke-dasharray="5 4" />
+                  <line x1="46" y1="158" x2="580" y2="158" stroke="#304852" stroke-width="1.2" />
+
+                  <text x="40" y="24" text-anchor="end" font-size="11" fill="#9ab0b5" class="mono">200%</text>
+                  <text x="40" y="68" text-anchor="end" font-size="11" fill="#9ab0b5" class="mono">150%</text>
+                  <text x="40" y="112" text-anchor="end" font-size="11" fill="#d6aa56" class="mono">100%</text>
+                  <text x="40" y="162" text-anchor="end" font-size="11" fill="#9ab0b5" class="mono">0%</text>
+
+                  <text x="46" y="179" text-anchor="middle" font-size="11" fill="#9ab0b5" class="mono">0m</text>
+                  <text x="153" y="179" text-anchor="middle" font-size="11" fill="#9ab0b5" class="mono">12m</text>
+                  <text x="260" y="179" text-anchor="middle" font-size="11" fill="#9ab0b5" class="mono">24m</text>
+                  <text x="366" y="179" text-anchor="middle" font-size="11" fill="#9ab0b5" class="mono">36m</text>
+                  <text x="473" y="179" text-anchor="middle" font-size="11" fill="#9ab0b5" class="mono">48m</text>
+                  <text x="580" y="179" text-anchor="middle" font-size="11" fill="#9ab0b5" class="mono">60m</text>
+
+                  <path id="chart-unencumbered" d="" fill="rgba(88, 184, 166, 0.14)" />
+                  <path id="chart-baseline" d="M 46 158 Q 260 142 580 108" fill="none" stroke="#6c8288" stroke-width="1.6" stroke-dasharray="4 4" />
+                  <path id="chart-gem-curve" d="" fill="none" stroke="#58b8a6" stroke-width="2.6" />
+
+                  <line id="payback-drop" x1="200" y1="108" x2="200" y2="158" stroke="#d6aa56" stroke-width="1.2" stroke-dasharray="3 3" />
+                  <circle id="payback-dot" cx="200" cy="108" r="5" fill="#d6aa56" stroke="#10191d" stroke-width="2" />
+                  <rect id="payback-tag-bg" x="146" y="78" width="108" height="22" rx="2" fill="#10191d" stroke="#d6aa56" stroke-width="1" />
+                  <text id="payback-tag-text" x="200" y="93" text-anchor="middle" font-size="11" font-weight="600" fill="#eef2ef" class="mono">15.4m Payback</text>
+                </svg>
+              </div>
+
+              <!-- Common Language Side-by-Side Translation -->
+              <div class="viz-panel">
+                <div class="viz-header">
+                  <div class="viz-title">Banking &harr; Energy Common-Language Translation</div>
+                  <span id="lens-indicator" class="mono" style="font-size:0.73rem;color:#58b8a6;">VIEW: BANKING + FIELD UNIFIED</span>
+                </div>
+
+                <div id="translation-grid" class="translation-grid">
+                  <div id="card-banking" class="lang-card">
+                    <div class="lang-eyebrow bank">Banking &amp; Transparent Economics</div>
+                    <ul class="lang-list">
+                      <li><span>Unassisted Book Label</span><strong id="bank-unassisted">Underperforming / Discounted Oil</strong></li>
+                      <li><span>Expense Visibility</span><strong id="bank-quotes">First-Party Verified Quotes</strong></li>
+                      <li><span>Principal Recovery Path</span><strong id="bank-payback" class="mono">15.4 Months</strong></li>
+                      <li><span>Capital Validation Role</span><strong id="bank-validation">Low-Cost Proof for Larger Projects</strong></li>
+                    </ul>
+                  </div>
+
+                  <div id="card-field" class="lang-card">
+                    <div class="lang-eyebrow field">Field &amp; Physical Wrench Execution</div>
+                    <ul class="lang-list">
+                      <li><span>Primary Field Objective</span><strong id="field-task">Install 4&times;20 upright heater-treater</strong></li>
+                      <li><span>Surface Hardware Scope</span><strong id="field-iron">2&Prime; pipe, 700 lb ball &amp; 125 BP valves</strong></li>
+                      <li><span>Operational Outcome</span><strong id="field-outcome">More oil sales cycles per year</strong></li>
+                      <li><span>Knowledge Transfer State</span><strong id="field-readiness">Documented API Playbook</strong></li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Gamified Knowledge Transfer Progression -->
+                <div class="transfer-bar" aria-label="API Well File Validation Stages">
+                  <div class="transfer-step" id="step-quotes">
+                    <div class="transfer-step-head">
+                      <span>01 &bull; Price &amp; Quote</span>
+                      <span class="transfer-status mono">LOCKED</span>
+                    </div>
+                    <div>First-party iron, pad &amp; crew costs verified</div>
+                  </div>
+                  <div class="transfer-step" id="step-turnon">
+                    <div class="transfer-step-head">
+                      <span>02 &bull; Reconnect</span>
+                      <span class="transfer-status mono">LOCKED</span>
+                    </div>
+                    <div>Surface equipment linked cleanly to subsurface</div>
+                  </div>
+                  <div class="transfer-step" id="step-scale">
+                    <div class="transfer-step-head">
+                      <span>03 &bull; Validate Scale</span>
+                      <span class="transfer-status mono">LOCKED</span>
+                    </div>
+                    <div>Profitable low-cost win funds larger projects</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4-Layer Architecture Explorer -->
+    <section id="architecture">
+      <div class="container">
+        <p class="eyebrow">Beachwood Helix Corporation &bull; System Integration</p>
+        <h2>How GEM Connects All Four Divisions</h2>
+        <p class="section-intro">
+          The Gamified Energy Machine bridges individual API well files and transparent first-party
+          field economics with Beachwood Helix Corporation&rsquo;s research, edge systems, and
+          educational ecosystem.
+        </p>
+
+        <div class="arch-tabs" role="tablist" aria-label="Beachwood Four-Layer Architecture">
+          <button type="button" class="arch-tab" role="tab" aria-selected="false" data-layer="helix">
+            <span class="arch-tab-num">Index 01</span>
+            <span class="arch-tab-title">Beachwood Helix Corp.</span>
+          </button>
+          <button type="button" class="arch-tab" role="tab" aria-selected="false" data-layer="research">
+            <span class="arch-tab-num">Index 02</span>
+            <span class="arch-tab-title">Beachwood Research Lab</span>
+          </button>
+          <button type="button" class="arch-tab active" role="tab" aria-selected="true" data-layer="systems">
+            <span class="arch-tab-num">Index 03</span>
+            <span class="arch-tab-title">Beachwood Systems</span>
+          </button>
+          <button type="button" class="arch-tab" role="tab" aria-selected="false" data-layer="ecosystem">
+            <span class="arch-tab-num">Index 04</span>
+            <span class="arch-tab-title">Foundational Ecosystem</span>
+          </button>
+        </div>
+
+        <div id="arch-detail-panel" class="arch-detail" role="tabpanel">
+          <div>
+            <p class="card-tag" id="arch-tag">Index 03 &bull; Edge &amp; Hardware Systems</p>
+            <h3 id="arch-heading">Beachwood Systems &amp; The GEM Platform</h3>
+            <p id="arch-body">
+              Home to the Gamified Energy Machine (GEM) API directory and the future GEM Console2028
+              runtime. In its 2024&ndash;2026 iteration, GEM maps 515,000 Lower 48 oil assets into
+              living well files backed by first-party quotes and clear job economics—forming the
+              foundation for deterministic C++20 edge telemetry and thermofluidic loops.
+            </p>
+            <p id="arch-repo-note" class="sans" style="font-size:0.86rem;color:var(--accent);">
+              <strong>Repository Anchor:</strong> <code>gem.html</code> &rarr; Lower 48 API well-file schema, grading logic, and Console2028 modules.
+            </p>
+          </div>
+          <div class="spec-box">
+            <h4>Core Capabilities</h4>
+            <ul id="arch-specs" class="spec-list">
+              <li><strong>515,000 Mapped APIs:</strong> Ever-developing well files with logs, designs, costs, and optimization ideas.</li>
+              <li><strong>Transparent Economics:</strong> First-party quote sources guiding probability of success per dollar spent.</li>
+              <li><strong>Deterministic Telemetry:</strong> Zero-allocation C++20 runtime roadmap for live edge monitoring.</li>
+              <li><strong>Thermofluidic Loops:</strong> Future subsurface heat recovery &amp; localized micro-utility balance.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Evolution Roadmap -->
+    <section id="roadmap">
+      <div class="container">
+        <p class="eyebrow">Iteration Roadmap &bull; Built Directly in GitHub</p>
+        <h2>From 2024&ndash;2026 Living Well Files to GEM Console2028</h2>
+        <p class="section-intro">
+          GEM develops step by step—starting with verifiable field economics and lower-cost jobs
+          that prove tangible profitability before scaling into larger capital and hardware loops.
+        </p>
+
+        <div class="roadmap-grid">
+          <article class="card">
+            <span class="stage-pill live">2024&ndash;2026 &bull; Current Iteration</span>
+            <h3>515,000 Living API Well Files</h3>
+            <p>
+              A graded valuation guide for Lower 48 oil assets—pairing first-party equipment and
+              supply quotes with plain-language operating plans so banking and energy speak one language.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="stage-pill">Next &bull; Playbook Library</span>
+            <h3>Transferable Field Blueprints</h3>
+            <p>
+              Standardizing proven surface and downhole patterns—heater-treaters, piping, turn-on
+              checklists, and workover diagnostics—so the next generation can steward legacy wells.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="stage-pill">Horizon &bull; Conceptual R&amp;D</span>
+            <h3>Downsized Midstream &amp; Console2028</h3>
+            <p>
+              Pairing principal-recovered locations with modular site-level processing, digital
+              Energy Libraries, deterministic C++20 edge telemetry, and field-validated downstream
+              optimization.
+            </p>
+          </article>
+        </div>
+
+        <!-- Future Horizon: Beyond Risk Spreadsheets -->
+        <div class="horizon-panel" aria-label="Future Horizon — Field Geology and Conceptual R&D">
+          <div class="horizon-head">
+            <div>
+              <p class="card-tag" style="margin-bottom:0.25rem;">Beyond Risk Spreadsheets &bull; Field-Grounded Horizon</p>
+              <h3 style="font-size:1.35rem;margin:0;">Subsurface Depth, Downsized Midstream &amp; Energy Libraries</h3>
+            </div>
+            <span class="horizon-badge">Idea Phase &bull; Pending Equipment &amp; Field Validation</span>
+          </div>
+
+          <div class="horizon-grid">
+            <div class="horizon-col">
+              <h3>Rooted in Real Basin Geology</h3>
+              <p>
+                Today&rsquo;s immediate priority is funding disciplined, well-by-well field execution
+                through clear fintech-to-industry language. Behind that underwriting discipline sits
+                deep subsurface study across complex multi-zone basins—such as the
+                <strong>Golden Trend of south-central Oklahoma</strong> (western McClain and Garvin
+                counties in the Southeastern embayment of the Anadarko Basin, bounded by the
+                Nemaha&ndash;Pauls Valley uplifts and western Arbuckle Mountains).
+              </p>
+              <p>
+                Across Permian through Ordovician intervals, stratigraphic onlap and fault-block
+                relief reward careful geological study—reminding capital partners that real rocks,
+                real iron, and real physics anchor every financial model.
+              </p>
+
+              <div class="strata-strip">
+                <div class="strata-cell">
+                  <strong>Deese Sandstones</strong>
+                  <span>Pennsylvanian stratigraphic traps lapping onto the Pauls Valley uplift</span>
+                </div>
+                <div class="strata-cell">
+                  <strong>Hunton &amp; Viola</strong>
+                  <span>Devonian/Silurian &amp; Ordovician limestone reservoirs</span>
+                </div>
+                <div class="strata-cell">
+                  <strong>Simpson Group</strong>
+                  <span>Ordovician structural traps across faulted basin blocks</span>
+                </div>
+                <div class="strata-cell">
+                  <strong>Midstream Optimization</strong>
+                  <span>Studying direct, certified upstream-to-downstream pathways</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="horizon-col">
+              <h3>Future Processing &amp; Modular Site Concepts</h3>
+              <p>
+                As physical equipment and shipping logistics are validated on live field locations,
+                GEM explores downsizing traditional midstream functions into compact, instrumented
+                field sites where hardware and digital telemetry work hand in hand:
+              </p>
+              <ul class="rd-list">
+                <li>
+                  <strong>Modular Field Pads &amp; Energy Libraries</strong>
+                  Compact on-location sites combining housed field processing equipment, live data
+                  terminals, and Energy Libraries so operators and next-generation teams learn
+                  directly beside active iron.
+                </li>
+                <li>
+                  <strong>Certified Direct-to-Downstream Mineral &amp; Elemental Streams</strong>
+                  Exploratory scientific analysis of commercial co-products from produced streams—including
+                  sulfur isotopes (<code>S-32</code>, <code>S-33</code>, <code>S-34</code>, <code>S-36</code>),
+                  cinnabar / <code>HgS</code>, sodium, and chloride—subject to strict labeling,
+                  certification, and physical field validation.
+                </li>
+                <li>
+                  <strong>In-Line Produced Water, CO&#8322; &amp; Facility Efficiency</strong>
+                  Investigating in-line saltwater hydrogeneration paired with power purchase
+                  agreements, closed-loop CO&#8322; reinjection for carbon energy credits, facility
+                  energy-savings performance contracts, and temperature-specific subsurface laboratories.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div id="contact" class="cta-box">
+          <div>
+            <h3>Banking, Operations, or Next-Generation Energy?</h3>
+            <p>
+              Write directly to Joshua Alan Robbins to discuss mapped Lower 48 API assets,
+              first-party field plans, or common-language underwriting.
+            </p>
+          </div>
+          <div class="hero-actions">
+            <a
+              href="mailto:joshua@beachwoodquantum.com?subject=GEM%20System%20%E2%80%94%20API%20Well%20File%20%26%20Asset%20Inquiry"
+              class="btn btn-primary"
+            >
+              Write to Joshua Alan Robbins
+            </a>
+            <a href="index.html" class="btn btn-secondary">
+              Back to Beachwood Quantum
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p><strong>Beachwood Quantum</strong> &mdash; Beachwood Helix Corporation</p>
+        <p>Principal: Joshua Alan Robbins &bull; Annapolis, Maryland</p>
+      </div>
+      <div>
+        <p>
+          <a href="mailto:joshua@beachwoodquantum.com">joshua@beachwoodquantum.com</a>
+          &bull; 667-493-5648
+        </p>
+        <p>
+          <a href="index.html">Home</a> &bull;
+          <a href="gem.html">GEM System</a> &bull;
+          <a href="agreement.html">Engagement Terms &amp; Settlement</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const ASSETS = {
+        heater: {
+          name: "Surface Heater-Treater Development Plan",
+          capexTier: "TIER: LOW-COST HIGH-PROBABILITY VALIDATOR",
+          successDefined:
+            "Heated, cleanly separated oil allows for ease of sale—increasing the number of tank sales completed per year.",
+          basePayback: 49,
+          compressionWeight: 35,
+          baseGrade: 5.5,
+          unassistedLabel: "Emulsion Friction / Delayed Sales",
+          validationRole: "Low-Cost Proof for Larger Capex",
+          fieldTask: "Install 4'×20' upright 3-phase heater",
+          fieldIron: "2\" pipe (6), 700 lb ball (3), 125 BP valves",
+          fieldOutcome: "Higher annual oil sales frequency",
+          wrenchNote:
+            "Operational brilliance in action: pairing a reconditioned 4×20 upright heater-treater with exact 2\" 700 lb ball valves, check valves, and back-pressure valves eliminates sales friction immediately.",
+          bom: [
+            {
+              cat: "01 · Primary Surface Vessel",
+              spec: "4' × 20' upright, 3-phase reconditioned heater-treater (firebox included).",
+              source: "Source: First-Party Reconditioned Equipment Quote"
+            },
+            {
+              cat: "02 · Civil Pad & Field Installation",
+              spec: "Concrete equipment pad, setting crew, and full surface tie-in installation.",
+              source: "Source: First-Party Field Crew & Pad Quote"
+            },
+            {
+              cat: "03 · Connections & Surface Iron",
+              spec: "2\" line pipe (6 joints), 2\" valves & check valves, 125 back-pressure valves, 2\" 700 lb ball valves (3), 2\" elbows (4), 2\" tees (3).",
+              source: "Source: First-Party Oilfield Supply House Quote"
+            }
+          ],
+          defaults: { wrench: 84, quotes: 88, knowledge: 78 }
+        },
+        permian: {
+          name: "Shallow Shelf Rod & Tubing Reconnect",
+          capexTier: "TIER: TARGETED MECHANICAL WORKOVER",
+          successDefined:
+            "Restore mechanical lift on an idle shallow-shelf wellbore to resume immediate daily oil flow.",
+          basePayback: 54,
+          compressionWeight: 39,
+          baseGrade: 5.2,
+          unassistedLabel: "Idle Well / Plugging Liability",
+          validationRole: "Fast Payback Reinvestment Base",
+          fieldTask: "Pull rods, clear tubing, reset pump",
+          fieldIron: "Workover rig, downhole pump, rod string",
+          fieldOutcome: "+18 to 26 BOPD resumed response",
+          wrenchNote:
+            "Simple mechanical reconnection at the wellhead turns dormant surface iron back into an active conduit to producing subsurface pressure.",
+          bom: [
+            {
+              cat: "01 · Rig & Downhole Service",
+              spec: "Workover pulling unit, tubing tally, hot-oil flush, and parted-rod fishing/replacement.",
+              source: "Source: First-Party Workover Rig Quote"
+            },
+            {
+              cat: "02 · Downhole Lift Assembly",
+              spec: "Reconditioned insert pump, polished rod assembly, and fresh stuffing-box packing.",
+              source: "Source: First-Party Pump Shop Quote"
+            },
+            {
+              cat: "03 · Surface Flowline Check",
+              spec: "Wellhead gauge tree, 2\" check valve verification, and tank battery pressure test.",
+              source: "Source: First-Party Supply House Quote"
+            }
+          ],
+          defaults: { wrench: 78, quotes: 80, knowledge: 72 }
+        },
+        appalachia: {
+          name: "Legacy Stripper Turn-On Revival",
+          capexTier: "TIER: LOW-COST KNOWLEDGE TRANSFER JOB",
+          successDefined:
+            "Document a safe, repeatable turn-on and swab sequence so next-generation operators can run mismanaged cluster wells.",
+          basePayback: 58,
+          compressionWeight: 35,
+          baseGrade: 4.6,
+          unassistedLabel: "200-Yr Backlog / Orphan Risk",
+          validationRole: "Repeatable Multi-Well Template",
+          fieldTask: "Inspect valves, swab fluid, restart flow",
+          fieldIron: "2\" master valves, gauges, swab cups",
+          fieldOutcome: "Idle cluster returned to steady sales",
+          wrenchNote:
+            "Assets written off as generational liabilities often only lack an operator who knows how to safely inspect a valve, clear fluid load, and listen to the well.",
+          bom: [
+            {
+              cat: "01 · Wellhead Safety & Inspection",
+              spec: "Casing/tubing pressure test, master valve servicing, and calibrated pressure gauges.",
+              source: "Source: First-Party Field Tech Scope"
+            },
+            {
+              cat: "02 · Fluid Unloading & Swabbing",
+              spec: "Swabbing unit mobilization to unload fluid column and restore natural reservoir draw.",
+              source: "Source: First-Party Swab Rig Quote"
+            },
+            {
+              cat: "03 · Living Turn-On Playbook",
+              spec: "Step-by-step valve sequence, daily gauge log, and decline baseline added to API file.",
+              source: "Source: Verified Field Transfer Log"
+            }
+          ],
+          defaults: { wrench: 70, quotes: 76, knowledge: 84 }
+        },
+        gulf: {
+          name: "Immediate-Pay Portfolio Anchor",
+          capexTier: "TIER: CAPITAL-INTENSIVE VALIDATED SCALE",
+          successDefined:
+            "Deploy disciplined capital into an immediately paying well to accelerate payback and anchor broader portfolio expansion.",
+          basePayback: 45,
+          compressionWeight: 33,
+          baseGrade: 6.1,
+          unassistedLabel: "Under-Structured Working Interest",
+          validationRole: "Portfolio Anchor & Exit Leverage",
+          fieldTask: "Choke optimization & flowline balance",
+          fieldIron: "Choke beans, separator controls, meters",
+          fieldOutcome: "Immediate cash-flowing principal return",
+          wrenchNote:
+            "Lower-cost jobs prove field discipline and vendor accuracy first—validating larger, more capital-intensive anchor deployments based on tangible profitability.",
+          bom: [
+            {
+              cat: "01 · Production & Choke Optimization",
+              spec: "Positive choke calibration, bottom-hole pressure review, and sand/water cut tracking.",
+              source: "Source: First-Party Engineering Review"
+            },
+            {
+              cat: "02 · Surface Separation & Metering",
+              spec: "3-phase separator tuning, custody-transfer LACT / tank strapping verification.",
+              source: "Source: First-Party Measurement Quote"
+            },
+            {
+              cat: "03 · Portfolio Capital Staging",
+              spec: "Full Principal Recovery underwriting model linking immediate cash flow to reserve upside.",
+              source: "Source: Beachwood Helix Valuation Model"
+            }
+          ],
+          defaults: { wrench: 86, quotes: 90, knowledge: 80 }
+        }
+      };
+
+      const LAYERS = {
+        helix: {
+          tag: "Index 01 • Corporate & Capital Logic",
+          heading: "Beachwood Helix Corporation",
+          body: "Provides the underwriting discipline that keeps GEM grounded in transparent economics. Assets are modeled against a 60-month conventional cycle with one priority: recover initial principal cleanly so remaining reserves operate free of capital drag.",
+          repo: "Repository Anchor: index.html → underwriting frameworks & valuation methodology.",
+          specs: [
+            ["Full Principal Recovery:", "Capital return structured across a 60-month conventional horizon."],
+            ["Transparent Economics:", "Lower-cost jobs validate larger projects based on tangible profitability."],
+            ["Portfolio Staging:", "Combining immediate-pay anchors with high-probability field revivals."],
+            ["Energy For Everyone:", "Clear public commentary demystifying energy finance and M&A."]
+          ]
+        },
+        research: {
+          tag: "Index 02 • Theoretical & Applied Research",
+          heading: "Beachwood Research Lab",
+          body: "Develops the formal models and verifiable data lineage supporting Beachwood's long-term systems architecture—from technical monographs to physics-informed computation and deterministic reasoning.",
+          repo: "Repository Anchor: technical monographs & verifiable lineage architecture.",
+          specs: [
+            ["Monograph Series:", "Quantum Helix Research technical papers (through Paper 010)."],
+            ["Lattice & Boundary Models:", "Kagome geometry, containment stability, and noise control."],
+            ["Deterministic Logic:", "Spiking neural networks with reproducible reasoning."],
+            ["Data Lineage:", "Ensuring every mapped API well file traces cleanly to verifiable inputs."]
+          ]
+        },
+        systems: {
+          tag: "Index 03 • Edge & Hardware Systems",
+          heading: "Beachwood Systems & The GEM Platform",
+          body: "Home to the Gamified Energy Machine (GEM) API directory and the future GEM Console2028 runtime. In its 2024–2026 iteration, GEM maps 515,000 Lower 48 oil assets into living well files backed by first-party quotes and clear job economics—forming the foundation for deterministic C++20 edge telemetry and thermofluidic loops.",
+          repo: "Repository Anchor: gem.html → Lower 48 API well-file schema, grading logic, and Console2028 modules.",
+          specs: [
+            ["515,000 Mapped APIs:", "Ever-developing well files with logs, designs, costs, and optimization ideas."],
+            ["Transparent Economics:", "First-party quote sources guiding probability of success per dollar spent."],
+            ["Deterministic Telemetry:", "Zero-allocation C++20 runtime roadmap for live edge monitoring."],
+            ["Thermofluidic Loops:", "Future subsurface heat recovery & localized micro-utility balance."]
+          ]
+        },
+        ecosystem: {
+          tag: "Index 04 • Foundational Ecosystem",
+          heading: "Beachwood Foundational Ecosystem",
+          body: "Focuses on practical energy literacy, hands-on training workstations, and generational stewardship—ensuring veteran field knowledge transfers cleanly to the next generation in both digital and physical environments.",
+          repo: "Repository Anchor: Energy Library, operational workstations, and Astaria materials.",
+          specs: [
+            ["Generational Literacy:", "Practical guides helping new operators reconnect surface to subsurface."],
+            ["Operational Workstations:", "Tech-forward field and learning workstations."],
+            ["Energy Library:", "Plain-language reference archive accessible beyond industry insiders."],
+            ["Astaria Artifacts:", "Bilingual scroll and classroom educational materials."]
+          ]
+        }
+      };
+
+      let currentAssetKey = "heater";
+      let currentLens = "unified";
+
+      const sliderWrench = document.getElementById("slider-wrench");
+      const sliderQuotes = document.getElementById("slider-quotes");
+      const sliderKnowledge = document.getElementById("slider-knowledge");
+
+      const valWrench = document.getElementById("val-wrench");
+      const valQuotes = document.getElementById("val-quotes");
+      const valKnowledge = document.getElementById("val-knowledge");
+
+      const kpiGrade = document.getElementById("kpi-grade");
+      const kpiGradeNote = document.getElementById("kpi-grade-note");
+      const kpiProb = document.getElementById("kpi-prob");
+      const kpiProbNote = document.getElementById("kpi-prob-note");
+      const kpiPayback = document.getElementById("kpi-payback");
+      const kpiPaybackNote = document.getElementById("kpi-payback-note");
+      const kpiStatus = document.getElementById("kpi-status");
+      const kpiStatusNote = document.getElementById("kpi-status-note");
+
+      const wrenchNote = document.getElementById("wrench-note");
+      const fileHeaderTitle = document.getElementById("file-header-title");
+      const fileCapexTier = document.getElementById("file-capex-tier");
+      const successDefined = document.getElementById("success-defined");
+      const bomGrid = document.getElementById("bom-grid");
+      const chartTitle = document.getElementById("chart-title");
+
+      const chartGemCurve = document.getElementById("chart-gem-curve");
+      const chartUnencumbered = document.getElementById("chart-unencumbered");
+      const paybackDrop = document.getElementById("payback-drop");
+      const paybackDot = document.getElementById("payback-dot");
+      const paybackTagBg = document.getElementById("payback-tag-bg");
+      const paybackTagText = document.getElementById("payback-tag-text");
+
+      const bankUnassisted = document.getElementById("bank-unassisted");
+      const bankQuotes = document.getElementById("bank-quotes");
+      const bankPayback = document.getElementById("bank-payback");
+      const bankValidation = document.getElementById("bank-validation");
+
+      const fieldTask = document.getElementById("field-task");
+      const fieldIron = document.getElementById("field-iron");
+      const fieldOutcome = document.getElementById("field-outcome");
+      const fieldReadiness = document.getElementById("field-readiness");
+
+      const translationGrid = document.getElementById("translation-grid");
+      const cardBanking = document.getElementById("card-banking");
+      const cardField = document.getElementById("card-field");
+      const lensIndicator = document.getElementById("lens-indicator");
+
+      function computeMetrics() {
+        const asset = ASSETS[currentAssetKey];
+        const wrench = Number(sliderWrench.value);
+        const quotes = Number(sliderQuotes.value);
+        const knowledge = Number(sliderKnowledge.value);
+
+        const combined = (wrench * 0.44 + quotes * 0.30 + knowledge * 0.26) / 100;
+        const payback = Math.max(11.6, Math.min(60.0, asset.basePayback - combined * asset.compressionWeight));
+        const freeWindow = Math.max(0, 60 - payback);
+        const grade = Math.min(9.9, Math.max(2.0, asset.baseGrade + combined * 4.2));
+        const probPct = Math.min(96, Math.max(12, Math.round(14 + wrench * 0.36 + quotes * 0.34 + knowledge * 0.16)));
+
+        let probTier = "Low";
+        let probClass = "rust";
+        if (probPct >= 78) {
+          probTier = "High";
+          probClass = "teal";
+        } else if (probPct >= 52) {
+          probTier = "Moderate";
+          probClass = "amber";
+        }
+
+        let statusText = "SALE-READY";
+        let statusClass = "teal";
+        let statusNote = "Surface reconnected to subsurface";
+        let gradeNote = "High-Probability First-Party Plan";
+        let readiness = "Documented API Playbook";
+
+        if (wrench < 25 || quotes < 30) {
+          statusText = "UNMANAGED";
+          statusClass = "rust";
+          statusNote = "Book liability without field plan";
+          gradeNote = "Needs Field Scope & First-Party Quotes";
+          readiness = "Unassisted — Knowledge Gap";
+        } else if (payback > 32) {
+          statusText = "STABILIZING";
+          statusClass = "amber";
+          statusNote = "Recovering within 60m conventional window";
+          gradeNote = "Developing Value — Moderate Lift";
+          readiness = "Partial Playbook Active";
+        } else if (grade >= 9.0) {
+          gradeNote = "Prime GEM Tier — Accelerated Payback";
+          readiness = "Operational Brilliance Captured";
+        }
+
+        return {
+          asset,
+          wrench,
+          quotes,
+          knowledge,
+          payback,
+          freeWindow,
+          grade,
+          probPct,
+          probTier,
+          probClass,
+          statusText,
+          statusClass,
+          statusNote,
+          gradeNote,
+          readiness
+        };
+      }
+
+      function renderChart(m) {
+        const x0 = 46;
+        const xW = 534;
+        const y0 = 158;
+        const y100 = 108;
+
+        function mapX(month) {
+          return x0 + (month / 60) * xW;
+        }
+        function mapY(pct) {
+          if (pct <= 100) {
+            return y0 - (pct / 100) * (y0 - y100);
+          }
+          const extra = Math.min(110, pct - 100);
+          return y100 - (extra / 100) * (y100 - 20);
+        }
+
+        const isStranded = m.wrench < 20;
+        const points = [];
+
+        if (isStranded) {
+          const ceiling = 26 + m.wrench * 1.8;
+          for (let mo = 0; mo <= 60; mo += 2) {
+            const pct = ceiling * (1 - Math.exp(-0.045 * mo));
+            points.push({ mo, x: mapX(mo), y: mapY(pct) });
+          }
+          chartGemCurve.setAttribute(
+            "d",
+            points.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(" ")
+          );
+          chartGemCurve.setAttribute("stroke", "#d47b5a");
+          chartUnencumbered.setAttribute("d", "");
+          paybackDrop.setAttribute("opacity", "0");
+          paybackDot.setAttribute("opacity", "0");
+          paybackTagBg.setAttribute("x", "396");
+          paybackTagBg.setAttribute("width", "168");
+          paybackTagText.setAttribute("x", "480");
+          paybackTagText.textContent = "No Payback (Unmanaged)";
+          return;
+        }
+
+        chartGemCurve.setAttribute("stroke", "#58b8a6");
+        paybackDrop.setAttribute("opacity", "1");
+        paybackDot.setAttribute("opacity", "1");
+
+        const k = 1.42 / m.payback;
+        const norm = 1 - Math.exp(-k * m.payback);
+        const maxCeiling = 100 / norm;
+
+        for (let mo = 0; mo <= 60; mo += 2) {
+          let pct = maxCeiling * (1 - Math.exp(-k * mo));
+          if (mo > m.payback) {
+            const postFrac = (mo - m.payback) / Math.max(1, 60 - m.payback);
+            pct = 100 + Math.min(95, (pct - 100) * 0.68 + postFrac * (34 + m.knowledge * 0.4));
+          }
+          points.push({ mo, x: mapX(mo), y: mapY(pct) });
+        }
+
+        chartGemCurve.setAttribute(
+          "d",
+          points.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(" ")
+        );
+
+        const px = mapX(m.payback);
+        const postPts = points.filter((p) => p.mo >= m.payback);
+        let areaD = `M ${px.toFixed(1)} ${y100} `;
+        postPts.forEach((p) => {
+          areaD += `L ${p.x.toFixed(1)} ${p.y.toFixed(1)} `;
+        });
+        areaD += `L ${mapX(60).toFixed(1)} ${y100} Z`;
+        chartUnencumbered.setAttribute("d", areaD);
+
+        paybackDrop.setAttribute("x1", px.toFixed(1));
+        paybackDrop.setAttribute("x2", px.toFixed(1));
+        paybackDot.setAttribute("cx", px.toFixed(1));
+
+        const tagW = 108;
+        const clampedX = Math.max(x0 + tagW / 2, Math.min(580 - tagW / 2, px));
+        paybackTagBg.setAttribute("x", (clampedX - tagW / 2).toFixed(1));
+        paybackTagBg.setAttribute("width", String(tagW));
+        paybackTagText.setAttribute("x", clampedX.toFixed(1));
+        paybackTagText.textContent = `${m.payback.toFixed(1)}m Payback`;
+      }
+
+      function renderBom(asset) {
+        fileHeaderTitle.textContent = `API Living Well File — ${asset.name}`;
+        fileCapexTier.textContent = asset.capexTier;
+        successDefined.textContent = asset.successDefined;
+        bomGrid.innerHTML = asset.bom
+          .map(
+            (item) =>
+              `<div class="bom-card">` +
+              `<div class="bom-cat">${item.cat}</div>` +
+              `<div class="bom-spec">${item.spec}</div>` +
+              `<div class="bom-source">${item.source}</div>` +
+              `</div>`
+          )
+          .join("");
+      }
+
+      function updateUI() {
+        const m = computeMetrics();
+
+        valWrench.textContent = m.wrench + "%";
+        valQuotes.textContent = m.quotes + "%";
+        valKnowledge.textContent = m.knowledge + "%";
+
+        kpiGrade.textContent = `GEM ${m.grade.toFixed(1)} / 10`;
+        kpiGradeNote.textContent = m.gradeNote;
+
+        kpiProb.textContent = `${m.probPct}% ${m.probTier}`;
+        kpiProb.className = "kpi-value mono " + m.probClass;
+        kpiProbNote.textContent =
+          m.probPct >= 75
+            ? "Low-cost job validates larger capex"
+            : "Verify quotes & field plan before scaling";
+
+        const pill = document.getElementById("pill-" + currentAssetKey);
+        if (pill) pill.textContent = `GEM ${m.grade.toFixed(1)}`;
+
+        if (m.wrench < 20) {
+          kpiPayback.textContent = "Unrecovered";
+          kpiPaybackNote.textContent = "Sales & flow stalled without field action";
+          bankPayback.textContent = "At Risk (Unmanaged Well)";
+        } else {
+          kpiPayback.textContent = m.payback.toFixed(1) + " mo";
+          kpiPaybackNote.textContent = `${m.freeWindow.toFixed(1)} mo ahead of 60m cycle`;
+          bankPayback.textContent = `${m.payback.toFixed(1)} Months`;
+        }
+
+        kpiStatus.textContent = m.statusText;
+        kpiStatus.className = "kpi-value " + m.statusClass;
+        kpiStatusNote.textContent = m.statusNote;
+
+        wrenchNote.textContent = m.asset.wrenchNote;
+        chartTitle.textContent = `60-Month Full Principal Recovery Profile — ${m.asset.name}`;
+
+        bankUnassisted.textContent = m.asset.unassistedLabel;
+        bankQuotes.textContent =
+          m.quotes >= 65 ? "First-Party Verified Quotes" : "Unverified Rough Estimates";
+        bankValidation.textContent = m.wrench < 20 ? "Blocked — Uncured Friction" : m.asset.validationRole;
+
+        fieldTask.textContent = m.asset.fieldTask;
+        fieldIron.textContent = m.asset.fieldIron;
+        fieldOutcome.textContent = m.wrench < 20 ? "Delayed / Lost Annual Sales" : m.asset.fieldOutcome;
+        fieldReadiness.textContent = m.readiness;
+
+        const step1 = m.quotes >= 60;
+        const step2 = m.wrench >= 55 && m.knowledge >= 45;
+        const step3 = m.probPct >= 78 && m.wrench >= 70;
+
+        [
+          ["step-quotes", step1],
+          ["step-turnon", step2],
+          ["step-scale", step3]
+        ].forEach(([id, ok]) => {
+          const el = document.getElementById(id);
+          el.classList.toggle("unlocked", ok);
+          el.querySelector(".transfer-status").textContent = ok ? "VERIFIED" : "PENDING";
+        });
+
+        renderChart(m);
+      }
+
+      // Asset selector clicks
+      document.querySelectorAll(".asset-card-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const key = btn.getAttribute("data-asset");
+          if (!ASSETS[key]) return;
+          currentAssetKey = key;
+          document.querySelectorAll(".asset-card-btn").forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          const d = ASSETS[key].defaults;
+          sliderWrench.value = d.wrench;
+          sliderQuotes.value = d.quotes;
+          sliderKnowledge.value = d.knowledge;
+          renderBom(ASSETS[key]);
+          updateUI();
+        });
+      });
+
+      // Lens switcher
+      document.querySelectorAll(".lens-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          currentLens = btn.getAttribute("data-lens");
+          document.querySelectorAll(".lens-btn").forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          if (currentLens === "unified") {
+            cardBanking.classList.remove("hidden");
+            cardField.classList.remove("hidden");
+            translationGrid.classList.remove("single-col");
+            lensIndicator.textContent = "VIEW: BANKING + FIELD UNIFIED";
+          } else if (currentLens === "banking") {
+            cardBanking.classList.remove("hidden");
+            cardField.classList.add("hidden");
+            translationGrid.classList.add("single-col");
+            lensIndicator.textContent = "VIEW: BANKING & TRANSPARENT ECONOMICS";
+          } else {
+            cardBanking.classList.add("hidden");
+            cardField.classList.remove("hidden");
+            translationGrid.classList.add("single-col");
+            lensIndicator.textContent = "VIEW: FIELD & PHYSICAL WRENCH EXECUTION";
+          }
+        });
+      });
+
+      // Sliders
+      [sliderWrench, sliderQuotes, sliderKnowledge].forEach((el) => {
+        el.addEventListener("input", updateUI);
+      });
+
+      // Quick contrast buttons
+      document.getElementById("btn-neglect").addEventListener("click", function () {
+        sliderWrench.value = 10;
+        sliderQuotes.value = 25;
+        sliderKnowledge.value = 18;
+        updateUI();
+      });
+
+      document.getElementById("btn-revive").addEventListener("click", function () {
+        const d = ASSETS[currentAssetKey].defaults;
+        sliderWrench.value = Math.min(96, d.wrench + 8);
+        sliderQuotes.value = Math.min(96, d.quotes + 6);
+        sliderKnowledge.value = Math.min(96, d.knowledge + 8);
+        updateUI();
+      });
+
+      // 4-Layer Tabs
+      const archTabs = document.querySelectorAll(".arch-tab");
+      const archTag = document.getElementById("arch-tag");
+      const archHeading = document.getElementById("arch-heading");
+      const archBody = document.getElementById("arch-body");
+      const archRepoNote = document.getElementById("arch-repo-note");
+      const archSpecs = document.getElementById("arch-specs");
+
+      archTabs.forEach((tab) => {
+        tab.addEventListener("click", function () {
+          const data = LAYERS[tab.getAttribute("data-layer")];
+          if (!data) return;
+          archTabs.forEach((t) => {
+            t.classList.remove("active");
+            t.setAttribute("aria-selected", "false");
+          });
+          tab.classList.add("active");
+          tab.setAttribute("aria-selected", "true");
+
+          archTag.textContent = data.tag;
+          archHeading.textContent = data.heading;
+          archBody.textContent = data.body;
+          const parts = data.repo.split(":");
+          archRepoNote.innerHTML = `<strong>${parts[0]}:</strong> ${parts.slice(1).join(":")}`;
+          archSpecs.innerHTML = data.specs
+            .map(([title, desc]) => `<li><strong>${title}</strong> ${desc}</li>`)
+            .join("");
+        });
+      });
+
+      renderBom(ASSETS[currentAssetKey]);
+      updateUI();
+    })();
+  </script>
+</body>
+</html>

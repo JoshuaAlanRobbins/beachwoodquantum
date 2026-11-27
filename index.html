@@ -6,7 +6,7 @@
   <title>Beachwood Quantum | Beachwood Helix Corporation</title>
   <meta
     name="description"
-    content="Beachwood Quantum — disciplined oil and gas capital recovery, portfolio structuring, and foundational systems engineering under Joshua Alan Robbins and Beachwood Helix Corporation."
+    content="Beachwood Quantum and Beachwood Helix Corporation — twelve years of disciplined oil and gas execution, Full Principal Recovery underwriting, published commercial advisory terms, and the 515,000-asset GEM System."
   />
   <style>
     :root {
@@ -19,6 +19,7 @@
       --accent: #1d3c45;
       --accent-hover: #142b32;
       --sage: #3d5a4c;
+      --brass: #9a7432;
     }
 
     *,
@@ -36,7 +37,7 @@
       background-color: var(--bg);
       color: var(--text);
       font-family: "Georgia", "Times New Roman", serif;
-      line-height: 1.7;
+      line-height: 1.72;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -50,18 +51,29 @@
       color: var(--accent-hover);
     }
 
+    .sans {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-variant-numeric: tabular-nums;
+    }
+
     .container {
-      max-width: 960px;
+      max-width: 1020px;
       margin: 0 auto;
       padding: 0 1.5rem;
     }
 
+    /* Sticky Header */
     .site-header {
       border-bottom: 1px solid var(--border);
-      background-color: var(--bg);
+      background-color: rgba(250, 249, 246, 0.96);
+      backdrop-filter: blur(8px);
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 20;
     }
 
     .header-inner {
@@ -70,7 +82,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      padding: 1.1rem 0;
+      padding: 1.05rem 0;
     }
 
     .brand {
@@ -96,7 +108,7 @@
     .nav-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.35rem;
+      gap: 1.3rem;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       font-size: 0.85rem;
     }
@@ -104,27 +116,30 @@
     .nav-links a {
       text-decoration: none;
       color: var(--muted);
+      transition: color 0.15s ease;
     }
 
     .nav-links a:hover {
       color: var(--text);
     }
 
+    /* Hero */
     .hero {
-      padding: 4.25rem 0 3.5rem 0;
+      padding: 4.25rem 0 3.25rem 0;
       border-bottom: 1px solid var(--border);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.45fr 1fr;
-      gap: 2.5rem;
+      grid-template-columns: 1.25fr 1.05fr;
+      gap: 2.65rem;
       align-items: center;
     }
 
     .eyebrow {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
+      font-weight: 600;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--sage);
@@ -134,16 +149,31 @@
     h1 {
       font-size: 2.35rem;
       font-weight: normal;
-      line-height: 1.22;
-      margin: 0 0 1.15rem 0;
+      line-height: 1.18;
+      margin: 0 0 1.2rem 0;
+      letter-spacing: -0.015em;
+    }
+
+    h2 {
+      font-size: 1.66rem;
+      font-weight: normal;
+      line-height: 1.26;
+      margin: 0 0 0.85rem 0;
       letter-spacing: -0.01em;
     }
 
+    h3 {
+      font-size: 1.15rem;
+      font-weight: normal;
+      line-height: 1.35;
+      margin: 0 0 0.5rem 0;
+    }
+
     .lead {
-      font-size: 1.08rem;
+      font-size: 1.06rem;
       color: var(--muted);
-      margin: 0 0 1.75rem 0;
-      max-width: 60ch;
+      margin: 0 0 1.85rem 0;
+      max-width: 56ch;
     }
 
     .hero-actions {
@@ -156,14 +186,14 @@
     .btn {
       display: inline-block;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 0.86rem;
+      font-size: 0.85rem;
       font-weight: 600;
       letter-spacing: 0.03em;
       padding: 0.78rem 1.35rem;
       text-decoration: none;
       border: 1px solid var(--accent);
       cursor: pointer;
-      transition: background-color 0.15s ease, color 0.15s ease;
+      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
     }
 
     .btn-primary {
@@ -187,13 +217,13 @@
       color: var(--accent-hover);
     }
 
-    .hero-visual {
+    .visual-frame {
       background-color: var(--surface);
       border: 1px solid var(--border);
-      padding: 1.5rem;
+      padding: 1.4rem;
     }
 
-    .hero-visual svg {
+    .visual-frame svg {
       width: 100%;
       height: auto;
       display: block;
@@ -204,11 +234,41 @@
       font-size: 0.78rem;
       color: var(--muted);
       margin: 0.85rem 0 0 0;
-      line-height: 1.5;
+      line-height: 1.52;
     }
 
+    /* Institutional Record Ledger Strip */
+    .record-strip {
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.75rem;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .record-item {
+      border-left: 2px solid var(--border);
+      padding-left: 1rem;
+    }
+
+    .record-num {
+      font-size: 1.32rem;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 0.25rem;
+    }
+
+    .record-label {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.77rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    /* Sections */
     section {
-      padding: 3.5rem 0;
+      padding: 3.75rem 0;
       border-bottom: 1px solid var(--border);
     }
 
@@ -216,41 +276,98 @@
       border-bottom: none;
     }
 
-    h2 {
-      font-size: 1.65rem;
-      font-weight: normal;
-      line-height: 1.28;
-      margin: 0 0 0.85rem 0;
-    }
-
-    h3 {
-      font-size: 1.18rem;
-      font-weight: normal;
-      line-height: 1.35;
-      margin: 0 0 0.5rem 0;
+    .section-alt {
+      background-color: var(--surface);
     }
 
     .section-intro {
       color: var(--muted);
       max-width: 68ch;
-      margin: 0 0 2rem 0;
+      margin: 0 0 2.15rem 0;
+    }
+
+    /* Section 1: 4-Era Institutional Evolution */
+    .era-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.15rem;
+    }
+
+    .era-card {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      padding: 1.35rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .era-card.accent-sage {
+      border-top-color: var(--sage);
+    }
+
+    .era-card.accent-brass {
+      border-top-color: var(--brass);
+    }
+
+    .era-year {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 0.4rem;
+    }
+
+    .era-metric {
+      font-size: 1.15rem;
+      color: var(--text);
+      margin: 0 0 0.55rem 0;
+      line-height: 1.28;
+    }
+
+    .era-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.58;
+    }
+
+    /* Section 2: Underwriting & Horizon Split */
+    .recovery-layout {
+      display: grid;
+      grid-template-columns: 1.08fr 1fr;
+      gap: 2rem;
+      align-items: start;
+      margin-bottom: 1.65rem;
     }
 
     .card-grid-2 {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1.5rem;
+      gap: 1.4rem;
+    }
+
+    .card-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
     }
 
     .card {
       background-color: var(--surface);
       border: 1px solid var(--border);
-      padding: 1.65rem;
+      padding: 1.6rem;
+    }
+
+    .section-alt .card {
+      background-color: var(--bg);
     }
 
     .card-tag {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 0.74rem;
+      font-size: 0.73rem;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -259,15 +376,16 @@
     }
 
     .metric-line {
-      font-size: 1.35rem;
+      font-size: 1.24rem;
       color: var(--text);
-      margin: 0 0 0.75rem 0;
+      margin: 0 0 0.65rem 0;
+      line-height: 1.3;
     }
 
     .card p {
-      margin: 0 0 0.85rem 0;
+      margin: 0 0 0.8rem 0;
       color: var(--muted);
-      font-size: 0.96rem;
+      font-size: 0.95rem;
     }
 
     .card p:last-child {
@@ -275,19 +393,108 @@
     }
 
     .highlight-strip {
-      margin-top: 1.5rem;
+      margin-top: 1.6rem;
       background-color: var(--surface-alt);
       border-left: 3px solid var(--sage);
-      padding: 1.25rem 1.5rem;
-      font-size: 0.96rem;
+      padding: 1.2rem 1.45rem;
+      font-size: 0.95rem;
       color: var(--text);
     }
 
-    /* Intelligent Repository Index */
+    /* Section 3: Index 01 Published Commercial Desk */
+    .mandate-shell {
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      padding: 2.15rem;
+    }
+
+    .mandate-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1.25rem;
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mandate-header h2 {
+      margin-bottom: 0.35rem;
+    }
+
+    .mandate-header p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 60ch;
+      font-size: 0.97rem;
+    }
+
+    .term-val {
+      font-size: 1.38rem;
+      color: var(--accent);
+      margin: 0 0 0.35rem 0;
+      line-height: 1.25;
+    }
+
+    .lanes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.35rem;
+      margin-top: 1.65rem;
+      padding-top: 1.65rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .lane-box {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.15rem;
+    }
+
+    .lane-box h3 {
+      margin-bottom: 0.45rem;
+    }
+
+    .lane-box p {
+      margin: 0 0 0.75rem 0;
+      font-size: 0.93rem;
+      color: var(--muted);
+    }
+
+    .lane-list {
+      margin: 0;
+      padding-left: 1.1rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .lane-list li {
+      margin-bottom: 0.42rem;
+    }
+
+    .lane-list strong {
+      color: var(--text);
+    }
+
+    .mandate-footnote {
+      margin-top: 1.35rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* Section 4: Intelligent Repository Index */
     .repo-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1.5rem;
+      gap: 1.4rem;
     }
 
     .repo-card {
@@ -321,11 +528,20 @@
       font-weight: 600;
     }
 
-    /* Qualification & Direct Contact Panel */
+    .repo-link-row {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.84rem;
+      font-weight: 600;
+    }
+
+    /* Section 5: Institutional Mandate Brief Desk */
     .intake-panel {
       background-color: var(--surface);
       border: 1px solid var(--border);
-      padding: 2rem;
+      padding: 2.1rem;
     }
 
     .intake-grid {
@@ -338,7 +554,7 @@
     .field label {
       display: block;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 0.76rem;
+      font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
@@ -359,24 +575,25 @@
     }
 
     .field textarea {
-      min-height: 86px;
+      min-height: 90px;
       resize: vertical;
     }
 
     .intake-status {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       color: var(--accent);
-      margin-top: 0.9rem;
+      margin-top: 0.85rem;
       min-height: 1.2em;
     }
 
+    /* Footer */
     .site-footer {
       border-top: 1px solid var(--border);
       background-color: var(--surface);
       padding: 2.5rem 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 0.86rem;
+      font-size: 0.85rem;
       color: var(--muted);
     }
 
@@ -391,16 +608,31 @@
       margin: 0.25rem 0;
     }
 
-    @media (max-width: 860px) {
+    @media (max-width: 920px) {
       .hero-grid,
+      .recovery-layout,
       .card-grid-2,
+      .card-grid-3,
+      .lanes-grid,
       .repo-grid,
       .intake-grid {
         grid-template-columns: 1fr;
       }
 
+      .era-grid,
+      .record-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       h1 {
-        font-size: 1.95rem;
+        font-size: 1.98rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .era-grid,
+      .record-strip {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -413,154 +645,369 @@
         <span class="brand-sub">Beachwood Helix Corporation</span>
       </a>
       <nav class="nav-links" aria-label="Primary Navigation">
-        <a href="#capital-recovery">Capital Recovery</a>
-        <a href="#proof">Track Record</a>
-        <a href="#repository">Intelligent Repository</a>
+        <a href="#evolution">2014&ndash;2026 Arc</a>
+        <a href="#recovery">Principal Recovery</a>
+        <a href="#mandate">Commercial Terms</a>
+        <a href="#repository">Four Divisions</a>
         <a href="gem.html">GEM System</a>
-        <a href="#contact">Direct Inquiry</a>
+        <a href="#contact">Mandate Desk</a>
       </nav>
     </div>
   </header>
 
   <main id="top">
+    <!-- Hero: Institutional Trajectory First -->
     <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <p class="eyebrow">Principal: Joshua Alan Robbins</p>
-          <h1>Disciplined capital recovery in energy—structured to support enduring systems.</h1>
-          <p class="lead">
-            With over 12 years of execution across multiple basins and operating companies,
-            Beachwood Quantum structures producing energy mandates around <strong>Full Principal Recovery</strong>
-            across a 60-month conventional oil price cycle, leaving remaining reserves free of
-            capital drag.
-          </p>
-          <div class="hero-actions">
-            <a href="#contact" class="btn btn-primary">
-              Email Joshua Alan Robbins
-            </a>
-            <a href="#repository" class="btn btn-secondary">
-              Explore the Repository
-            </a>
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">Beachwood Helix Corporation &bull; 2014&ndash;2026</p>
+            <h1>Twelve years building energy platforms&mdash;now mapped across 515,000 Lower 48 assets.</h1>
+            <p class="lead">
+              From a single operating client in 2014 to multi-billion-dollar oil enterprises and a
+              nationwide mapped asset system, Beachwood Helix Corporation aligns banking capital and
+              professional regional operators around one transparent standard:
+              <strong>Full Principal Recovery</strong>.
+            </p>
+            <div class="hero-actions">
+              <a href="#mandate" class="btn btn-primary">Review Commercial Terms</a>
+              <a href="gem.html" class="btn btn-secondary">Explore the GEM System</a>
+            </div>
           </div>
+
+          <!-- Context-First Strategy Growth Trajectory SVG -->
+          <aside class="visual-frame" aria-label="Beachwood 2014 to 2026 Strategy Growth Trajectory">
+            <svg viewBox="0 0 420 245" role="img" aria-labelledby="arc-title arc-desc">
+              <title id="arc-title">2014 to 2026 Beachwood Strategy Evolution</title>
+              <desc id="arc-desc">
+                Progression from 1 operating client in 2014, to 10 institutional clients with multi-hundred-million-dollar budgets in 2018, to 200+ Helix subscribers after the 2021 digital redesign, to 515,000 mapped Lower 48 assets in the 2024-2026 GEM System.
+              </desc>
+              <rect x="0" y="0" width="420" height="245" fill="#faf9f6" />
+
+              <!-- Subtle horizontal guide lines -->
+              <line x1="28" y1="196" x2="394" y2="196" stroke="#dad6cc" stroke-width="1.2" />
+              <line x1="28" y1="146" x2="394" y2="146" stroke="#eae7df" stroke-width="1" stroke-dasharray="3 3" />
+              <line x1="28" y1="96" x2="394" y2="96" stroke="#eae7df" stroke-width="1" stroke-dasharray="3 3" />
+              <line x1="28" y1="46" x2="394" y2="46" stroke="#eae7df" stroke-width="1" stroke-dasharray="3 3" />
+
+              <!-- Soft stepped area -->
+              <path
+                d="M 56 196 L 56 174 L 154 138 L 260 98 L 368 48 L 368 196 Z"
+                fill="rgba(29, 60, 69, 0.08)"
+              />
+
+              <!-- Trajectory curve -->
+              <path
+                d="M 56 174 C 102 162, 118 148, 154 138 C 198 126, 224 112, 260 98 C 304 82, 332 64, 368 48"
+                fill="none"
+                stroke="#1d3c45"
+                stroke-width="2.4"
+              />
+
+              <!-- Milestone 1: 2014 -->
+              <line x1="56" y1="174" x2="56" y2="196" stroke="#c8c3b6" stroke-width="1" stroke-dasharray="2 2" />
+              <circle cx="56" cy="174" r="5" fill="#1d3c45" />
+              <text x="56" y="152" text-anchor="middle" font-family="sans-serif" font-size="10.5" font-weight="700" fill="#181816">1 Client</text>
+              <text x="56" y="164" text-anchor="middle" font-family="sans-serif" font-size="9.5" fill="#57554f">Foundation</text>
+              <text x="56" y="216" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#57554f">2014</text>
+
+              <!-- Milestone 2: 2018 -->
+              <line x1="154" y1="138" x2="154" y2="196" stroke="#c8c3b6" stroke-width="1" stroke-dasharray="2 2" />
+              <circle cx="154" cy="138" r="5" fill="#1d3c45" />
+              <text x="154" y="114" text-anchor="middle" font-family="sans-serif" font-size="10.5" font-weight="700" fill="#181816">10 Institutional</text>
+              <text x="154" y="126" text-anchor="middle" font-family="sans-serif" font-size="9.5" fill="#57554f">$100M+ Budgets</text>
+              <text x="154" y="216" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#57554f">2018</text>
+
+              <!-- Milestone 3: 2021 -->
+              <line x1="260" y1="98" x2="260" y2="196" stroke="#c8c3b6" stroke-width="1" stroke-dasharray="2 2" />
+              <circle cx="260" cy="98" r="5" fill="#3d5a4c" />
+              <text x="260" y="74" text-anchor="middle" font-family="sans-serif" font-size="10.5" font-weight="700" fill="#3d5a4c">200+ Helix</text>
+              <text x="260" y="86" text-anchor="middle" font-family="sans-serif" font-size="9.5" fill="#57554f">Digital Redesign</text>
+              <text x="260" y="216" text-anchor="middle" font-family="monospace" font-size="10.5" fill="#57554f">2021</text>
+
+              <!-- Milestone 4: 2024-26 -->
+              <line x1="368" y1="48" x2="368" y2="196" stroke="#9a7432" stroke-width="1.2" stroke-dasharray="2 2" />
+              <circle cx="368" cy="48" r="5.5" fill="#9a7432" />
+              <text x="360" y="22" text-anchor="middle" font-family="sans-serif" font-size="10.5" font-weight="700" fill="#1d3c45">515,000 APIs</text>
+              <text x="360" y="34" text-anchor="middle" font-family="sans-serif" font-size="9.5" fill="#9a7432">GEM System</text>
+              <text x="368" y="216" text-anchor="middle" font-family="monospace" font-size="10.5" font-weight="700" fill="#1d3c45">2024&ndash;26</text>
+            </svg>
+            <p class="visual-caption">
+              <strong>Twelve-Year Strategy Trajectory:</strong> Evolving from large equity-backed
+              mandates, through a 2021 digital redesign, into a mapped nationwide platform built for
+              professional regional operators and bankable underwriting.
+            </p>
+          </aside>
         </div>
 
-        <aside class="hero-visual" aria-label="60-Month Principal Recovery Horizon Illustration">
-          <svg viewBox="0 0 360 220" role="img" aria-labelledby="horizon-title horizon-desc">
-            <title id="horizon-title">Full Principal Recovery Horizon</title>
-            <desc id="horizon-desc">
-              A horizon diagram illustrating accelerated principal recovery at roughly 12 months and 22 months compared to a 60-month conventional commodity cycle.
-            </desc>
-            <rect x="0" y="0" width="360" height="220" fill="#faf9f6" />
-            <rect x="0" y="148" width="360" height="72" fill="#eae7df" />
-            <line x1="24" y1="148" x2="336" y2="148" stroke="#3d5a4c" stroke-width="1.5" />
-            <path
-              d="M 32 186 Q 115 112 205 148 T 328 118"
-              fill="none"
-              stroke="#1d3c45"
-              stroke-width="2"
-            />
-            <circle cx="96" cy="148" r="4.5" fill="#3d5a4c" />
-            <text x="96" y="134" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#181816">
-              ~12m Payback
-            </text>
-            <circle cx="164" cy="148" r="4.5" fill="#3d5a4c" />
-            <text x="164" y="168" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#181816">
-              ~22m Recovery
-            </text>
-            <circle cx="296" cy="148" r="4.5" fill="#1d3c45" />
-            <text x="296" y="134" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#57554f">
-              60m Cycle
-            </text>
-          </svg>
-          <p class="visual-caption">
-            <strong>Full Principal Recovery Horizon:</strong> Underwritten to return initial principal
-            within a 60-month cycle—or compress recovery to roughly one to two years through
-            hands-on field work and disciplined portfolio structuring.
-          </p>
-        </aside>
+        <!-- Quiet Institutional Record Strip -->
+        <div class="record-strip" aria-label="Institutional Track Record Summary">
+          <div class="record-item">
+            <div class="record-num mono">12+ Years</div>
+            <div class="record-label">Multi-basin execution across operating oil &amp; gas companies</div>
+          </div>
+          <div class="record-item">
+            <div class="record-num mono">$0 &rarr; $1B+</div>
+            <div class="record-label">Multiple enterprises built from zero assets, each delivering multi-million-dollar returns</div>
+          </div>
+          <div class="record-item">
+            <div class="record-num mono">515,000+</div>
+            <div class="record-label">Individually mapped Lower 48 API well files inside the GEM framework</div>
+          </div>
+          <div class="record-item">
+            <div class="record-num mono">~2,000</div>
+            <div class="record-label">Global readers of <em>Energy For Everyone</em>, growing organically on signal alone</div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="capital-recovery">
+    <!-- Section 1: The 12-Year Evolution & Structural Market Discovery -->
+    <section id="evolution">
       <div class="container">
-        <p class="eyebrow">Underwriting Discipline</p>
-        <h2>Full Principal Recovery &amp; Post-Payback Reserve Leverage</h2>
+        <p class="eyebrow">Section 01 &bull; Institutional Lineage</p>
+        <h2>How Twelve Years in the Field Revealed the Real Opportunity</h2>
         <p class="section-intro">
-          Assets and mandates are evaluated against a 60-month conventional oil price cycle with a
-          clear priority: recover initial principal cleanly so remaining reserves operate as
-          unencumbered long-term leverage.
+          Beachwood Quantum did not begin as software. It grew out of twelve years bridging both
+          ends of the energy market—from multi-hundred-million-dollar institutional budgets down to
+          hands-on regional wellheads—revealing the exact middle-market gap no one was mapping cleanly.
         </p>
 
-        <div class="card-grid-2">
-          <div class="card">
-            <p class="card-tag">Phase I &bull; Principal Protection</p>
-            <h3>60-Month Cycle Alignment</h3>
-            <p>
-              Every acquisition or mandate is modeled across a five-year conventional commodity window,
-              prioritizing durable cash flow, realistic decline curves, and disciplined entry pricing
-              over optimistic price assumptions.
-            </p>
-          </div>
-          <div class="card">
-            <p class="card-tag">Phase II &bull; Unencumbered Reserves</p>
-            <h3>Post-Payback Reserve Leverage</h3>
-            <p>
-              Once invested principal is recovered, remaining producing reserves and development
-              locations stand free of capital drag—supporting measured reinvestment or strategic
-              execution without forced timelines.
-            </p>
-          </div>
+        <div class="era-grid">
+          <article class="era-card">
+            <div>
+              <div class="era-year mono">2014 &ndash; 2018</div>
+              <h3 class="era-metric">1 Client to 10 Institutional Mandates</h3>
+              <p>
+                Built from a single operating client in 2014 to ten active equity-backed clients
+                carrying multi-hundred-million-dollar acquisition budgets—forging conservative
+                underwriting math across multiple basins and operating companies.
+              </p>
+            </div>
+          </article>
+
+          <article class="era-card accent-sage">
+            <div>
+              <div class="era-year mono">2021</div>
+              <h3 class="era-metric">Digital Redesign &amp; 200+ Helix Subscribers</h3>
+              <p>
+                A digital redesign expanded advisory reach beyond large private-equity buyers. The
+                initial Helix platform grew past 200 subscribers evaluating smaller ~$10,000 regional
+                wells near Oklahoma—hands-on &ldquo;wrench&rdquo; opportunities at local scale.
+              </p>
+            </div>
+          </article>
+
+          <article class="era-card accent-brass">
+            <div>
+              <div class="era-year mono">2022 &ndash; 2024</div>
+              <h3 class="era-metric">Uncovering the 200-Year Backlog</h3>
+              <p>
+                Operating across both extremes exposed the real structural crisis: an estimated
+                200-year backlog of aging, mismanaged wells—too fragmented for institutional
+                spreadsheets, yet far beyond hobby scale.
+              </p>
+            </div>
+          </article>
+
+          <article class="era-card">
+            <div>
+              <div class="era-year mono">2024 &ndash; 2026</div>
+              <h3 class="era-metric">515,000 Mapped Professional Assets</h3>
+              <p>
+                Developed the <a href="gem.html">GEM System</a> around 515,000 individually mapped
+                Lower 48 APIs—production-backed assets in the hundreds-of-thousands range built to
+                match the mindset of professional regional operators and clear banking language.
+              </p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="proof">
+    <!-- Section 2: Underwriting Discipline & Full Principal Recovery (Now With Full Context) -->
+    <section id="recovery" class="section-alt">
       <div class="container">
-        <p class="eyebrow">12+ Years Across Multiple Basins &amp; Operators</p>
-        <h2>Proven Execution &amp; Structuring</h2>
+        <p class="eyebrow">Section 02 &bull; Underwriting Discipline &amp; Proven Benchmarks</p>
+        <h2>Full Principal Recovery Across a 60-Month Conventional Cycle</h2>
         <p class="section-intro">
-          Representative outcomes across multiple basins and operating companies showing how active
-          field execution and clean structural design compress five-year timelines.
+          That twelve-year history rests on one underwriting discipline: model conservatively for real
+          field risk—production settling uncertainty, operating cost pressure, and severe price
+          drawdowns—so invested principal returns cleanly and remaining reserves operate free of
+          capital drag.
         </p>
 
-        <div class="card-grid-2">
-          <article class="card">
-            <p class="card-tag">Active Field &amp; Workover Execution</p>
-            <p class="metric-line">~12-Month Capital Recovery vs. 5-Year Horizon</p>
-            <p>
-              Returned nearly all initial capital in roughly <strong>12 months</strong>—four years
-              ahead of a standard 60-month cycle—through direct operational oversight and targeted
-              field work that generated immediate production response.
+        <div class="recovery-layout">
+          <div class="visual-frame" style="background-color: var(--bg);">
+            <svg viewBox="0 0 380 225" role="img" aria-labelledby="horizon-title horizon-desc">
+              <title id="horizon-title">Full Principal Recovery Horizon</title>
+              <desc id="horizon-desc">
+                A horizon diagram illustrating accelerated principal recovery at roughly 12 months through active workovers and 22 months through conservative buy-and-hold positioning compared to a 60-month conventional commodity cycle.
+              </desc>
+              <rect x="0" y="0" width="380" height="225" fill="#faf9f6" />
+              <rect x="0" y="150" width="380" height="75" fill="#eae7df" />
+              <line x1="24" y1="150" x2="356" y2="150" stroke="#3d5a4c" stroke-width="1.6" />
+              <path
+                d="M 32 188 Q 120 112 216 150 T 346 118"
+                fill="none"
+                stroke="#1d3c45"
+                stroke-width="2.2"
+              />
+              <circle cx="102" cy="150" r="4.8" fill="#3d5a4c" />
+              <text x="102" y="134" text-anchor="middle" font-family="sans-serif" font-size="10.5" font-weight="600" fill="#181816">
+                ~12m Workover
+              </text>
+              <circle cx="176" cy="150" r="4.8" fill="#9a7432" />
+              <text x="176" y="172" text-anchor="middle" font-family="sans-serif" font-size="10.5" font-weight="600" fill="#181816">
+                ~22m Buy &amp; Hold
+              </text>
+              <circle cx="314" cy="150" r="4.8" fill="#1d3c45" />
+              <text x="314" y="134" text-anchor="middle" font-family="sans-serif" font-size="10.5" fill="#57554f">
+                60m Baseline
+              </text>
+            </svg>
+            <p class="visual-caption">
+              <strong>Conservative Math First:</strong> Underwritten to recover 100% of principal
+              within a 60-month cycle—leaving upside from active fieldwork and disciplined positioning
+              to compress payback cleanly without relying on aggressive price forecasts.
             </p>
-          </article>
+          </div>
 
-          <article class="card">
-            <p class="card-tag">Portfolio &amp; Asset Structuring</p>
-            <p class="metric-line">$2M+ Asset to a $1B+ Exit Strategy</p>
-            <p>
-              Deployed <strong>over $2 million</strong> into an immediately paying well to accelerate
-              initial capital recovery while structuring a broader portfolio position that later
-              contributed to an exit exceeding <strong>$1 billion</strong>.
-            </p>
-          </article>
+          <div style="display:flex;flex-direction:column;gap:1.25rem;">
+            <article class="card">
+              <p class="card-tag">Benchmark 01 &bull; Active Field &amp; Workover Execution</p>
+              <p class="metric-line">~12-Month Capital Recovery vs. 60-Month Horizon</p>
+              <p>
+                Returned nearly all initial capital in roughly <strong>12 months</strong>—four years
+                ahead of a standard five-year cycle—through targeted field work and direct operational
+                oversight that generated immediate production response.
+              </p>
+            </article>
+
+            <article class="card">
+              <p class="card-tag">Benchmark 02 &bull; Conservative Buy-and-Hold Positioning</p>
+              <p class="metric-line">~22-Month Recovery &amp; $2M+ Anchor to $1B+ Exit</p>
+              <p>
+                Structured to withstand horizontal settling uncertainty, operating cost sensitivity,
+                and severe commodity drawdowns (such as 2020 price levels). Disciplined buy-and-hold
+                positioning still netted full recovery in roughly <strong>22 months</strong>—deploying
+                over <strong>$2 million</strong> into an immediately paying anchor that contributed to
+                an exit exceeding <strong>$1 billion</strong>.
+              </p>
+            </article>
+          </div>
         </div>
 
         <div class="highlight-strip">
-          <strong>Core Principle:</strong> Knowledge, systems reasoning, and data integrity stand on
-          their own merits—separate from transactional settlement—while clear engineering and honest
-          execution keep operations moving steadily.
+          <strong>Post-Payback Reserve Leverage:</strong> Once initial principal is recovered cleanly,
+          remaining producing reserves and surface infrastructure stand free of capital drag—funding
+          measured reinvestment and long-term operational endurance.
         </div>
       </div>
     </section>
 
-    <!-- Intelligent Repository Index -->
-    <section id="repository">
+    <!-- Section 3: Index 01 Published Commercial Desk (Executive Term Sheet, Zero Sales Speak) -->
+    <section id="mandate">
       <div class="container">
-        <p class="eyebrow">Knowledge, Systems &amp; Data Architecture</p>
-        <h2>Intelligent Repository Index</h2>
+        <div class="mandate-shell">
+          <div class="mandate-header">
+            <div>
+              <p class="eyebrow">Section 03 &bull; Index 01 &bull; Commercial Engagement Structure</p>
+              <h2>Published Terms. Sovereign Execution.</h2>
+              <p>
+                Beachwood Helix Corporation publishes its core commercial structure openly so
+                qualified operators, asset owners, and banking partners can evaluate alignment directly
+                before initiating formal documentation.
+              </p>
+            </div>
+            <a href="agreement.html" class="btn btn-primary">Review Full Agreement</a>
+          </div>
+
+          <div class="card-grid-3">
+            <div class="card">
+              <p class="card-tag">Advisory Commitment &amp; Cadence</p>
+              <p class="term-val mono">$9,000 / 90 days</p>
+              <p>
+                Initial ninety (90) day commitment, followed by <strong>$3,000</strong> billed on a
+                recurring 30-day cycle (cancellable thereafter with written notice).
+              </p>
+            </div>
+
+            <div class="card">
+              <p class="card-tag">Transaction Closing Fee</p>
+              <p class="term-val mono">3.0% of Consideration</p>
+              <p>
+                Payable upon closing of an introduced acquisition, divestiture, financing, or asset
+                investment.
+              </p>
+            </div>
+
+            <div class="card">
+              <p class="card-tag">Post-Term Coverage</p>
+              <p class="term-val mono">12-Month Tail</p>
+              <p>
+                Twelve (12) months post-expiration coverage on introduced counterparties and covered
+                opportunities.
+              </p>
+            </div>
+          </div>
+
+          <div class="lanes-grid">
+            <div class="lane-box">
+              <div>
+                <p class="card-tag">Lane A &bull; Beachwood Helix Corporation</p>
+                <h3>Commercial Advisory &amp; Transaction Mandates</h3>
+                <p>
+                  For professional operators, asset owners, and capital partners structuring
+                  acquisitions, divestitures, or portfolio staging across Lower 48 basins.
+                </p>
+                <ul class="lane-list">
+                  <li><strong>Underwriting:</strong> 60-month Full Principal Recovery &amp; downside stress modeling</li>
+                  <li><strong>Execution:</strong> Off-market sourcing, anchor positioning &amp; exit structuring</li>
+                  <li><strong>Governance:</strong> Formal written agreement &amp; direct counterparty settlement</li>
+                </ul>
+              </div>
+              <a href="agreement.html" class="btn btn-primary" style="text-align:center;">
+                Inspect Formal Engagement Terms
+              </a>
+            </div>
+
+            <div class="lane-box">
+              <div>
+                <p class="card-tag">Lane B &bull; Beachwood Systems (GEM)</p>
+                <h3>Mapped Asset Valuation &amp; API Well-File Review</h3>
+                <p>
+                  For banking and field teams evaluating specific Lower 48 wells through living API
+                  files, first-party equipment quotes, and transparent job economics.
+                </p>
+                <ul class="lane-list">
+                  <li><strong>Mapped Universe:</strong> 515,000+ Lower 48 oil assets graded in a common language</li>
+                  <li><strong>First-Party Scope:</strong> Tangible hardware, pad, crew &amp; iron quotes per API</li>
+                  <li><strong>Capital Discipline:</strong> Probability of success per dollar spent</li>
+                </ul>
+              </div>
+              <a href="gem.html" class="btn btn-secondary" style="text-align:center;">
+                Open Interactive GEM Prototype
+              </a>
+            </div>
+          </div>
+
+          <p class="mandate-footnote">
+            Formal commercial terms, scope schedules, and counterparty settlement instructions are
+            confirmed directly upon mandate review under <strong>Beachwood Helix Corporation</strong>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Four Divisions Index -->
+    <section id="repository" class="section-alt">
+      <div class="container">
+        <p class="eyebrow">Section 04 &bull; Architecture &amp; Four Operating Divisions</p>
+        <h2>Beachwood Helix Corporation Index</h2>
         <p class="section-intro">
-          An organized index of the four divisions under <strong>Beachwood Helix Corporation</strong>,
-          mapping core research domains, physical systems, and open knowledge threads.
+          Capital discipline anchors research, edge instrumentation, and generational field literacy
+          across four coordinated divisions.
         </p>
 
         <div class="repo-grid">
@@ -569,15 +1016,18 @@
               <p class="card-tag">Index 01 &bull; Corporate &amp; Capital Logic</p>
               <h3>Beachwood Helix Corporation</h3>
               <p>
-                Governance architecture, backward-integrated asset valuation frameworks, and
-                multi-basin acquisition and divestiture methodology.
+                Commercial mandates, backward-integrated asset valuation frameworks, and multi-basin
+                acquisition and divestiture methodology.
               </p>
+              <ul class="repo-index-list">
+                <li><strong>Valuation Models:</strong> Full principal recovery &amp; multi-tier reserve pricing</li>
+                <li><strong>Deal Architecture:</strong> Off-market structuring &amp; portfolio staging</li>
+                <li><strong>Public Commentary:</strong> <em>Energy For Everyone</em> (~2,000 global subscribers)</li>
+              </ul>
             </div>
-            <ul class="repo-index-list">
-              <li><strong>Valuation Models:</strong> Full principal recovery &amp; multi-tier reserve pricing</li>
-              <li><strong>Deal Architecture:</strong> Off-market structuring &amp; portfolio staging</li>
-              <li><strong>Public Commentary:</strong> <em>Energy For Everyone</em> series &amp; M&amp;A notes</li>
-            </ul>
+            <div class="repo-link-row">
+              <a href="agreement.html">Review Commercial Terms &amp; Settlement &rarr;</a>
+            </div>
           </article>
 
           <article class="repo-card">
@@ -586,33 +1036,36 @@
               <h3>Beachwood Research Lab</h3>
               <p>
                 Technical monographs and formal models exploring physics-informed computation,
-                lattice structures, and deterministic reasoning.
+                lattice structures, and verifiable data lineage.
               </p>
+              <ul class="repo-index-list">
+                <li><strong>Monograph Series:</strong> Quantum Helix Research technical papers (through Paper 010)</li>
+                <li><strong>Lattice &amp; Field Models:</strong> Kagome geometry, boundary containment &amp; noise control</li>
+                <li><strong>Deterministic Logic:</strong> Spiking neural networks &amp; verifiable data lineage</li>
+              </ul>
             </div>
-            <ul class="repo-index-list">
-              <li><strong>Monograph Series:</strong> Quantum Helix Research technical papers (through Paper 010)</li>
-              <li><strong>Lattice &amp; Field Models:</strong> Kagome geometry, boundary containment &amp; noise control</li>
-              <li><strong>Deterministic Logic:</strong> Spiking neural networks &amp; verifiable data lineage</li>
-            </ul>
+            <div class="repo-link-row">
+              <a href="gem.html#architecture">Inspect Research Integration &rarr;</a>
+            </div>
           </article>
 
           <article class="repo-card">
             <div>
-              <p class="card-tag">Index 03 &bull; Edge &amp; Hardware Systems</p>
+              <p class="card-tag">Index 03 &bull; Mapped Assets &amp; Edge Systems</p>
               <h3>Beachwood Systems</h3>
               <p>
-                Hardware-in-the-loop telemetry, C++20 deterministic runtimes, and distributed
-                micro-utility control architectures.
+                Home to the 515,000-asset Lower 48 GEM framework, living API well files, and the
+                C++20 deterministic telemetry and micro-utility roadmap.
               </p>
+              <ul class="repo-index-list">
+                <li><strong>Platform Architecture:</strong> <a href="gem.html">Gamified Energy Machine (GEM)</a> &amp; GEM Console2028</li>
+                <li><strong>Transparent Economics:</strong> First-party quote verification &amp; living API well files</li>
+                <li><strong>Runtime &amp; Loops:</strong> Zero-allocation C++20 edge control &amp; thermofluidic balance</li>
+              </ul>
             </div>
-            <ul class="repo-index-list">
-              <li><strong>Platform Architecture:</strong> <a href="gem.html">Gamified Energy Machine (GEM)</a> &amp; GEM Console2028</li>
-              <li><strong>Runtime &amp; Telemetry:</strong> Zero-allocation C++20 edge control &amp; sensor fusion</li>
-              <li><strong>Thermofluidic Loops:</strong> Subsurface heat recovery &amp; local grid balance</li>
-            </ul>
-            <p style="margin-top: 1rem; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 0.86rem;">
-              <a href="gem.html"><strong>Explore the Interactive GEM System &rarr;</strong></a>
-            </p>
+            <div class="repo-link-row">
+              <a href="gem.html">Explore the Interactive GEM System &rarr;</a>
+            </div>
           </article>
 
           <article class="repo-card">
@@ -620,64 +1073,64 @@
               <p class="card-tag">Index 04 &bull; Foundational Ecosystem</p>
               <h3>Beachwood Foundational Ecosystem</h3>
               <p>
-                Practical community infrastructure, energy literacy, and non-digital and
-                tech-forward learning environments.
+                Practical community resilience, generational field knowledge transfer, and digital
+                and non-digital energy learning environments.
               </p>
+              <ul class="repo-index-list">
+                <li><strong>Modular Field Horizons:</strong> Modular Field Pads &amp; on-location Energy Libraries</li>
+                <li><strong>Workstations &amp; Literacy:</strong> Operational workstations transferring hands-on field craft</li>
+                <li><strong>Educational Artifacts:</strong> Astaria bilingual scroll &amp; classroom literacy materials</li>
+              </ul>
             </div>
-            <ul class="repo-index-list">
-              <li><strong>Local Energy &amp; Resilience:</strong> Decentralized micro-utility field concepts</li>
-              <li><strong>Workstations &amp; Libraries:</strong> Tech-forward operational workstations &amp; Energy Library</li>
-              <li><strong>Educational Artifacts:</strong> Astaria bilingual scroll &amp; classroom literacy materials</li>
-            </ul>
+            <div class="repo-link-row">
+              <a href="gem.html#roadmap">View Ecosystem Horizon &rarr;</a>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Direct Email & Pre-Call Note Dispatch -->
+    <!-- Section 5: Institutional Mandate Brief Desk -->
     <section id="contact">
       <div class="container">
         <div class="intake-panel">
-          <p class="eyebrow">Direct Correspondence</p>
-          <h2>Write Directly to Joshua Alan Robbins</h2>
+          <p class="eyebrow">Section 05 &bull; Institutional Correspondence &bull; Mandate Desk</p>
+          <h2>Transmit a Mandate Brief or Technical Inquiry</h2>
           <p class="section-intro">
-            Send a note or pre-call summary directly to
+            Send an asset summary, basin focus, or capital structuring note directly to
             <a href="mailto:joshua@beachwoodquantum.com">joshua@beachwoodquantum.com</a>.
-            Draft your message below to open your email client with everything pre-filled.
+            Completing the fields below prepares a structured email in your mail client.
           </p>
 
           <form id="bw-direct-email-form" novalidate>
             <div class="intake-grid">
               <div class="field">
-                <label for="sender-name">Your Name</label>
-                <input id="sender-name" name="senderName" type="text" required placeholder="Full name" />
+                <label for="sender-name">Name &amp; Organization</label>
+                <input id="sender-name" name="senderName" type="text" required placeholder="Full name / Company or Fund" />
               </div>
               <div class="field">
-                <label for="sender-topic">Subject / Focus</label>
+                <label for="sender-topic">Mandate or Inquiry Focus</label>
                 <select id="sender-topic" name="topic" required>
-                  <option value="">Select topic</option>
-                  <option value="Energy Mandate / Asset Discussion">Energy Mandate / Asset Discussion</option>
-                  <option value="Research &amp; Systems Collaboration">Research &amp; Systems Collaboration</option>
-                  <option value="Foundational Ecosystem / Education">Foundational Ecosystem / Education</option>
-                  <option value="General Correspondence">General Correspondence</option>
+                  <option value="">Select focus</option>
+                  <option value="Commercial Advisory / Mandate Execution">Commercial Advisory / Mandate Execution</option>
+                  <option value="Asset Acquisition, Divestiture or Valuation">Asset Acquisition, Divestiture or Valuation</option>
+                  <option value="GEM System / Mapped Lower 48 APIs">GEM System / Mapped Lower 48 APIs</option>
+                  <option value="Research, Systems or Ecosystem Collaboration">Research, Systems or Ecosystem Collaboration</option>
                 </select>
               </div>
             </div>
 
             <div class="field">
-              <label for="sender-message">Message</label>
-              <textarea id="sender-message" name="message" required placeholder="Share your context, basin or technical focus, and what you would like to discuss."></textarea>
+              <label for="sender-message">Brief Summary</label>
+              <textarea id="sender-message" name="message" required placeholder="Outline basin or asset scope, current operational status, and underwriting objectives."></textarea>
             </div>
 
             <div class="hero-actions" style="margin-top: 1.1rem;">
               <button type="submit" class="btn btn-primary">
-                Compose Email to joshua@beachwoodquantum.com
+                Prepare Mandate Correspondence
               </button>
-              <a
-                href="mailto:joshua@beachwoodquantum.com?subject=Beachwood%20Quantum%20Inquiry"
-                class="btn btn-secondary"
-              >
-                Open Blank Email
+              <a href="agreement.html" class="btn btn-secondary">
+                Review Published Terms
               </a>
             </div>
 
@@ -692,7 +1145,7 @@
     <div class="container footer-inner">
       <div>
         <p><strong>Beachwood Quantum</strong> &mdash; Beachwood Helix Corporation</p>
-        <p>Principal: Joshua Alan Robbins &bull; Annapolis, Maryland</p>
+        <p>Annapolis, Maryland &bull; Energy Capital, Systems &amp; Research</p>
       </div>
       <div>
         <p>
@@ -701,7 +1154,7 @@
         </p>
         <p>
           <a href="gem.html">GEM System</a> &bull;
-          <a href="agreement.html">Engagement Terms &amp; Settlement</a>
+          <a href="agreement.html">Commercial Terms &amp; Settlement</a>
         </p>
       </div>
     </div>
@@ -722,14 +1175,14 @@
 
         if (!name || !topic || !message) {
           statusEl.textContent =
-            "Enter your name, topic, and message before composing your email.";
+            "Enter your name/organization, mandate focus, and brief summary before preparing correspondence.";
           return;
         }
 
-        const subject = encodeURIComponent("Beachwood Quantum | " + topic + " — " + name);
+        const subject = encodeURIComponent("Beachwood Helix | " + topic + " — " + name);
         const body = encodeURIComponent(
-          "From: " + name +
-          "\nTopic: " + topic +
+          "Sender / Organization: " + name +
+          "\nFocus: " + topic +
           "\n\n" + message
         );
 
@@ -737,7 +1190,7 @@
           "mailto:joshua@beachwoodquantum.com?subject=" + subject + "&body=" + body;
 
         statusEl.textContent =
-          "Prepared email to joshua@beachwoodquantum.com. Launching your mail client...";
+          "Prepared structured correspondence for Beachwood Helix Corporation. Opening your mail client...";
         window.location.href = mailtoUrl;
       });
     })();

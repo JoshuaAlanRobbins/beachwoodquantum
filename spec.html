@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Open Field Specification &amp; Two-Track Equations | Beachwood Quantum</title>
+  <meta
+    name="description"
+    content="Beachwood Quantum open technical specification: Foundational Community Energy charter, Physical & Research Track anisotropic transport equations, Systems & Control Track delay-bounded state equations, and Open Calibration Log."
+  />
+  <style>
+    :root {
+      --bg: #faf9f6;
+      --surface: #f2f0ea;
+      --surface-alt: #eae7df;
+      --text: #181816;
+      --muted: #57554f;
+      --border: #dad6cc;
+      --accent: #1d3c45;
+      --accent-hover: #142b32;
+      --sage: #3d5a4c;
+      --brass: #9a7432;
+      --plate-bg: #13181c;
+      --plate-bar: #182026;
+      --plate-border: #2b343b;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: "Georgia", "Times New Roman", serif;
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+    }
+
+    .sans {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section[id] {
+      scroll-margin-top: 88px;
+    }
+
+    /* Sticky Header */
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background-color: rgba(250, 249, 246, 0.96);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .header-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand-title {
+      display: block;
+      font-size: 1.12rem;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-sub {
+      display: block;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.84rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      transition: color 0.15s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* Monograph Hero */
+    .spec-hero {
+      padding: 3.5rem 0 2.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin: 0 0 0.75rem 0;
+    }
+
+    h1 {
+      font-size: 2.15rem;
+      font-weight: normal;
+      line-height: 1.2;
+      margin: 0 0 0.9rem 0;
+      letter-spacing: -0.015em;
+      max-width: 28ch;
+    }
+
+    h2 {
+      font-size: 1.58rem;
+      font-weight: normal;
+      line-height: 1.26;
+      margin: 0 0 0.75rem 0;
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: normal;
+      line-height: 1.35;
+      margin: 0 0 0.45rem 0;
+    }
+
+    .lead {
+      font-size: 1.03rem;
+      color: var(--muted);
+      max-width: 68ch;
+      margin: 0 0 1.85rem 0;
+    }
+
+    /* Metadata Summary Strip */
+    .meta-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .meta-cell {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.95rem 1.05rem;
+    }
+
+    .meta-label {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.69rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 0.25rem 0;
+    }
+
+    .meta-val {
+      font-size: 0.96rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin: 0;
+      line-height: 1.35;
+    }
+
+    /* Two-Track Vector Schematic Plate */
+    .schematic-plate {
+      margin: 0;
+      background-color: var(--plate-bg);
+      border: 1px solid var(--plate-border);
+      overflow: hidden;
+    }
+
+    .schematic-plate svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .schematic-caption {
+      padding: 0.95rem 1.3rem;
+      background-color: var(--plate-bar);
+      border-top: 1px solid var(--plate-border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.55rem 1.5rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.81rem;
+      color: #b7c0c7;
+      line-height: 1.52;
+    }
+
+    .schematic-caption strong {
+      color: #f4f1ea;
+    }
+
+    .schematic-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #cfa75f;
+      white-space: nowrap;
+    }
+
+    /* Sections */
+    .spec-section {
+      padding: 3.35rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .spec-section.alt {
+      background-color: var(--surface);
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 68ch;
+      margin: 0 0 1.85rem 0;
+    }
+
+    /* Three-Column Ground Layer Cards */
+    .card-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 1.85rem;
+    }
+
+    .card-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      padding: 1.45rem 1.35rem;
+    }
+
+    .spec-section.alt .card {
+      background-color: var(--bg);
+    }
+
+    .card.sage {
+      border-top-color: var(--sage);
+    }
+
+    .card.brass {
+      border-top-color: var(--brass);
+    }
+
+    .card-tag {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin: 0 0 0.45rem 0;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 0.93rem;
+      color: var(--muted);
+      line-height: 1.62;
+    }
+
+    /* Mathematical Display Blocks */
+    .equation-sheet {
+      background-color: #ffffff;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 1.55rem 1.75rem;
+      margin: 0 0 1.5rem 0;
+    }
+
+    .equation-sheet.sage-edge {
+      border-left-color: var(--sage);
+    }
+
+    .equation-sheet.brass-edge {
+      border-left-color: var(--brass);
+    }
+
+    .eq-label {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.71rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 0.75rem 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .eq-display {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 1.32rem;
+      color: var(--text);
+      line-height: 1.55;
+      padding: 0.35rem 0;
+      overflow-x: auto;
+    }
+
+    .eq-display .vec {
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .eq-display .sym {
+      font-style: italic;
+    }
+
+    .eq-display sub,
+    .eq-display sup {
+      font-size: 0.68em;
+      line-height: 0;
+      font-style: normal;
+      font-weight: normal;
+    }
+
+    .eq-display .eq-sep {
+      display: inline-block;
+      width: 2.2rem;
+    }
+
+    .eq-derived {
+      margin-top: 0.95rem;
+      padding-top: 0.85rem;
+      border-top: 1px dashed var(--border);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .eq-derived-math {
+      display: block;
+      margin: 0.4rem 0 0.45rem 0;
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 1.12rem;
+      color: var(--accent);
+    }
+
+    /* Variable & Parameter Tables */
+    .spec-table-wrap {
+      overflow-x: auto;
+      background-color: #ffffff;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    table.spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.85rem;
+    }
+
+    table.spec-table th {
+      text-align: left;
+      padding: 0.75rem 1rem;
+      background-color: var(--surface);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    table.spec-table td {
+      padding: 0.82rem 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    table.spec-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .sym-col {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 0.98rem;
+      white-space: nowrap;
+      color: var(--accent);
+    }
+
+    .spec-list {
+      margin: 0.5rem 0 0 0;
+      padding-left: 1.15rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.86rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .spec-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .spec-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .spec-list strong {
+      color: var(--text);
+    }
+
+    /* Status Badges for Calibration Log */
+    .cal-status {
+      display: inline-block;
+      padding: 0.18rem 0.5rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.71rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      background-color: var(--surface);
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .cal-status.pending {
+      border-color: #d3c29c;
+      background-color: #f8f3e6;
+      color: #7c5c24;
+    }
+
+    .cal-status.baseline {
+      border-color: #b7c8bf;
+      background-color: #eef4f0;
+      color: var(--sage);
+    }
+
+    /* Actions Strip */
+    .actions-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.84rem;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: 0.03em;
+      padding: 0.76rem 1.28rem;
+      text-decoration: none;
+      border: 1px solid var(--accent);
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+      border-color: var(--accent-hover);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background-color: var(--bg);
+      color: var(--accent);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--surface-alt);
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background-color: var(--surface);
+      padding: 2.25rem 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.25rem;
+    }
+
+    .footer-inner p {
+      margin: 0.2rem 0;
+    }
+
+    @media (max-width: 860px) {
+      .meta-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .card-grid-3,
+      .card-grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 1.82rem;
+      }
+
+      .eq-display {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .meta-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .equation-sheet {
+        padding: 1.25rem 1.15rem;
+      }
+    }
+
+    /* Clean Technical Print / PDF Export */
+    @media print {
+      body {
+        background-color: #ffffff;
+        color: #000000;
+        line-height: 1.5;
+      }
+
+      .site-header,
+      .actions-row,
+      .site-footer {
+        display: none !important;
+      }
+
+      .spec-section {
+        padding: 1.5rem 0;
+        break-inside: avoid;
+      }
+
+      .spec-section.alt {
+        background-color: #ffffff;
+      }
+
+      .schematic-plate {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-title">Beachwood Quantum</span>
+        <span class="brand-sub">Beachwood Helix Corporation</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="index.html">Overview</a>
+        <a href="gem.html">GEM System</a>
+        <a href="#charter">Charter</a>
+        <a href="#physical">Physical Track</a>
+        <a href="#systems">Systems Track</a>
+        <a href="#calibration">Calibration Log</a>
+        <a href="agreement.html">Commercial Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero & Two-Track Vector Schematic Plate -->
+    <section class="spec-hero">
+      <div class="container">
+        <p class="eyebrow">Index 02 &times; Index 03 &times; Index 04 &bull; Open Technical Specification</p>
+        <h1>Foundational Community Energy &amp; Two-Track Field Equations</h1>
+        <p class="lead">
+          Strictly what can be tested, computed, or built&mdash;pairing local community energy
+          conservation with verifiable physical transport equations, delay-bounded discrete control
+          loops, and an open hardware calibration log.
+        </p>
+
+        <div class="meta-strip" aria-label="Specification Metadata">
+          <div class="meta-cell">
+            <p class="meta-label">Document Revision</p>
+            <p class="meta-val mono">SPEC-01 &middot; Rev 1.0</p>
+          </div>
+          <div class="meta-cell">
+            <p class="meta-label">Ground Layer</p>
+            <p class="meta-val">Local Balance First</p>
+          </div>
+          <div class="meta-cell">
+            <p class="meta-label">Physical Track</p>
+            <p class="meta-val">Kagome (CsV<sub>3</sub>Sb<sub>5</sub>)</p>
+          </div>
+          <div class="meta-cell">
+            <p class="meta-label">Systems Track</p>
+            <p class="meta-val">C++20 State &amp; Delay</p>
+          </div>
+        </div>
+
+        <!-- Clean Vector Two-Track Mathematical Architecture Plate -->
+        <figure class="schematic-plate" aria-label="Beachwood Quantum Two-Track Mathematical Architecture Schematic">
+          <svg viewBox="0 0 960 356" role="img" aria-labelledby="plate-title plate-desc">
+            <title id="plate-title">Beachwood Quantum Two-Track Mathematical Architecture</title>
+            <desc id="plate-desc">
+              A two-panel technical schematic. Left panel depicts the Physical and Research Track with an exact z=4 Kagome lattice geometry, anisotropic directional energy flux arrows along preferred low-resistance axes, and the field transport equation. Right panel depicts the Systems and Control Track with a three-node local micro-utility balance diagram and a discrete-time state waveform compared against a pipeline-delayed observation waveform annotated with delay tau_k.
+            </desc>
+
+            <defs>
+              <marker id="arrow-brass" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#cfa75f" />
+              </marker>
+              <marker id="arrow-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
+                <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#7fb5be" />
+              </marker>
+              <marker id="arrow-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                <path d="M 0 2 L 8 5 L 0 8 z" fill="#8fa3ad" />
+              </marker>
+            </defs>
+
+            <!-- Background -->
+            <rect x="0" y="0" width="960" height="356" fill="#13181c" />
+
+            <!-- Subtle technical margin border -->
+            <rect x="14" y="14" width="932" height="328" fill="none" stroke="#243038" stroke-width="1" />
+
+            <!-- Center vertical divider -->
+            <line x1="480" y1="24" x2="480" y2="118" stroke="#2b3840" stroke-width="1" stroke-dasharray="4 4" />
+            <line x1="480" y1="238" x2="480" y2="332" stroke="#2b3840" stroke-width="1" stroke-dasharray="4 4" />
+            <text
+              x="480"
+              y="178"
+              text-anchor="middle"
+              dominant-baseline="middle"
+              transform="rotate(-90 480 178)"
+              font-family="ui-monospace, monospace"
+              font-size="8.5"
+              letter-spacing="1.8"
+              fill="#cfa75f"
+            >CALIBRATION AXIS</text>
+
+            <!-- ========================================================= -->
+            <!-- LEFT PANEL: TRACK 01 — PHYSICAL & RESEARCH                -->
+            <!-- ========================================================= -->
+            <text x="34" y="39" font-family="ui-monospace, monospace" font-size="10" font-weight="700" letter-spacing="1.6" fill="#7fb5be">TRACK 01 &middot; PHYSICAL &amp; RESEARCH</text>
+            <text x="34" y="55" font-family="-apple-system, sans-serif" font-size="11" fill="#9fb0b9">Anisotropic Kagome Lattice (z = 4, CsV&#x2083;Sb&#x2085;) &amp; Directional Flux</text>
+
+            <!-- True Kagome Lattice Geometry (z = 4 corner-sharing triangles) -->
+            <g stroke="#2f4954" stroke-width="1.25">
+              <!-- Horizontal parallel lines (0 deg) -->
+              <line x1="88" y1="142" x2="386" y2="142" />
+              <line x1="88" y1="221.6" x2="386" y2="221.6" />
+              <!-- +60 deg family -->
+              <line x1="145" y1="102.2" x2="258" y2="298" />
+              <line x1="214" y1="84" x2="338" y2="298" />
+              <!-- -60 deg family -->
+              <line x1="145" y1="261.4" x2="258" y2="66" />
+              <line x1="214" y1="279.6" x2="338" y2="66" />
+            </g>
+
+            <!-- Subtle highlight of central hexagonal cavity & surrounding triangles -->
+            <polygon
+              points="283,181.8 260,221.6 214,221.6 191,181.8 214,142 260,142"
+              fill="rgba(127, 181, 190, 0.06)"
+              stroke="#5c8a94"
+              stroke-width="1.4"
+            />
+            <!-- Six corner-sharing Kagome triangles -->
+            <g fill="rgba(207, 167, 95, 0.08)" stroke="#4d6e78" stroke-width="1.1">
+              <polygon points="283,181.8 260,221.6 306,221.6" />
+              <polygon points="260,221.6 214,221.6 237,261.4" />
+              <polygon points="214,221.6 191,181.8 168,221.6" />
+              <polygon points="191,181.8 214,142 168,142" />
+              <polygon points="214,142 260,142 237,102.2" />
+              <polygon points="260,142 283,181.8 306,142" />
+            </g>
+
+            <!-- Preferred low-resistance directional flux pathways (Brass) -->
+            <line x1="102" y1="142" x2="368" y2="142" stroke="#cfa75f" stroke-width="2.2" marker-end="url(#arrow-brass)" />
+            <line x1="102" y1="221.6" x2="368" y2="221.6" stroke="#cfa75f" stroke-width="2.2" marker-end="url(#arrow-brass)" />
+            <line x1="205" y1="181.8" x2="269" y2="181.8" stroke="#7fb5be" stroke-width="1.4" stroke-dasharray="3 3" marker-end="url(#arrow-teal)" />
+
+            <!-- Lattice Nodes (z = 4 coordination) -->
+            <g fill="#13181c" stroke="#cfa75f" stroke-width="1.6">
+              <circle cx="168" cy="142" r="3.6" />
+              <circle cx="214" cy="142" r="4" />
+              <circle cx="260" cy="142" r="4" />
+              <circle cx="306" cy="142" r="3.6" />
+              <circle cx="191" cy="181.8" r="4" />
+              <circle cx="283" cy="181.8" r="4" />
+              <circle cx="168" cy="221.6" r="3.6" />
+              <circle cx="214" cy="221.6" r="4" />
+              <circle cx="260" cy="221.6" r="4" />
+              <circle cx="306" cy="221.6" r="3.6" />
+              <circle cx="237" cy="102.2" r="3.6" />
+              <circle cx="237" cy="261.4" r="3.6" />
+            </g>
+
+            <!-- Annotations on Physical Panel -->
+            <text x="318" y="131" font-family="ui-monospace, monospace" font-size="9" fill="#cfa75f">J_phys (preferred axis)</text>
+            <text x="318" y="238" font-family="ui-monospace, monospace" font-size="9" fill="#9fb0b9">&sigma;_eff(r) &middot; E_drive</text>
+            <text x="92" y="133" font-family="ui-monospace, monospace" font-size="8.5" fill="#7fb5be">z = 4</text>
+            <text x="92" y="242" font-family="ui-monospace, monospace" font-size="8.5" fill="#9fb0b9">&minus; &gamma;_loss(r) damping</text>
+
+            <!-- Clean Equation Readout Strip (Left Bottom) -->
+            <rect x="34" y="290" width="414" height="36" fill="#182026" stroke="#2b3840" stroke-width="1" />
+            <text x="241" y="312.5" text-anchor="middle" font-family="Georgia, serif" font-size="12.5" fill="#f4f1ea">
+              J<tspan font-size="8.5" dy="3">phys</tspan><tspan dy="-3">(r, t) = </tspan>
+              <tspan fill="#cfa75f">&sigma;</tspan><tspan font-size="8.5" dy="3" fill="#cfa75f">eff</tspan><tspan dy="-3">(r) &middot; E</tspan><tspan font-size="8.5" dy="3">drive</tspan><tspan dy="-3">(r, t) &minus; </tspan>
+              <tspan fill="#7fb5be">&gamma;</tspan><tspan font-size="8.5" dy="3" fill="#7fb5be">loss</tspan><tspan dy="-3">(r) &middot; J</tspan><tspan font-size="8.5" dy="3">phys</tspan><tspan dy="-3">(r, t)</tspan>
+            </text>
+
+            <!-- ========================================================= -->
+            <!-- RIGHT PANEL: TRACK 02 — SYSTEMS & CONTROL                 -->
+            <!-- ========================================================= -->
+            <text x="512" y="39" font-family="ui-monospace, monospace" font-size="10" font-weight="700" letter-spacing="1.6" fill="#cfa75f">TRACK 02 &middot; SYSTEMS &amp; CONTROL</text>
+            <text x="512" y="55" font-family="-apple-system, sans-serif" font-size="11" fill="#9fb0b9">Local Micro-Utility Balance &amp; Delay-Bounded Telemetry</text>
+
+            <!-- Top Sub-diagram: Local Balance Topology -->
+            <rect x="512" y="72" width="414" height="82" fill="#182026" stroke="#2b3840" stroke-width="1" />
+            <text x="524" y="88" font-family="ui-monospace, monospace" font-size="8.5" letter-spacing="0.8" fill="#8fa3ad">LOCAL NODE CONSERVATION &amp; C++20 DISPATCH (u_k)</text>
+
+            <!-- Nodes: GEN -> STORAGE -> LOAD -->
+            <rect x="526" y="102" width="92" height="36" fill="#13181c" stroke="#5c8a94" stroke-width="1.2" />
+            <text x="572" y="118" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" font-weight="700" fill="#f4f1ea">GENERATION</text>
+            <text x="572" y="130" text-anchor="middle" font-family="ui-monospace, monospace" font-size="8" fill="#7fb5be">P_gen(k)</text>
+
+            <rect x="673" y="102" width="92" height="36" fill="#13181c" stroke="#cfa75f" stroke-width="1.2" />
+            <text x="719" y="118" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" font-weight="700" fill="#f4f1ea">STORAGE</text>
+            <text x="719" y="130" text-anchor="middle" font-family="ui-monospace, monospace" font-size="8" fill="#cfa75f">SOC x_k</text>
+
+            <rect x="820" y="102" width="92" height="36" fill="#13181c" stroke="#6f9c85" stroke-width="1.2" />
+            <text x="866" y="118" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" font-weight="700" fill="#f4f1ea">LOCAL LOAD</text>
+            <text x="866" y="130" text-anchor="middle" font-family="ui-monospace, monospace" font-size="8" fill="#8fc2a8">P_draw(k)</text>
+
+            <!-- Topology flow arrows -->
+            <line x1="618" y1="120" x2="669" y2="120" stroke="#7fb5be" stroke-width="1.5" marker-end="url(#arrow-teal)" />
+            <line x1="765" y1="120" x2="816" y2="120" stroke="#cfa75f" stroke-width="1.5" marker-end="url(#arrow-brass)" />
+
+            <!-- Bottom Sub-diagram: State x_k vs Delayed Telemetry y_k -->
+            <rect x="512" y="166" width="414" height="112" fill="#182026" stroke="#2b3840" stroke-width="1" />
+            <text x="524" y="182" font-family="ui-monospace, monospace" font-size="8.5" letter-spacing="0.8" fill="#8fa3ad">STATE x_k VS. DELAYED OBSERVATION y_k = C_d x_(k&minus;&tau;_k) + v_k</text>
+
+            <!-- Stability bound rails -->
+            <line x1="528" y1="198" x2="910" y2="198" stroke="#3c4c56" stroke-width="1" stroke-dasharray="3 3" />
+            <line x1="528" y1="258" x2="910" y2="258" stroke="#3c4c56" stroke-width="1" stroke-dasharray="3 3" />
+            <text x="908" y="194" text-anchor="end" font-family="ui-monospace, monospace" font-size="7.5" fill="#6f8490">BOUND MAX</text>
+            <text x="908" y="269" text-anchor="end" font-family="ui-monospace, monospace" font-size="7.5" fill="#6f8490">BOUND MIN</text>
+
+            <!-- True physical/system state curve x_k (teal) -->
+            <path
+              d="M 532 238 C 562 238, 578 205, 610 205 C 642 205, 662 246, 696 246 C 730 246, 748 210, 782 210 C 816 210, 838 232, 874 226 L 906 222"
+              fill="none"
+              stroke="#7fb5be"
+              stroke-width="2"
+            />
+
+            <!-- Delayed telemetry curve y_k shifted right by tau_k (brass) -->
+            <path
+              d="M 562 240 C 592 240, 608 207, 640 207 C 672 207, 692 248, 726 248 C 760 248, 778 212, 812 212 C 846 212, 868 234, 904 228"
+              fill="none"
+              stroke="#cfa75f"
+              stroke-width="1.8"
+              stroke-dasharray="5 3"
+            />
+
+            <!-- Explicit Pipeline Delay Bracket tau_k between peaks (x=610 to x=640) -->
+            <line x1="610" y1="194" x2="610" y2="214" stroke="#7fb5be" stroke-width="1" />
+            <line x1="640" y1="194" x2="640" y2="214" stroke="#cfa75f" stroke-width="1" />
+            <line x1="612" y1="196" x2="638" y2="196" stroke="#f4f1ea" stroke-width="1.1" />
+            <text x="625" y="191" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="10.5" fill="#f4f1ea">&tau;<tspan font-size="7.5" dy="2">k</tspan></text>
+
+            <!-- Legend inside plot -->
+            <line x1="532" y1="268" x2="550" y2="268" stroke="#7fb5be" stroke-width="2" />
+            <text x="556" y="271" font-family="ui-monospace, monospace" font-size="8" fill="#9fb0b9">x_k (state)</text>
+            <line x1="628" y1="268" x2="646" y2="268" stroke="#cfa75f" stroke-width="1.8" stroke-dasharray="4 2" />
+            <text x="652" y="271" font-family="ui-monospace, monospace" font-size="8" fill="#cfa75f">y_k (delayed telemetry)</text>
+
+            <!-- Clean Equation Readout Strip (Right Bottom) -->
+            <rect x="512" y="290" width="414" height="36" fill="#182026" stroke="#2b3840" stroke-width="1" />
+            <text x="719" y="312.5" text-anchor="middle" font-family="Georgia, serif" font-size="12.2" fill="#f4f1ea">
+              x<tspan font-size="8.5" dy="3">k+1</tspan><tspan dy="-3"> = A</tspan><tspan font-size="8.5" dy="3">d</tspan><tspan dy="-3">x</tspan><tspan font-size="8.5" dy="3">k</tspan><tspan dy="-3"> + B</tspan><tspan font-size="8.5" dy="3">d</tspan><tspan dy="-3">u</tspan><tspan font-size="8.5" dy="3">k</tspan><tspan dy="-3"> + w</tspan><tspan font-size="8.5" dy="3">k</tspan>
+              <tspan dy="-3" dx="12" fill="#cfa75f">y</tspan><tspan font-size="8.5" dy="3" fill="#cfa75f">k</tspan><tspan dy="-3" fill="#cfa75f"> = C</tspan><tspan font-size="8.5" dy="3" fill="#cfa75f">d</tspan><tspan dy="-3" fill="#cfa75f">x</tspan><tspan font-size="8.5" dy="3" fill="#cfa75f">k&minus;&tau;k</tspan><tspan dy="-3" fill="#cfa75f"> + v</tspan><tspan font-size="8.5" dy="3" fill="#cfa75f">k</tspan>
+            </text>
+          </svg>
+          <figcaption class="schematic-caption">
+            <span>
+              <strong>Two-Track Mathematical Architecture:</strong> Coupling anisotropic physical
+              transport (Track 01) with deterministic discrete state estimation and explicit
+              telemetry lag tracking (Track 02) on local community micro-utilities.
+            </span>
+            <span class="schematic-tag mono">VERIFIED VECTOR PLATE &middot; SPEC-01</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Section 01: Charter & Scope — Foundational Community Energy -->
+    <section id="charter" class="spec-section alt">
+      <div class="container">
+        <p class="eyebrow">Section 01 &bull; Charter &amp; Scope &bull; The Ground Layer</p>
+        <h2>Foundational Community Energy</h2>
+        <p class="section-intro">
+          Community energy only works if the physics, economics, and operational rules are legible
+          at the local level rather than locked behind utility-scale complexity. Beachwood Quantum
+          publishes open technical specifications so local operators and engineers can test,
+          replicate, and improve micro-utility infrastructure directly.
+        </p>
+
+        <div class="card-grid-3">
+          <article class="card">
+            <p class="card-tag">Principle 01 &bull; Conservation</p>
+            <h3>Local Balance First</h3>
+            <p>
+              Every community node or micro-utility operates around conservation and local load
+              matching&mdash;generation, storage, and draw must close locally before relying on
+              external transfer.
+            </p>
+          </article>
+
+          <article class="card sage">
+            <p class="card-tag">Principle 02 &bull; Physical Work</p>
+            <h3>Decoupled Value</h3>
+            <p>
+              Value comes from usable energy and real physical work delivered to the community,
+              not speculative layers or administrative overhead.
+            </p>
+          </article>
+
+          <article class="card brass">
+            <p class="card-tag">Principle 03 &bull; Replicability</p>
+            <h3>Open Field Specs</h3>
+            <p>
+              Publish clear parameters&mdash;node capacity, bus voltage/frequency tolerances, loss
+              budgets, and failure modes&mdash;so local operators and engineers can test, replicate,
+              and improve them directly.
+            </p>
+          </article>
+        </div>
+
+        <div class="spec-table-wrap" aria-label="Open Community Node Parameter Schema">
+          <table class="spec-table">
+            <thead>
+              <tr>
+                <th>Field Parameter</th>
+                <th>Operational Rule</th>
+                <th>Published Specification Target</th>
+                <th>Verification Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Node Capacity &amp; Closure</strong></td>
+                <td>Local generation + storage discharge must satisfy draw + losses prior to external import.</td>
+                <td class="mono">P<sub>gen</sub> + P<sub>stor</sub> &minus; P<sub>draw</sub> &minus; P<sub>loss</sub> = 0</td>
+                <td><span class="cal-status baseline">Schema Locked</span></td>
+              </tr>
+              <tr>
+                <td><strong>Bus Voltage &amp; Frequency</strong></td>
+                <td>Hard envelope limits enforced at the local bus before dispatch or islanding triggers.</td>
+                <td class="mono">Site-rated V<sub>nom</sub> &plusmn; &Delta;V, f<sub>nom</sub> &plusmn; &Delta;f</td>
+                <td><span class="cal-status pending">Per Hardware Pad</span></td>
+              </tr>
+              <tr>
+                <td><strong>Measured Loss Budget</strong></td>
+                <td>Conversion, line, and thermal dissipation measured empirically rather than assumed away.</td>
+                <td class="mono">&eta;<sub>net</sub> = P<sub>delivered</sub> / P<sub>source</sub></td>
+                <td><span class="cal-status pending">Pending Metering</span></td>
+              </tr>
+              <tr>
+                <td><strong>Defined Failure Modes</strong></td>
+                <td>Deterministic priority shedding, safe islanding, and watchdog timeout behavior.</td>
+                <td class="mono">Fault matrix + &tau;<sub>max</sub> trip guard</td>
+                <td><span class="cal-status baseline">Invariant Defined</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 02: Physical Field Model -->
+    <section id="physical" class="spec-section">
+      <div class="container">
+        <p class="eyebrow">Section 02 &bull; Physical &amp; Research Track</p>
+        <h2>Physical Field Model: Anisotropic Transport &amp; Loss</h2>
+        <p class="section-intro">
+          For lattice and transport research&mdash;such as anisotropic Kagome structures like
+          <strong>CsV<sub>3</sub>Sb<sub>5</sub></strong> and directional energy routing&mdash;the
+          field model is framed around measurable directional flux, anisotropic conductivity, and
+          real spatial damping.
+        </p>
+
+        <div class="equation-sheet">
+          <div class="eq-label">
+            <span>Physical Transport &amp; Damping Balance</span>
+            <span class="mono">EQ-P1</span>
+          </div>
+          <div class="eq-display" aria-label="J sub phys of r, t equals sigma sub eff of r dot E sub drive of r, t minus gamma sub loss of r dot J sub phys of r, t">
+            <span class="vec">J</span><sub>phys</sub>(<span class="vec">r</span>, <span class="sym">t</span>)
+            = <span class="vec">&sigma;</span><sub>eff</sub>(<span class="vec">r</span>) &middot;
+            <span class="vec">E</span><sub>drive</sub>(<span class="vec">r</span>, <span class="sym">t</span>)
+            &minus; <span class="vec">&gamma;</span><sub>loss</sub>(<span class="vec">r</span>) &middot;
+            <span class="vec">J</span><sub>phys</sub>(<span class="vec">r</span>, <span class="sym">t</span>)
+          </div>
+          <div class="eq-derived">
+            <strong>Dimensional &amp; Explicit Steady-State Form:</strong>
+            Because <span class="mono">J<sub>phys</sub></span> appears on both sides without an
+            explicit time derivative, <span class="mono">&gamma;<sub>loss</sub>(r)</span> acts as a
+            dimensionless spatial damping / impedance tensor. Solving algebraically yields the
+            directly testable steady-state response:
+            <span class="eq-derived-math">
+              <span class="vec">J</span><sub>phys</sub>(<span class="vec">r</span>, <span class="sym">t</span>)
+              = (<span class="vec">I</span> + <span class="vec">&gamma;</span><sub>loss</sub>(<span class="vec">r</span>))<sup>&minus;1</sup>
+              <span class="vec">&sigma;</span><sub>eff</sub>(<span class="vec">r</span>) &middot;
+              <span class="vec">E</span><sub>drive</sub>(<span class="vec">r</span>, <span class="sym">t</span>)
+            </span>
+            When transient relaxation timescales are measured directly in seconds (s<sup>&minus;1</sup>
+            scattering rates), the damping term pairs with an explicit relaxation operator
+            <span class="mono">&tau;<sub>rel</sub> &part;J<sub>phys</sub>/&part;t</span> to preserve
+            dimensional homogeneity.
+          </div>
+        </div>
+
+        <div class="spec-table-wrap" aria-label="Physical Field Model Symbol Definitions">
+          <table class="spec-table">
+            <thead>
+              <tr>
+                <th>Symbol</th>
+                <th>Quantity</th>
+                <th>Physical Interpretation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="sym-col"><strong>J</strong><sub>phys</sub>(<strong>r</strong>, <em>t</em>)</td>
+                <td>Local Physical Flux Density</td>
+                <td>Charge, heat, or energy flow density measured at spatial coordinate <strong>r</strong> and time <em>t</em>.</td>
+              </tr>
+              <tr>
+                <td class="sym-col"><strong>&sigma;</strong><sub>eff</sub>(<strong>r</strong>)</td>
+                <td>Effective Anisotropic Transport Tensor</td>
+                <td>Captures preferred low-resistance pathways versus high-resistance or blocked directions across the lattice or physical geometry.</td>
+              </tr>
+              <tr>
+                <td class="sym-col"><strong>E</strong><sub>drive</sub>(<strong>r</strong>, <em>t</em>)</td>
+                <td>Applied Driving Gradient</td>
+                <td>External or boundary-applied driving potential, thermal gradient, or field excitation.</td>
+              </tr>
+              <tr>
+                <td class="sym-col"><strong>&gamma;</strong><sub>loss</sub>(<strong>r</strong>)</td>
+                <td>Spatial Damping / Scattering Tensor</td>
+                <td>Dimensionless dissipation factor (or rate-normalized impedance) capturing real physical loss that must be measured rather than assumed away.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card-grid-2">
+          <article class="card">
+            <p class="card-tag">Model Assumptions</p>
+            <h3>Explicit Validity Regime</h3>
+            <ul class="spec-list">
+              <li><strong>Anisotropic Geometry:</strong> Preferred transport axes exist in the underlying structure (e.g., <em>z</em> = 4 Kagome networks such as CsV<sub>3</sub>Sb<sub>5</sub> or engineered routing lattices).</li>
+              <li><strong>Bounded Linear Drive:</strong> Effective conductivity tensor <strong>&sigma;</strong><sub>eff</sub>(<strong>r</strong>) holds within bounded excitation amplitudes before nonlinear saturation.</li>
+              <li><strong>Non-Zero Dissipation:</strong> Spatial loss <strong>&gamma;</strong><sub>loss</sub>(<strong>r</strong>) is strictly non-negative and empirically bounded across temperature and load regimes.</li>
+            </ul>
+          </article>
+
+          <article class="card sage">
+            <p class="card-tag">Validation &amp; Falsification</p>
+            <h3>Measurements Required to Test or Disprove</h3>
+            <ul class="spec-list">
+              <li><strong>Directional Flux Mapping:</strong> Measure orthogonal flux ratios under controlled drive sweeps to verify whether off-axis suppression exceeds sensor noise.</li>
+              <li><strong>Empirical Damping Extraction:</strong> Quantify thermal and resistive losses directly to fit (<strong>I</strong> + <strong>&gamma;</strong><sub>loss</sub>)<sup>&minus;1</sup> rather than treating loss as a free residual.</li>
+              <li><strong>Falsification Condition:</strong> Model requires nonlinear or time-derivative revision if measured flux diverges from linear proportionality across the operating drive band.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 03: Systems Field Model -->
+    <section id="systems" class="spec-section alt">
+      <div class="container">
+        <p class="eyebrow">Section 03 &bull; Systems &amp; Control Track</p>
+        <h2>Systems Field Model: Delay-Bounded State &amp; Dispatch</h2>
+        <p class="section-intro">
+          For runtime control, telemetry, and community microgrid orchestration&mdash;C++20
+          zero-allocation control loops, high-rate sensor ingest, and edge dispatch&mdash;the
+          systems layer tracks discrete state evolution with explicit pipeline latency and bounded
+          noise.
+        </p>
+
+        <div class="equation-sheet brass-edge">
+          <div class="eq-label">
+            <span>Discrete-Time State Evolution &amp; Delayed Observation</span>
+            <span class="mono">EQ-S1 / EQ-S2</span>
+          </div>
+          <div class="eq-display" aria-label="x sub k plus 1 equals A sub d x sub k plus B sub d u sub k plus w sub k; y sub k equals C sub d x sub k minus tau sub k plus v sub k">
+            <span class="vec">x</span><sub>k+1</sub> =
+            <span class="vec">A</span><sub>d</sub><span class="vec">x</span><sub>k</sub> +
+            <span class="vec">B</span><sub>d</sub><span class="vec">u</span><sub>k</sub> +
+            <span class="vec">w</span><sub>k</sub>,
+            <span class="eq-sep"></span>
+            <span class="vec">y</span><sub>k</sub> =
+            <span class="vec">C</span><sub>d</sub><span class="vec">x</span><sub>k&minus;&tau;<sub>k</sub></sub> +
+            <span class="vec">v</span><sub>k</sub>
+          </div>
+          <div class="eq-derived">
+            <strong>Stability Requirement:</strong> Control feedback
+            <span class="mono">u<sub>k</sub> = &pi;(y<sub>k</sub>, &tau;<sub>k</sub>)</span> must
+            remain bounded across the worst-case measured pipeline delay
+            <span class="mono">0 &le; &tau;<sub>k</sub> &le; &tau;<sub>max</sub></span>. Exceeding
+            <span class="mono">&tau;<sub>max</sub></span> transitions the node automatically into a
+            pre-defined deterministic fault or local islanding state.
+          </div>
+        </div>
+
+        <div class="spec-table-wrap" aria-label="Systems Field Model Symbol Definitions">
+          <table class="spec-table">
+            <thead>
+              <tr>
+                <th>Symbol</th>
+                <th>Component</th>
+                <th>Operational Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="sym-col"><strong>x</strong><sub>k</sub></td>
+                <td>System State Vector</td>
+                <td>Physical state at discrete step <em>k</em> (bus voltage/frequency, storage state-of-charge, thermal or mechanical state).</td>
+              </tr>
+              <tr>
+                <td class="sym-col"><strong>u</strong><sub>k</sub></td>
+                <td>Control Action Vector</td>
+                <td>Deterministic dispatch, load shedding, breaker switching, or field actuation command issued at step <em>k</em>.</td>
+              </tr>
+              <tr>
+                <td class="sym-col"><strong>A</strong><sub>d</sub>, <strong>B</strong><sub>d</sub>, <strong>C</strong><sub>d</sub></td>
+                <td>Discretized Hardware Operators</td>
+                <td>State transition, input coupling, and observation matrices calibrated directly against physical hardware response.</td>
+              </tr>
+              <tr>
+                <td class="sym-col">&tau;<sub>k</sub></td>
+                <td>Telemetry &amp; Pipeline Delay</td>
+                <td>Explicitly timestamped ingest and compute lag at step <em>k</em> so control stability accounts for real measurement delay.</td>
+              </tr>
+              <tr>
+                <td class="sym-col"><strong>w</strong><sub>k</sub>, <strong>v</strong><sub>k</sub></td>
+                <td>Process &amp; Sensor Noise</td>
+                <td>Unmodeled field disturbances (<strong>w</strong><sub>k</sub>) and measurement noise (<strong>v</strong><sub>k</sub>) bounded via empirical calibration.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card-grid-2">
+          <article class="card brass">
+            <p class="card-tag">Telemetry Constraints</p>
+            <h3>Pipeline &amp; Runtime Discipline</h3>
+            <ul class="spec-list">
+              <li><strong>Explicit Lag Accounting:</strong> Every telemetry packet carries a monotonic hardware capture timestamp so <em>&tau;</em><sub>k</sub> is measured per loop tick, never ignored.</li>
+              <li><strong>Deterministic Loop Budget:</strong> Zero-allocation C++20 runtime paths prevent garbage-collection jitter or unbounded latency spikes during switching events.</li>
+              <li><strong>Noise Floor Calibration:</strong> Sensor covariance bounds on <strong>v</strong><sub>k</sub> are profiled per transducer before enabling closed-loop actuation.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <p class="card-tag">Mandatory Runtime Invariants</p>
+            <h3>Conservation, Bounds &amp; Fault States</h3>
+            <ul class="spec-list">
+              <li><strong>Conservation Invariant:</strong> Metered energy balance across generation, storage delta, load draw, and loss must close within tolerance every cycle.</li>
+              <li><strong>State &amp; Actuator Bounds:</strong> Hard safety clamps enforce bus voltage, frequency, thermal ceiling, and storage SOC limits independent of high-level optimization.</li>
+              <li><strong>Deterministic Fault States:</strong> Packet loss, sensor disagreement, or <em>&tau;</em><sub>k</sub> &gt; <em>&tau;</em><sub>max</sub> triggers explicit load-shedding priority and safe islanding.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 04: Open Calibration Log -->
+    <section id="calibration" class="spec-section">
+      <div class="container">
+        <p class="eyebrow">Section 04 &bull; Empirical Record</p>
+        <h2>Open Calibration Log</h2>
+        <p class="section-intro">
+          A running engineering record of where the equations meet real hardware, laboratory
+          measurements, or field data&mdash;and explicitly where assumptions must be tightened or
+          corrected. No simulated results are logged as field truth.
+        </p>
+
+        <div class="spec-table-wrap" aria-label="Open Calibration Log Entries">
+          <table class="spec-table">
+            <thead>
+              <tr>
+                <th>Log ID</th>
+                <th>Track</th>
+                <th>System / Subject</th>
+                <th>Baseline Record &amp; Open Corrections</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="mono" style="white-space:nowrap;"><strong>CAL-000</strong></td>
+                <td>Ground Layer</td>
+                <td>Micro-Utility Conservation &amp; Bus Spec</td>
+                <td>Published local-balance closure rule and node parameter schema. Awaiting first instrumented field pad dataset to populate empirical loss budget <em>&eta;</em><sub>net</sub>.</td>
+                <td><span class="cal-status baseline">Baseline Published</span></td>
+              </tr>
+              <tr>
+                <td class="mono" style="white-space:nowrap;"><strong>CAL-001</strong></td>
+                <td>Physical Track</td>
+                <td>Anisotropic Kagome Transport (CsV<sub>3</sub>Sb<sub>5</sub> / <em>z</em> = 4)</td>
+                <td>Verified steady-state dimensionless damping inversion (<strong>I</strong> + <strong>&gamma;</strong><sub>loss</sub>)<sup>&minus;1</sup> for dimensional consistency; documented transient relaxation form (&tau;<sub>rel</sub> &part;<strong>J</strong>/&part;<em>t</em>). Pending directional flux &amp; loss bench measurements.</td>
+                <td><span class="cal-status pending">Pre-Hardware</span></td>
+              </tr>
+              <tr>
+                <td class="mono" style="white-space:nowrap;"><strong>CAL-002</strong></td>
+                <td>Systems Track</td>
+                <td>C++20 State-Space &amp; Delay Loop (<em>&tau;</em><sub>k</sub>)</td>
+                <td>Specified discrete operators (<strong>A</strong><sub>d</sub>, <strong>B</strong><sub>d</sub>, <strong>C</strong><sub>d</sub>), lag tracking <em>&tau;</em><sub>k</sub>, and mandatory invariants (conservation, hard bounds, <em>&tau;</em><sub>max</sub> watchdog). Pending hardware-in-the-loop (HIL) jitter &amp; latency profile.</td>
+                <td><span class="cal-status pending">Pre-Hardware</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="actions-row">
+          <button type="button" class="btn btn-primary" onclick="window.print()">
+            Print / Save Technical PDF
+          </button>
+          <a href="gem.html" class="btn btn-secondary">
+            Explore Interactive GEM System
+          </a>
+          <a href="index.html#contact" class="btn btn-secondary">
+            Submit Technical or Calibration Correspondence
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p><strong>Beachwood Quantum</strong> &mdash; Beachwood Helix Corporation</p>
+        <p>Annapolis, Maryland &bull; Open Field Specification &amp; Two-Track Equations</p>
+      </div>
+      <div>
+        <p>
+          <a href="mailto:joshua@beachwoodquantum.com">joshua@beachwoodquantum.com</a>
+          &bull; 667-493-5648
+        </p>
+        <p>
+          <a href="index.html">Overview</a> &bull;
+          <a href="gem.html">GEM System</a> &bull;
+          <a href="agreement.html">Commercial Terms</a> &bull;
+          <a
+            href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7005638539967164416"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Energy For Everyone (LinkedIn)</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

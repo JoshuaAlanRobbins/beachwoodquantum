@@ -188,6 +188,7 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       font-size: 0.85rem;
       font-weight: 600;
+      line-height: 1.2;
       letter-spacing: 0.03em;
       padding: 0.78rem 1.35rem;
       text-decoration: none;
@@ -402,6 +403,11 @@
     }
 
     /* Section 3: Index 01 Published Commercial Desk */
+    section[id],
+    .engagement-card[id] {
+      scroll-margin-top: 92px;
+    }
+
     .mandate-shell {
       background-color: var(--bg);
       border: 1px solid var(--border);
@@ -426,60 +432,235 @@
     .mandate-header p {
       margin: 0;
       color: var(--muted);
-      max-width: 60ch;
+      max-width: 64ch;
       font-size: 0.97rem;
     }
 
-    .term-val {
-      font-size: 1.38rem;
-      color: var(--accent);
-      margin: 0 0 0.35rem 0;
-      line-height: 1.25;
-    }
-
-    .lanes-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.35rem;
-      margin-top: 1.65rem;
-      padding-top: 1.65rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .lane-box {
+    .mandate-anchor-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.55rem 1.15rem;
+      margin: -0.65rem 0 1.5rem 0;
+      padding: 0.7rem 0.95rem;
       background-color: var(--surface);
       border: 1px solid var(--border);
-      padding: 1.5rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .mandate-anchor-label {
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .mandate-anchor-bar a {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .mandate-anchor-bar a:hover {
+      text-decoration: underline;
+    }
+
+    .engagement-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .engagement-card {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      padding: 1.55rem 1.45rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 1.15rem;
+      gap: 1.25rem;
+      transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .lane-box h3 {
-      margin-bottom: 0.45rem;
+    .engagement-card.accent-sage {
+      border-top-color: var(--sage);
     }
 
-    .lane-box p {
-      margin: 0 0 0.75rem 0;
-      font-size: 0.93rem;
+    .engagement-card.accent-brass {
+      border-top-color: var(--brass);
+    }
+
+    .engagement-card:target,
+    .engagement-card.is-targeted {
+      background-color: #ffffff;
+      border-color: var(--accent);
+      box-shadow: 0 8px 24px rgba(24, 24, 22, 0.07);
+    }
+
+    .engagement-card h3 {
+      font-size: 1.18rem;
+      margin: 0 0 0.55rem 0;
+      line-height: 1.3;
+    }
+
+    .term-val {
+      font-size: 1.42rem;
+      color: var(--accent);
+      margin: 0 0 0.6rem 0;
+      line-height: 1.2;
+      font-weight: 600;
+    }
+
+    .engagement-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem 0.85rem;
+      padding: 0.55rem 0;
+      margin: 0 0 0.9rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.75rem;
+      color: var(--text);
+    }
+
+    .engagement-meta span {
       color: var(--muted);
+    }
+
+    .engagement-meta strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .engagement-progression {
+      display: inline-block;
+      margin: 0 0 0.7rem 0;
+      padding: 0.22rem 0.5rem;
+      background-color: var(--surface-alt);
+      border: 1px solid var(--border);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.71rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .engagement-card.accent-sage .engagement-progression {
+      color: var(--sage);
+    }
+
+    .engagement-card.accent-brass .engagement-progression {
+      color: #7c5c24;
+    }
+
+    .engagement-desc {
+      margin: 0 0 0.95rem 0;
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.62;
+    }
+
+    .engagement-credit {
+      margin: 0.9rem 0 0 0;
+      padding: 0.6rem 0.75rem;
+      background-color: var(--bg);
+      border-left: 2px solid var(--sage);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.79rem;
+      color: var(--text);
+      line-height: 1.48;
     }
 
     .lane-list {
       margin: 0;
-      padding-left: 1.1rem;
+      padding-left: 1.05rem;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       color: var(--muted);
+      line-height: 1.55;
     }
 
     .lane-list li {
-      margin-bottom: 0.42rem;
+      margin-bottom: 0.48rem;
+    }
+
+    .lane-list li:last-child {
+      margin-bottom: 0;
     }
 
     .lane-list strong {
       color: var(--text);
+    }
+
+    .engagement-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      padding-top: 0.95rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .engagement-actions .btn {
+      width: 100%;
+      text-align: center;
+      padding: 0.74rem 1rem;
+    }
+
+    .engagement-sublink {
+      display: block;
+      text-align: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      padding-top: 0.15rem;
+    }
+
+    .engagement-sublink:hover {
+      text-decoration: underline;
+    }
+
+    .engagement-subnote {
+      display: block;
+      text-align: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.78rem;
+      color: var(--muted);
+      padding-top: 0.15rem;
+    }
+
+    .systems-companion {
+      margin-top: 1.55rem;
+      padding: 1.25rem 1.45rem;
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem 1.5rem;
+    }
+
+    .systems-companion-copy {
+      max-width: 62ch;
+    }
+
+    .systems-companion-copy h3 {
+      margin: 0 0 0.25rem 0;
+      font-size: 1.08rem;
+    }
+
+    .systems-companion-copy p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.55;
     }
 
     .mandate-footnote {
@@ -487,10 +668,80 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       font-size: 0.8rem;
       color: var(--muted);
+      line-height: 1.58;
+    }
+
+    /* Section 4: Intelligent Repository Index & Present-to-Future Visual Bridge */
+    .bridge-plate {
+      margin: 0 0 2rem 0;
+      background-color: #13181c;
+      border: 1px solid #2b343b;
+      overflow: hidden;
+    }
+
+    .bridge-plate-media {
+      position: relative;
+      overflow: hidden;
+      background-color: #0e1215;
+    }
+
+    .bridge-plate-media img {
+      width: 100%;
+      max-height: 390px;
+      object-fit: cover;
+      object-position: center 45%;
+      display: block;
+    }
+
+    .bridge-plate-caption {
+      padding: 1rem 1.35rem;
+      background-color: #182026;
+      border-top: 1px solid #2b343b;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.65rem 1.5rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.82rem;
+      color: #b7c0c7;
       line-height: 1.55;
     }
 
-    /* Section 4: Intelligent Repository Index */
+    .bridge-plate-caption strong {
+      color: #f4f1ea;
+      font-weight: 600;
+    }
+
+    .bridge-plate-text {
+      max-width: 70ch;
+    }
+
+    .bridge-plate-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #cfa75f;
+      white-space: nowrap;
+    }
+
+    .bridge-plate-meta a {
+      color: #d6e4e8;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: none;
+      font-weight: 600;
+    }
+
+    .bridge-plate-meta a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
     .repo-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -544,6 +795,27 @@
       padding: 2.1rem;
     }
 
+    .engagement-context-bar {
+      display: none;
+      margin: 0 0 1.25rem 0;
+      padding: 0.9rem 1.1rem;
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .engagement-context-bar.is-visible {
+      display: block;
+    }
+
+    .engagement-context-bar strong {
+      color: var(--text);
+    }
+
     .intake-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -575,7 +847,7 @@
     }
 
     .field textarea {
-      min-height: 90px;
+      min-height: 104px;
       resize: vertical;
     }
 
@@ -613,10 +885,15 @@
       .recovery-layout,
       .card-grid-2,
       .card-grid-3,
-      .lanes-grid,
+      .engagement-grid,
       .repo-grid,
       .intake-grid {
         grid-template-columns: 1fr;
+      }
+
+      .mandate-shell,
+      .intake-panel {
+        padding: 1.45rem;
       }
 
       .era-grid,
@@ -633,6 +910,10 @@
       .era-grid,
       .record-strip {
         grid-template-columns: 1fr;
+      }
+
+      .bridge-plate-meta {
+        white-space: normal;
       }
     }
   </style>
@@ -906,95 +1187,168 @@
       </div>
     </section>
 
-    <!-- Section 3: Index 01 Published Commercial Desk (Executive Term Sheet, Zero Sales Speak) -->
+    <!-- Section 3: Index 01 Published Commercial Engagement Architecture -->
     <section id="mandate">
       <div class="container">
         <div class="mandate-shell">
           <div class="mandate-header">
             <div>
-              <p class="eyebrow">Section 03 &bull; Index 01 &bull; Commercial Engagement Structure</p>
+              <p class="eyebrow">Section 03 &bull; Index 01 &bull; Cumulative Engagement Architecture</p>
               <h2>Published Terms. Sovereign Execution.</h2>
               <p>
-                Beachwood Helix Corporation publishes its core commercial structure openly so
-                qualified operators, asset owners, and banking partners can evaluate alignment directly
-                before initiating formal documentation.
+                Beachwood Helix Corporation publishes a three-stage cumulative engagement
+                progression&mdash;examine the underwriting math on Beachwood&rsquo;s own benchmark
+                deals first, apply that exact lens to a live asset you bring, or retain ongoing
+                multi-basin strategic execution.
               </p>
             </div>
-            <a href="agreement.html" class="btn btn-primary">Review Full Agreement</a>
+            <a href="agreement.html" class="btn btn-secondary">Review Full Agreement</a>
           </div>
 
-          <div class="card-grid-3">
-            <div class="card">
-              <p class="card-tag">Advisory Commitment &amp; Cadence</p>
-              <p class="term-val mono">$9,000 / 90 days</p>
-              <p>
-                Initial ninety (90) day commitment, followed by <strong>$3,000</strong> billed on a
-                recurring 30-day cycle (cancellable thereafter with written notice).
-              </p>
-            </div>
-
-            <div class="card">
-              <p class="card-tag">Transaction Closing Fee</p>
-              <p class="term-val mono">3.0% of Consideration</p>
-              <p>
-                Payable upon closing of an introduced acquisition, divestiture, financing, or asset
-                investment.
-              </p>
-            </div>
-
-            <div class="card">
-              <p class="card-tag">Post-Term Coverage</p>
-              <p class="term-val mono">12-Month Tail</p>
-              <p>
-                Twelve (12) months post-expiration coverage on introduced counterparties and covered
-                opportunities.
-              </p>
-            </div>
+          <div class="mandate-anchor-bar" aria-label="Direct Engagement Links">
+            <span class="mandate-anchor-label">Direct Index:</span>
+            <a href="#briefing" data-jump-engagement="briefing">01 &middot; Deal-Math Briefing ($2,000)</a>
+            <a href="#blueprint" data-jump-engagement="blueprint">02 &middot; Single-Asset Blueprint ($5,000)</a>
+            <a href="#retainer" data-jump-engagement="retainer">03 &middot; Charter Advisory ($9,000 / 90d)</a>
           </div>
 
-          <div class="lanes-grid">
-            <div class="lane-box">
+          <div class="engagement-grid">
+            <!-- Engagement 01: Principal Deal-Math Briefing -->
+            <article id="briefing" class="engagement-card" data-engagement-card="briefing">
               <div>
-                <p class="card-tag">Lane A &bull; Beachwood Helix Corporation</p>
-                <h3>Commercial Advisory &amp; Transaction Mandates</h3>
-                <p>
-                  For professional operators, asset owners, and capital partners structuring
-                  acquisitions, divestitures, or portfolio staging across Lower 48 basins.
+                <p class="card-tag">Engagement 01 &bull; Closed Working Briefing</p>
+                <h3>The Principal Deal-Math Briefing</h3>
+                <p class="term-val mono">$2,000 / seat</p>
+                <span class="engagement-progression">01 &middot; Benchmark Deals</span>
+                <div class="engagement-meta">
+                  <div><span>Date:</span> <strong>Dec 10, 2026</strong></div>
+                  <div><span>Capacity:</span> <strong>10&ndash;12 Seats Max</strong></div>
+                </div>
+                <p class="engagement-desc">
+                  Live working session plus written dossier on Beachwood&rsquo;s actual Lower 48
+                  underwriting benchmarks&mdash;sub-24-month horizontal payback versus 60-month
+                  recovery, PV37 anchoring, and workover cash velocity&mdash;so you see how our
+                  math holds on real deals before putting yours on the table.
                 </p>
                 <ul class="lane-list">
-                  <li><strong>Underwriting:</strong> 60-month Full Principal Recovery &amp; downside stress modeling</li>
-                  <li><strong>Execution:</strong> Off-market sourcing, anchor positioning &amp; exit structuring</li>
-                  <li><strong>Governance:</strong> Formal written agreement &amp; direct counterparty settlement</li>
+                  <li><strong>Deliverables:</strong> Closed live principal session + written benchmark deal dossier</li>
+                  <li><strong>Built For:</strong> Independent operators, family offices &amp; capital allocators evaluating non-op or workover acquisitions</li>
+                  <li><strong>Settlement:</strong> Corporate card, ACH, or wire invoice issued upon seat confirmation</li>
                 </ul>
               </div>
-              <a href="agreement.html" class="btn btn-primary" style="text-align:center;">
-                Inspect Formal Engagement Terms
-              </a>
-            </div>
+              <div class="engagement-actions">
+                <a
+                  href="#contact"
+                  class="btn btn-primary"
+                  data-select-engagement="briefing"
+                >
+                  Reserve Briefing Seat
+                </a>
+                <span class="engagement-subnote">Invoice issued upon seat confirmation</span>
+              </div>
+            </article>
 
-            <div class="lane-box">
+            <!-- Engagement 02: The Single-Asset Strategic Blueprint -->
+            <article id="blueprint" class="engagement-card accent-sage" data-engagement-card="blueprint">
               <div>
-                <p class="card-tag">Lane B &bull; Beachwood Systems (GEM)</p>
-                <h3>Mapped Asset Valuation &amp; API Well-File Review</h3>
-                <p>
-                  For banking and field teams evaluating specific Lower 48 wells through living API
-                  files, first-party equipment quotes, and transparent job economics.
+                <p class="card-tag">Engagement 02 &bull; Bespoke Deal Underwriting</p>
+                <h3>The Single-Asset Strategic Blueprint</h3>
+                <p class="term-val mono">$5,000 fixed</p>
+                <span class="engagement-progression">01 + Your Live Deal</span>
+                <div class="engagement-meta">
+                  <div><span>Turnaround:</span> <strong>48 Hours</strong></div>
+                  <div><span>Commitment:</span> <strong>Zero Tail</strong></div>
+                </div>
+                <p class="engagement-desc">
+                  Everything in Engagement 01, plus a bespoke 48-hour written underwriting and
+                  execution plan built around one specific asset, wellbore package, or thesis you
+                  bring&mdash;complete with PV10&ndash;PV40 sensitivity, Anchor&ndash;Disturbance&ndash;Drift
+                  (ADD) stress-testing, and a 60-minute principal walkthrough so you know whether to
+                  wire capital, re-trade price, or walk away.
                 </p>
                 <ul class="lane-list">
-                  <li><strong>Mapped Universe:</strong> 515,000+ Lower 48 oil assets graded in a common language</li>
-                  <li><strong>First-Party Scope:</strong> Tangible hardware, pad, crew &amp; iron quotes per API</li>
-                  <li><strong>Capital Discipline:</strong> Probability of success per dollar spent</li>
+                  <li><strong>Includes 01:</strong> Full Deal-Math Briefing access &amp; written benchmark dossier</li>
+                  <li><strong>Deliverables:</strong> 48-hour written underwriting &amp; execution plan + 60-minute principal walkthrough</li>
+                  <li><strong>Settlement:</strong> Flat-fee invoice (corporate card, ACH, or wire) issued upon scope confirmation</li>
+                </ul>
+                <p class="engagement-credit">
+                  <strong>100% Fee Credit:</strong> Full $5,000 fee credits toward Charter Strategic
+                  Advisory if retained within 30 days.
+                </p>
+              </div>
+              <div class="engagement-actions">
+                <a
+                  href="#contact"
+                  class="btn btn-primary"
+                  data-select-engagement="blueprint"
+                >
+                  Commission Asset Blueprint
+                </a>
+                <span class="engagement-subnote">Invoice issued upon scope confirmation</span>
+              </div>
+            </article>
+
+            <!-- Engagement 03: Charter Strategic Advisory -->
+            <article id="retainer" class="engagement-card accent-brass" data-engagement-card="retainer">
+              <div>
+                <p class="card-tag">Engagement 03 &bull; Retained Architecture</p>
+                <h3>Charter Strategic Advisory</h3>
+                <p class="term-val mono">$9,000 / 90 days</p>
+                <span class="engagement-progression">02 + Ongoing Execution</span>
+                <div class="engagement-meta">
+                  <div><span>Slots:</span> <strong>2&ndash;3 Active</strong></div>
+                  <div><span>Closing Fee:</span> <strong>3.0%</strong></div>
+                </div>
+                <p class="engagement-desc">
+                  Everything in Engagements 01 and 02, expanded into a retained multi-asset
+                  strategic plan, off-market origination alignment, and ongoing principal
+                  representation across your entire acquisition program under our published
+                  nine-section Fee Agreement.
+                </p>
+                <ul class="lane-list">
+                  <li><strong>Includes 01 &amp; 02:</strong> Benchmark deal math + bespoke asset underwriting across live targets</li>
+                  <li><strong>Ongoing Cadence:</strong> $3,000 / 30 days after initial 90-day commitment (cancellable with written notice)</li>
+                  <li><strong>Transaction Terms:</strong> 3.0% of cash Consideration at Closing with 12-month post-term coverage</li>
                 </ul>
               </div>
-              <a href="gem.html" class="btn btn-secondary" style="text-align:center;">
-                Open Interactive GEM Prototype
-              </a>
+              <div class="engagement-actions">
+                <a href="agreement.html" class="btn btn-primary">
+                  Inspect Formal Agreement
+                </a>
+                <a
+                  href="#contact"
+                  class="engagement-sublink"
+                  data-select-engagement="retainer"
+                >
+                  Inquire on Charter Availability &rarr;
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <div class="systems-companion">
+            <div class="systems-companion-copy">
+              <p class="card-tag" style="margin-bottom:0.3rem;">Beachwood Systems (GEM) &bull; Mapped Asset Valuation</p>
+              <h3>515,000+ Lower 48 API Well Files &amp; First-Party Job Economics</h3>
+              <p>
+                For banking and field teams evaluating specific wells through living API files,
+                tangible hardware, pad, crew, and iron quotes, and probability of success per
+                dollar spent.
+              </p>
             </div>
+            <a href="gem.html" class="btn btn-secondary">
+              Open Interactive GEM Prototype
+            </a>
           </div>
 
           <p class="mandate-footnote">
-            Formal commercial terms, scope schedules, and counterparty settlement instructions are
-            confirmed directly upon mandate review under <strong>Beachwood Helix Corporation</strong>.
+            <em>Energy For Everyone</em> remains 100% free public research. Engagements 01 and 02
+            are standalone underwriting and strategic architecture engagements independent of the
+            Transaction Fee Agreement (<a href="agreement.html">agreement.html</a>, Section 1); the
+            $5,000 Single-Asset Strategic Blueprint fee credits 100% toward the initial 90-day
+            Charter Strategic Advisory commitment when executed within 30 days of delivery. Direct
+            invoice, corporate card, ACH, or domestic wire instructions are issued privately upon
+            confirmation under <strong>The Beachwood Helix Corporation</strong>.
           </p>
         </div>
       </div>
@@ -1009,6 +1363,29 @@
           Capital discipline anchors research, edge instrumentation, and generational field literacy
           across four coordinated divisions.
         </p>
+
+        <figure class="bridge-plate" aria-label="Subsurface Rock to Computational Lattice Visual Bridge">
+          <div class="bridge-plate-media">
+            <img
+              src="assets/subsurface-lattice-bridge.jpg"
+              alt="Fractured subsurface rock formations bridged by golden geometric lattice networks and molecular structures, connecting present-day basin underwriting with frontier physics-informed optimization"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="bridge-plate-caption">
+            <span class="bridge-plate-text">
+              <strong>Present Execution &times; Future Horizon &mdash; Subsurface to Lattice:</strong>
+              Every frontier model inside Beachwood grows directly out of real producing rock and
+              conservative capital recovery&mdash;bridging today&rsquo;s Lower 48 underwriting with
+              lattice optimization, molecular-scale reservoir modeling, and deterministic edge
+              computation.
+            </span>
+            <span class="bridge-plate-meta mono">
+              <span>INDEX 01 &rarr; INDEX 02 &times; 03</span>
+              <a href="gem.html#research">Inspect Research &amp; Horizon &rarr;</a>
+            </span>
+          </figcaption>
+        </figure>
 
         <div class="repo-grid">
           <article class="repo-card">
@@ -1095,42 +1472,58 @@
       <div class="container">
         <div class="intake-panel">
           <p class="eyebrow">Section 05 &bull; Institutional Correspondence &bull; Mandate Desk</p>
-          <h2>Transmit a Mandate Brief or Technical Inquiry</h2>
+          <h2>Initiate an Engagement or Technical Correspondence</h2>
           <p class="section-intro">
-            Send an asset summary, basin focus, or capital structuring note directly to
+            Reserve a seat for the December 10 Deal-Math Briefing, commission a 48-hour
+            Single-Asset Strategic Blueprint, or inquire on Charter Strategic Advisory directly with
             <a href="mailto:joshua@beachwoodquantum.com">joshua@beachwoodquantum.com</a>.
-            Completing the fields below prepares a structured email in your mail client.
+            Completing the fields below prepares a structured correspondence or copies a formatted
+            brief for your mail client.
           </p>
+
+          <div id="bw-engagement-context" class="engagement-context-bar" aria-live="polite"></div>
 
           <form id="bw-direct-email-form" novalidate>
             <div class="intake-grid">
               <div class="field">
                 <label for="sender-name">Name &amp; Organization</label>
-                <input id="sender-name" name="senderName" type="text" required placeholder="Full name / Company or Fund" />
+                <input id="sender-name" name="senderName" type="text" required placeholder="Full name / Company or Family Office" />
               </div>
               <div class="field">
-                <label for="sender-topic">Mandate or Inquiry Focus</label>
+                <label for="sender-contact">Direct Email or Phone (Optional)</label>
+                <input id="sender-contact" name="senderContact" type="text" placeholder="Reply address or direct line for confirmation" />
+              </div>
+              <div class="field">
+                <label for="sender-topic">Engagement or Inquiry Focus</label>
                 <select id="sender-topic" name="topic" required>
-                  <option value="">Select focus</option>
-                  <option value="Commercial Advisory / Mandate Execution">Commercial Advisory / Mandate Execution</option>
-                  <option value="Asset Acquisition, Divestiture or Valuation">Asset Acquisition, Divestiture or Valuation</option>
+                  <option value="">Select engagement or focus</option>
+                  <option value="The Principal Deal-Math Briefing ($2,000/seat — Dec 10, 2026)">01 &middot; The Principal Deal-Math Briefing ($2,000/seat &mdash; Dec 10, 2026)</option>
+                  <option value="The Single-Asset Strategic Blueprint ($5,000 — 48-Hour Plan)">02 &middot; The Single-Asset Strategic Blueprint ($5,000 &mdash; 48-Hour Plan)</option>
+                  <option value="Charter Strategic Advisory ($9,000 / 90 days + 3.0% Closing Fee)">03 &middot; Charter Strategic Advisory ($9,000 / 90 days + 3.0% Closing Fee)</option>
                   <option value="GEM System / Mapped Lower 48 APIs">GEM System / Mapped Lower 48 APIs</option>
                   <option value="Research, Systems or Ecosystem Collaboration">Research, Systems or Ecosystem Collaboration</option>
                 </select>
+              </div>
+              <div class="field">
+                <label id="sender-scope-label" for="sender-scope">Seats, Basin, or Decision Window (Optional)</label>
+                <input id="sender-scope" name="scope" type="text" placeholder="e.g. 2 seats, Permian non-op, Q4 closing deadline" />
               </div>
             </div>
 
             <div class="field">
               <label for="sender-message">Brief Summary</label>
-              <textarea id="sender-message" name="message" required placeholder="Outline basin or asset scope, current operational status, and underwriting objectives."></textarea>
+              <textarea id="sender-message" name="message" required placeholder="Outline your basin or asset scope, current operational status, and underwriting objectives."></textarea>
             </div>
 
             <div class="hero-actions" style="margin-top: 1.1rem;">
               <button type="submit" class="btn btn-primary">
                 Prepare Mandate Correspondence
               </button>
+              <button type="button" id="bw-copy-brief-btn" class="btn btn-secondary">
+                Copy Structured Brief
+              </button>
               <a href="agreement.html" class="btn btn-secondary">
-                Review Published Terms
+                Review Published Agreement
               </a>
             </div>
 
@@ -1164,35 +1557,203 @@
     (function () {
       const form = document.getElementById("bw-direct-email-form");
       const statusEl = document.getElementById("bw-email-status");
+      const nameInput = document.getElementById("sender-name");
+      const contactInput = document.getElementById("sender-contact");
+      const topicSelect = document.getElementById("sender-topic");
+      const scopeInput = document.getElementById("sender-scope");
+      const scopeLabel = document.getElementById("sender-scope-label");
+      const messageInput = document.getElementById("sender-message");
+      const contextBar = document.getElementById("bw-engagement-context");
+      const copyBtn = document.getElementById("bw-copy-brief-btn");
 
-      if (!form || !statusEl) return;
+      if (!form || !statusEl || !topicSelect) return;
 
-      form.addEventListener("submit", function (event) {
-        event.preventDefault();
-        const name = document.getElementById("sender-name").value.trim();
-        const topic = document.getElementById("sender-topic").value;
-        const message = document.getElementById("sender-message").value.trim();
+      const ENGAGEMENTS = {
+        briefing: {
+          optionValue: "The Principal Deal-Math Briefing ($2,000/seat — Dec 10, 2026)",
+          contextHtml:
+            "<strong>Selected: Engagement 01 &mdash; The Principal Deal-Math Briefing</strong> " +
+            "($2,000/seat &bull; December 10, 2026 &bull; 10&ndash;12 seats max). " +
+            "Covers Beachwood&rsquo;s Lower 48 benchmark deals, PV37 anchoring, and workover cash velocity. " +
+            "Confirm seat count and entity below; direct corporate card, ACH, or wire invoice is issued upon seat confirmation.",
+          scopeLabel: "Requested Seats & Entity Type",
+          scopePlaceholder: "e.g. 1 seat (Independent Operator) or 2 seats (Family Office)",
+          messagePlaceholder:
+            "Confirm requested seat count, basin focus (non-op, workover, or operated), and any benchmark payback or deal-structure questions you want covered."
+        },
+        blueprint: {
+          optionValue: "The Single-Asset Strategic Blueprint ($5,000 — 48-Hour Plan)",
+          contextHtml:
+            "<strong>Selected: Engagement 02 &mdash; The Single-Asset Strategic Blueprint</strong> " +
+            "(Engagement 01 + Your Live Deal &bull; $5,000 fixed &bull; 48-hour written underwriting &amp; execution plan + 60-min walkthrough &bull; 100% credits toward Charter Advisory within 30 days). " +
+            "Outline the asset or thesis and decision window below; flat-fee invoice is issued upon scope confirmation.",
+          scopeLabel: "Target Basin & Capital Decision Deadline",
+          scopePlaceholder: "e.g. Anadarko / Permian wellbore package — bid or wire deadline Dec 18",
+          messagePlaceholder:
+            "Summarize the asset, wellbore package, or thesis you are bringing, current reserve case (PV10–PV40 / PV37), and whether you are evaluating a wire, price re-trade, or pass decision."
+        },
+        retainer: {
+          optionValue: "Charter Strategic Advisory ($9,000 / 90 days + 3.0% Closing Fee)",
+          contextHtml:
+            "<strong>Selected: Engagement 03 &mdash; Charter Strategic Advisory</strong> " +
+            "(Engagements 01 &amp; 02 + Ongoing Execution &bull; $9,000 initial 90-day commitment, $3,000/30-day ongoing cadence, 3.0% Closing Fee &bull; 2&ndash;3 active slots). " +
+            "You may also inspect or execute the formal nine-section contract directly on agreement.html.",
+          scopeLabel: "Target Deployment Profile & Horizon",
+          scopePlaceholder: "e.g. Lower 48 conventional/horizontal acquisition program, 12-month horizon",
+          messagePlaceholder:
+            "Outline your acquisition program parameters, preferred Lower 48 basins, operating posture, and desired start timeline for charter advisory alignment."
+        }
+      };
+
+      const HASH_ALIASES = {
+        audit: "blueprint"
+      };
+
+      const DEFAULT_SCOPE_LABEL = "Seats, Basin, or Decision Window (Optional)";
+      const DEFAULT_SCOPE_PLACEHOLDER = "e.g. 2 seats, Permian non-op, Q4 closing deadline";
+      const DEFAULT_MESSAGE_PLACEHOLDER =
+        "Outline your basin or asset scope, current operational status, and underwriting objectives.";
+
+      function findKeyByOptionValue(val) {
+        return Object.keys(ENGAGEMENTS).find((k) => ENGAGEMENTS[k].optionValue === val) || null;
+      }
+
+      function highlightCard(key) {
+        document.querySelectorAll("[data-engagement-card]").forEach((card) => {
+          card.classList.toggle("is-targeted", Boolean(key) && card.getAttribute("data-engagement-card") === key);
+        });
+      }
+
+      function applyEngagementContext(key) {
+        const cfg = key ? ENGAGEMENTS[key] : null;
+        if (cfg) {
+          topicSelect.value = cfg.optionValue;
+          contextBar.innerHTML = cfg.contextHtml;
+          contextBar.classList.add("is-visible");
+          scopeLabel.textContent = cfg.scopeLabel;
+          scopeInput.placeholder = cfg.scopePlaceholder;
+          messageInput.placeholder = cfg.messagePlaceholder;
+          highlightCard(key);
+        } else {
+          contextBar.innerHTML = "";
+          contextBar.classList.remove("is-visible");
+          scopeLabel.textContent = DEFAULT_SCOPE_LABEL;
+          scopeInput.placeholder = DEFAULT_SCOPE_PLACEHOLDER;
+          messageInput.placeholder = DEFAULT_MESSAGE_PLACEHOLDER;
+          highlightCard(null);
+        }
+      }
+
+      function syncFromHash() {
+        const rawHash = window.location.hash.replace(/^#/, "").toLowerCase();
+        const resolvedKey = HASH_ALIASES[rawHash] || rawHash;
+        if (ENGAGEMENTS[resolvedKey]) {
+          applyEngagementContext(resolvedKey);
+          if (HASH_ALIASES[rawHash]) {
+            const targetEl = document.getElementById(resolvedKey);
+            if (targetEl) targetEl.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      }
+
+      document.querySelectorAll("[data-select-engagement]").forEach((trigger) => {
+        trigger.addEventListener("click", function (event) {
+          event.preventDefault();
+          const key = trigger.getAttribute("data-select-engagement");
+          applyEngagementContext(key);
+          const contactSection = document.getElementById("contact");
+          if (contactSection) {
+            contactSection.scrollIntoView({ behavior: "smooth" });
+          }
+          setTimeout(function () {
+            if (nameInput) nameInput.focus({ preventScroll: true });
+          }, 350);
+        });
+      });
+
+      document.querySelectorAll("[data-jump-engagement]").forEach((jumpLink) => {
+        jumpLink.addEventListener("click", function () {
+          const key = jumpLink.getAttribute("data-jump-engagement");
+          applyEngagementContext(key);
+        });
+      });
+
+      topicSelect.addEventListener("change", function () {
+        const matchedKey = findKeyByOptionValue(topicSelect.value);
+        applyEngagementContext(matchedKey);
+      });
+
+      window.addEventListener("hashchange", syncFromHash);
+      syncFromHash();
+
+      function buildPayload() {
+        const name = nameInput.value.trim();
+        const contact = contactInput ? contactInput.value.trim() : "";
+        const topic = topicSelect.value;
+        const scope = scopeInput ? scopeInput.value.trim() : "";
+        const message = messageInput.value.trim();
 
         if (!name || !topic || !message) {
           statusEl.textContent =
-            "Enter your name/organization, mandate focus, and brief summary before preparing correspondence.";
-          return;
+            "Enter your name/organization, engagement focus, and brief summary before preparing correspondence.";
+          return null;
         }
 
-        const subject = encodeURIComponent("Beachwood Helix | " + topic + " — " + name);
-        const body = encodeURIComponent(
-          "Sender / Organization: " + name +
-          "\nFocus: " + topic +
-          "\n\n" + message
-        );
+        const subject = "Beachwood Helix | " + topic + " — " + name;
+        const lines = [
+          "Sender / Organization: " + name,
+          "Engagement / Focus: " + topic
+        ];
+        if (contact) lines.push("Direct Contact: " + contact);
+        if (scope) lines.push(scopeLabel.textContent + ": " + scope);
+        lines.push("", message);
+
+        return { subject: subject, body: lines.join("\n") };
+      }
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const payload = buildPayload();
+        if (!payload) return;
 
         const mailtoUrl =
-          "mailto:joshua@beachwoodquantum.com?subject=" + subject + "&body=" + body;
+          "mailto:joshua@beachwoodquantum.com?subject=" +
+          encodeURIComponent(payload.subject) +
+          "&body=" +
+          encodeURIComponent(payload.body);
 
         statusEl.textContent =
-          "Prepared structured correspondence for Beachwood Helix Corporation. Opening your mail client...";
+          "Prepared structured correspondence for The Beachwood Helix Corporation. Opening your mail client...";
         window.location.href = mailtoUrl;
       });
+
+      if (copyBtn) {
+        copyBtn.addEventListener("click", function () {
+          const payload = buildPayload();
+          if (!payload) return;
+
+          const clipText =
+            "To: joshua@beachwoodquantum.com\n" +
+            "Subject: " + payload.subject + "\n\n" +
+            payload.body;
+
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(clipText).then(
+              function () {
+                statusEl.textContent =
+                  "Copied structured brief and recipient (joshua@beachwoodquantum.com) to your clipboard.";
+              },
+              function () {
+                statusEl.textContent =
+                  "Unable to access clipboard automatically. Click Prepare Mandate Correspondence or email joshua@beachwoodquantum.com directly.";
+              }
+            );
+          } else {
+            statusEl.textContent =
+              "Clipboard API unavailable in this browser. Click Prepare Mandate Correspondence or email joshua@beachwoodquantum.com directly.";
+          }
+        });
+      }
     })();
   </script>
 </body>

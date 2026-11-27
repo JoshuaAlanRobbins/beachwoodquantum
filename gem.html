@@ -1084,6 +1084,81 @@
       color: var(--brass);
     }
 
+    .horizon-figure {
+      margin: 0 0 1.65rem 0;
+      background-color: var(--console-bg);
+      border: 1px solid var(--console-border);
+      overflow: hidden;
+    }
+
+    .horizon-figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .horizon-figcaption {
+      padding: 0.85rem 1.15rem;
+      background-color: var(--console-panel);
+      border-top: 1px solid var(--console-border);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.79rem;
+      color: var(--console-muted);
+      line-height: 1.5;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem 1.25rem;
+    }
+
+    .horizon-figcaption strong {
+      color: var(--console-text);
+    }
+
+    .horizon-fig-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--console-amber);
+    }
+
+    .arch-figure {
+      margin: 1.15rem 0 0 0;
+      background-color: var(--console-bg);
+      border: 1px solid var(--console-border);
+      overflow: hidden;
+    }
+
+    .arch-figure.hidden {
+      display: none;
+    }
+
+    .arch-figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .arch-figure figcaption {
+      padding: 0.7rem 0.9rem;
+      background-color: var(--console-panel);
+      border-top: 1px solid var(--console-border);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.77rem;
+      color: var(--console-muted);
+      line-height: 1.45;
+    }
+
+    .arch-figure figcaption strong {
+      color: var(--console-text);
+    }
+
+    .arch-figure figcaption a {
+      color: var(--console-teal);
+      margin-left: 0.35rem;
+    }
+
     .horizon-grid {
       display: grid;
       grid-template-columns: 1.05fr 1.15fr;
@@ -1691,6 +1766,19 @@
             <p id="arch-repo-note" class="sans" style="font-size:0.86rem;color:var(--accent);">
               <strong>Repository Anchor:</strong> <code>gem.html</code> &rarr; Lower 48 API well-file schema, grading logic, and Console2028 modules.
             </p>
+            <figure id="arch-figure" class="arch-figure hidden">
+              <img
+                src="assets/anadarko-kagome-pilot.jpg"
+                alt="Anadarko Basin Garvin County Oklahoma 5x5 mile pilot subsurface cutaway showing Deese Group, Simpson Group, en echelon fault boundary, and Kagome Lattice (z=4, L(T)) overlay"
+                loading="lazy"
+              />
+              <figcaption>
+                <strong>Study Plate &bull; Garvin County, OK (Anadarko Basin):</strong>
+                Kagome Lattice (<code>z=4, L(T)</code>) boundary containment model mapped across
+                Deese and Simpson intervals.
+                <a href="#horizon">View full study &darr;</a>
+              </figcaption>
+            </figure>
           </div>
           <div class="spec-box">
             <h4>Core Capabilities</h4>
@@ -1746,7 +1834,7 @@
         </div>
 
         <!-- Future Horizon: Beyond Risk Spreadsheets -->
-        <div class="horizon-panel" aria-label="Future Horizon — Field Geology and Conceptual R&D">
+        <div id="horizon" class="horizon-panel" aria-label="Future Horizon — Field Geology and Conceptual R&D">
           <div class="horizon-head">
             <div>
               <p class="card-tag" style="margin-bottom:0.25rem;">Beyond Risk Spreadsheets &bull; Field-Grounded Horizon</p>
@@ -1754,6 +1842,24 @@
             </div>
             <span class="horizon-badge">Idea Phase &bull; Pending Equipment &amp; Field Validation</span>
           </div>
+
+          <figure class="horizon-figure">
+            <img
+              src="assets/anadarko-kagome-pilot.jpg"
+              alt="3D subsurface geological cutaway of Garvin County, Oklahoma (5x5 mile pilot, T4N-5N, R3W-4W) in the Anadarko Basin illustrating 0 to 15,000 ft depth, Deese Group, Simpson Group, an en echelon fault boundary, and a Kagome Lattice (z=4, L(T)) conceptual overlay"
+              loading="lazy"
+            />
+            <figcaption class="horizon-figcaption">
+              <span>
+                <strong>Garvin County, OK &mdash; Anadarko Basin Subsurface &amp; Lattice Study:</strong>
+                5&times;5 mi conceptual pilot (<code>T4N&ndash;5N, R3W&ndash;4W</code>) illustrating
+                0&ndash;15,000 ft stratigraphic relief across the Deese and Simpson groups, en
+                &eacute;chelon fault boundaries, and Beachwood Research Lab&rsquo;s Kagome Lattice
+                (<code>z=4, L(T)</code>) boundary model.
+              </span>
+              <span class="horizon-fig-tag mono">INDEX 02 &times; INDEX 03 STUDY PLATE</span>
+            </figcaption>
+          </figure>
 
           <div class="horizon-grid">
             <div class="horizon-col">
@@ -2408,28 +2514,42 @@
       const archBody = document.getElementById("arch-body");
       const archRepoNote = document.getElementById("arch-repo-note");
       const archSpecs = document.getElementById("arch-specs");
+      const archFigure = document.getElementById("arch-figure");
+
+      function selectArchLayer(layerKey) {
+        const data = LAYERS[layerKey];
+        if (!data) return;
+        archTabs.forEach((t) => {
+          const isMatch = t.getAttribute("data-layer") === layerKey;
+          t.classList.toggle("active", isMatch);
+          t.setAttribute("aria-selected", isMatch ? "true" : "false");
+        });
+
+        archTag.textContent = data.tag;
+        archHeading.textContent = data.heading;
+        archBody.textContent = data.body;
+        const parts = data.repo.split(":");
+        archRepoNote.innerHTML = `<strong>${parts[0]}:</strong> ${parts.slice(1).join(":")}`;
+        archSpecs.innerHTML = data.specs
+          .map(([title, desc]) => `<li><strong>${title}</strong> ${desc}</li>`)
+          .join("");
+
+        if (archFigure) {
+          archFigure.classList.toggle("hidden", layerKey !== "research");
+        }
+      }
 
       archTabs.forEach((tab) => {
         tab.addEventListener("click", function () {
-          const data = LAYERS[tab.getAttribute("data-layer")];
-          if (!data) return;
-          archTabs.forEach((t) => {
-            t.classList.remove("active");
-            t.setAttribute("aria-selected", "false");
-          });
-          tab.classList.add("active");
-          tab.setAttribute("aria-selected", "true");
-
-          archTag.textContent = data.tag;
-          archHeading.textContent = data.heading;
-          archBody.textContent = data.body;
-          const parts = data.repo.split(":");
-          archRepoNote.innerHTML = `<strong>${parts[0]}:</strong> ${parts.slice(1).join(":")}`;
-          archSpecs.innerHTML = data.specs
-            .map(([title, desc]) => `<li><strong>${title}</strong> ${desc}</li>`)
-            .join("");
+          selectArchLayer(tab.getAttribute("data-layer"));
         });
       });
+
+      if (window.location.hash === "#research") {
+        selectArchLayer("research");
+        const archSection = document.getElementById("architecture");
+        if (archSection) archSection.scrollIntoView({ behavior: "smooth" });
+      }
 
       renderBom(ASSETS[currentAssetKey]);
       updateUI();

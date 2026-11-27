@@ -3,18 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Engagement Terms, Onboarding &amp; Settlement | Beachwood Helix Corporation</title>
+  <title>Fee Agreement &amp; Commercial Engagement Terms | The Beachwood Helix Corporation</title>
+  <meta
+    name="description"
+    content="Standard Fee Agreement and commercial engagement terms for The Beachwood Helix Corporation (Beachwood Quantum)."
+  />
   <style>
     :root {
-      --bw-bg: #faf9f6;
-      --bw-surface: #f3f1ec;
-      --bw-surface-alt: #eae7df;
-      --bw-text: #141413;
-      --bw-muted: #5a5955;
-      --bw-border: #dcdad3;
-      --bw-accent: #1b365d;
-      --bw-accent-hover: #132744;
-      --bw-sage: #3d5a4c;
+      --bg: #faf9f6;
+      --surface: #f2f0ea;
+      --surface-alt: #eae7df;
+      --text: #181816;
+      --muted: #57554f;
+      --border: #dad6cc;
+      --accent: #1d3c45;
+      --accent-hover: #142b32;
+      --sage: #3d5a4c;
     }
 
     *,
@@ -23,524 +27,1170 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      background-color: var(--bw-bg);
-      color: var(--bw-text);
+      background-color: var(--bg);
+      color: var(--text);
       font-family: "Georgia", "Times New Roman", serif;
-      line-height: 1.65;
-      padding: 2rem 1.5rem 3.5rem 1.5rem;
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .bw-page {
-      max-width: 840px;
+    a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      color: var(--accent-hover);
+    }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Sticky Header (hidden on print) */
+    .site-header {
+      border-bottom: 1px solid var(--border);
+      background-color: rgba(250, 249, 246, 0.96);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .header-inner {
+      max-width: 900px;
       margin: 0 auto;
-    }
-
-    .bw-topbar {
+      padding: 1rem 1.5rem;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
       flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
       gap: 1rem;
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.85rem;
-      border-bottom: 1px solid var(--bw-border);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 0.85rem;
     }
 
-    .bw-topbar a {
-      color: var(--bw-accent);
+    .brand {
       text-decoration: none;
+      color: var(--text);
     }
 
-    .bw-topbar a:hover {
-      text-decoration: underline;
+    .brand-title {
+      display: block;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
     }
 
-    .bw-doc-header {
-      border-bottom: 1px solid var(--bw-border);
-      padding-bottom: 1.25rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .bw-eyebrow {
+    .brand-sub {
+      display: block;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--bw-muted);
-      margin: 0 0 0.4rem 0;
+      color: var(--muted);
     }
 
-    h1,
-    h2,
-    h3 {
-      font-family: "Georgia", "Times New Roman", serif;
-      font-weight: normal;
-      color: var(--bw-text);
-      margin: 0 0 0.65rem 0;
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.84rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* Document Page Container */
+    .doc-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.75rem 1.5rem 4rem 1.5rem;
+    }
+
+    .doc-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .eyebrow {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin: 0 0 0.5rem 0;
     }
 
     h1 {
-      font-size: 1.8rem;
-      line-height: 1.25;
+      font-size: 2rem;
+      font-weight: normal;
+      line-height: 1.22;
+      margin: 0 0 0.65rem 0;
+      letter-spacing: -0.01em;
     }
 
-    h2 {
-      font-size: 1.25rem;
-      margin-top: 2rem;
-      padding-bottom: 0.4rem;
-      border-bottom: 1px solid var(--bw-border);
+    .doc-subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
     }
 
-    h3 {
-      font-size: 1.05rem;
-    }
-
-    .bw-terms-grid {
+    /* Executive Summary Strip */
+    .summary-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-      margin: 1.25rem 0 1.5rem 0;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-bottom: 2.25rem;
     }
 
-    .bw-term-card {
-      background-color: var(--bw-surface);
-      border: 1px solid var(--bw-border);
-      padding: 1.1rem;
+    .summary-card {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1rem 1.05rem;
     }
 
-    .bw-term-label {
+    .summary-label {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 0.72rem;
+      font-size: 0.69rem;
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--bw-muted);
+      color: var(--muted);
       margin: 0 0 0.3rem 0;
     }
 
-    .bw-term-val {
-      font-size: 1.2rem;
-      color: var(--bw-text);
-      margin: 0 0 0.35rem 0;
+    .summary-val {
+      font-size: 1.12rem;
+      color: var(--accent);
+      margin: 0 0 0.25rem 0;
+      font-weight: 600;
     }
 
-    .bw-term-copy {
-      font-size: 0.88rem;
-      color: var(--bw-muted);
+    .summary-copy {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.77rem;
+      color: var(--muted);
       margin: 0;
-      line-height: 1.5;
+      line-height: 1.45;
     }
 
-    .bw-terms-list {
-      margin: 0.75rem 0 1.5rem 0;
-      padding-left: 1.25rem;
+    /* Formal Legal Document Sheet */
+    .legal-sheet {
+      background-color: #ffffff;
+      border: 1px solid var(--border);
+      padding: 2.75rem 3rem;
+      margin-bottom: 2rem;
     }
 
-    .bw-terms-list li {
-      margin-bottom: 0.7rem;
+    .legal-title-bar {
+      text-align: center;
+      padding-bottom: 1.35rem;
+      margin-bottom: 1.65rem;
+      border-bottom: 2px solid var(--accent);
     }
 
-    .bw-panel {
-      background-color: var(--bw-surface);
-      border: 1px solid var(--bw-border);
-      padding: 1.5rem;
-      margin-top: 1.25rem;
+    .legal-title-bar h2 {
+      font-size: 1.35rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin: 0 0 0.35rem 0;
+      font-weight: normal;
+      border: none;
+      padding: 0;
     }
 
-    .bw-grid {
+    .legal-title-bar p {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .preamble {
+      margin: 0 0 1.6rem 0;
+      font-size: 0.98rem;
+    }
+
+    .fill-blank {
+      display: inline-block;
+      min-width: 110px;
+      border-bottom: 1px solid var(--text);
+      padding: 0 0.25rem;
+      text-align: center;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .fill-blank.wide {
+      min-width: 190px;
+    }
+
+    .clause {
+      margin-bottom: 1.45rem;
+      font-size: 0.96rem;
+    }
+
+    .clause-title {
+      font-weight: bold;
+      color: var(--text);
+    }
+
+    .subclauses {
+      list-style: none;
+      margin: 0.65rem 0 0.25rem 0;
+      padding-left: 1.65rem;
+    }
+
+    .subclauses li {
+      position: relative;
+      margin-bottom: 0.65rem;
+    }
+
+    .sub-marker {
+      position: absolute;
+      left: -1.65rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .roman-list {
+      list-style: none;
+      margin: 0.5rem 0 0.25rem 0;
+      padding-left: 1.85rem;
+    }
+
+    .roman-list li {
+      position: relative;
+      margin-bottom: 0.45rem;
+    }
+
+    .roman-marker {
+      position: absolute;
+      left: -1.85rem;
+      color: var(--text);
+    }
+
+    .caps-notice {
+      font-size: 0.9rem;
+      letter-spacing: 0.01em;
+    }
+
+    /* Witness & Signature Block inside Legal Sheet */
+    .witness-block {
+      margin-top: 2.25rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      break-inside: avoid;
+    }
+
+    .sig-columns {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .sig-party-label {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 1rem 0;
+    }
+
+    .sig-line-row {
+      margin-bottom: 0.9rem;
+      font-size: 0.92rem;
+    }
+
+    .sig-line-label {
+      display: inline-block;
+      width: 78px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .sig-line-val {
+      display: inline-block;
+      width: calc(100% - 86px);
+      border-bottom: 1px solid var(--text);
+      min-height: 1.35rem;
+      vertical-align: bottom;
+      padding: 0 0.2rem;
+    }
+
+    .sig-line-val.script {
+      font-style: italic;
+      font-size: 1.08rem;
+      color: var(--accent);
+    }
+
+    .sheet-footer {
+      margin-top: 2rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.76rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+
+    /* Electronic Execution Panel (Web Chrome) */
+    .exec-panel {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.85rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .exec-panel h2 {
+      font-size: 1.3rem;
+      font-weight: normal;
+      margin: 0 0 0.45rem 0;
+    }
+
+    .exec-intro {
+      margin: 0 0 1.25rem 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1rem;
       margin-bottom: 1rem;
     }
 
-    .bw-field label {
+    .field label {
       display: block;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       font-weight: 600;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--bw-muted);
-      margin-bottom: 0.35rem;
+      color: var(--muted);
+      margin-bottom: 0.32rem;
     }
 
-    .bw-field input {
+    .field input {
       width: 100%;
-      padding: 0.6rem 0.75rem;
-      font-size: 0.95rem;
-      color: var(--bw-text);
-      background-color: var(--bw-bg);
-      border: 1px solid var(--bw-border);
+      padding: 0.62rem 0.75rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.92rem;
+      color: var(--text);
+      background-color: var(--bg);
+      border: 1px solid var(--border);
     }
 
-    .bw-sig-input {
+    .field input.sig-input {
       font-family: "Georgia", "Times New Roman", serif;
       font-style: italic;
-      font-size: 1.15rem;
+      font-size: 1.05rem;
     }
 
-    .bw-consent {
+    .consent-row {
       display: flex;
-      gap: 0.6rem;
+      gap: 0.65rem;
       align-items: flex-start;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 0.88rem;
-      color: var(--bw-text);
-      margin: 1rem 0 1.25rem 0;
+      font-size: 0.85rem;
+      color: var(--text);
+      margin: 1.1rem 0 1.35rem 0;
     }
 
-    .bw-consent input {
+    .consent-row input {
       margin-top: 0.25rem;
       flex-shrink: 0;
     }
 
-    .bw-actions {
+    .action-row {
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
       align-items: center;
     }
 
-    .bw-btn {
+    .btn {
       display: inline-block;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 600;
       letter-spacing: 0.03em;
-      padding: 0.72rem 1.25rem;
-      border: 1px solid var(--bw-accent);
+      padding: 0.75rem 1.25rem;
+      border: 1px solid var(--accent);
       text-decoration: none;
       cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
     }
 
-    .bw-btn-primary {
-      background-color: var(--bw-accent);
+    .btn-primary {
+      background-color: var(--accent);
       color: #ffffff;
     }
 
-    .bw-btn-primary:hover {
-      background-color: var(--bw-accent-hover);
-      border-color: var(--bw-accent-hover);
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+      border-color: var(--accent-hover);
       color: #ffffff;
     }
 
-    .bw-btn-secondary {
-      background-color: var(--bw-bg);
-      color: var(--bw-accent);
+    .btn-secondary {
+      background-color: var(--bg);
+      color: var(--accent);
     }
 
-    .bw-btn-secondary:hover {
-      background-color: var(--bw-surface-alt);
+    .btn-secondary:hover {
+      background-color: var(--surface-alt);
     }
 
-    .bw-status {
+    .status-line {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       font-size: 0.86rem;
-      color: var(--bw-accent);
-      margin-top: 0.85rem;
+      color: var(--accent);
+      margin: 0.9rem 0 0 0;
       min-height: 1.2em;
     }
 
-    .bw-settlement-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1.25rem;
-      margin-top: 1rem;
+    /* Settlement Notice Panel (Secure — No Exposed Wire Details) */
+    .settlement-panel {
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--sage);
+      padding: 1.45rem 1.65rem;
     }
 
-    .bw-settlement-card {
-      background-color: var(--bw-bg);
-      border: 1px solid var(--bw-border);
-      padding: 1.25rem;
+    .settlement-panel h3 {
+      font-size: 1.12rem;
+      font-weight: normal;
+      margin: 0 0 0.45rem 0;
+    }
+
+    .settlement-panel p {
+      margin: 0 0 0.65rem 0;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .settlement-panel p:last-child {
+      margin-bottom: 0;
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background-color: var(--surface);
+      padding: 2rem 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
       justify-content: space-between;
+      gap: 1.25rem;
     }
 
-    .bw-wire-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 0.88rem;
-      margin-top: 0.5rem;
+    .footer-inner p {
+      margin: 0.2rem 0;
     }
 
-    .bw-wire-table td {
-      padding: 0.45rem 0;
-      border-bottom: 1px solid var(--bw-border);
-      vertical-align: top;
-    }
+    @media (max-width: 780px) {
+      .summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
 
-    .bw-wire-table tr:last-child td {
-      border-bottom: none;
-    }
+      .legal-sheet {
+        padding: 1.75rem 1.35rem;
+      }
 
-    .bw-wire-key {
-      color: var(--bw-muted);
-      width: 36%;
-      padding-right: 0.75rem;
-    }
-
-    .bw-wire-val {
-      color: var(--bw-text);
-      font-family: "Courier New", Courier, monospace;
-      word-break: break-word;
-    }
-
-    .bw-principal-signoff {
-      margin-top: 1.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--bw-border);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 0.88rem;
-      color: var(--bw-muted);
-    }
-
-    @media (max-width: 760px) {
-      .bw-terms-grid,
-      .bw-settlement-grid {
+      .sig-columns,
+      .form-grid {
         grid-template-columns: 1fr;
       }
     }
 
+    @media (max-width: 500px) {
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Clean Boardroom Print / Save as PDF */
     @media print {
       body {
         background-color: #ffffff;
         color: #000000;
-        padding: 0;
+        line-height: 1.55;
       }
 
-      .bw-topbar,
-      .bw-actions,
-      .bw-status {
+      .site-header,
+      .doc-header,
+      .summary-grid,
+      .exec-panel,
+      .settlement-panel,
+      .site-footer {
         display: none !important;
       }
 
-      .bw-panel,
-      .bw-term-card,
-      .bw-settlement-card {
-        background-color: #ffffff;
-        border: 1px solid #000000;
-        break-inside: avoid;
+      .doc-wrap {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
       }
 
-      .bw-field input {
+      .legal-sheet {
         border: none;
-        border-bottom: 1px solid #000000;
-        background-color: transparent;
-        padding: 0.25rem 0;
+        padding: 0;
+        margin: 0;
+      }
+
+      .fill-blank,
+      .sig-line-val.script {
+        color: #000000;
       }
     }
   </style>
 </head>
 <body>
-  <main class="bw-page" aria-labelledby="bw-agreement-title">
-    <div class="bw-topbar">
-      <span><strong>Beachwood Helix Corporation</strong> &bull; Onboarding &amp; Settlement</span>
-      <a href="index.html">&larr; Return to Beachwood Quantum Index</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-title">Beachwood Quantum</span>
+        <span class="brand-sub">The Beachwood Helix Corporation</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="index.html">Overview</a>
+        <a href="gem.html">GEM System</a>
+        <a href="#formal-agreement">Full Agreement</a>
+        <a href="#execution">Execution</a>
+      </nav>
     </div>
+  </header>
 
-    <header class="bw-doc-header">
-      <p class="bw-eyebrow">Post-Qualification Mandate Execution</p>
-      <h1 id="bw-agreement-title">Commercial Advisory, Onboarding &amp; Settlement</h1>
-      <p>
-        Principal &amp; Authorized Signatory: <strong>Joshua Alan Robbins</strong>,
-        Beachwood Helix Corporation.
+  <main class="doc-wrap">
+    <header class="doc-header">
+      <p class="eyebrow">Index 01 &bull; The Beachwood Helix Corporation &bull; Standard Commercial Terms</p>
+      <h1>Fee Agreement &amp; Commercial Execution</h1>
+      <p class="doc-subtitle">
+        Complete nine-section commercial fee agreement for transaction advisory and capital
+        introductions. Review all provisions below, complete the execution block to populate the
+        contract, and retain a signed PDF copy.
       </p>
     </header>
 
-    <h2>1. Core Commercial Terms</h2>
-    <div class="bw-terms-grid">
-      <div class="bw-term-card">
-        <p class="bw-term-label">Ongoing Cadence</p>
-        <p class="bw-term-val">$3,000/month</p>
-        <p class="bw-term-copy">
-          Following an initial 90-day commitment period.
-        </p>
+    <!-- Quick Term Strip -->
+    <div class="summary-grid" aria-label="Summary of Commercial Terms">
+      <div class="summary-card">
+        <p class="summary-label">Initial Commitment</p>
+        <p class="summary-val mono">$9,000.00</p>
+        <p class="summary-copy">Initial ninety (90) day commitment period (Section 3(a)(i)).</p>
       </div>
-      <div class="bw-term-card">
-        <p class="bw-term-label">Closing Fee</p>
-        <p class="bw-term-val">3.0% on Consideration</p>
-        <p class="bw-term-copy">
-          Payable upon closing of an introduced transaction or investment.
-        </p>
+      <div class="summary-card">
+        <p class="summary-label">Recurring Cadence</p>
+        <p class="summary-val mono">$3,000 / 30 days</p>
+        <p class="summary-copy">Ongoing 30-day cycle after 90 days; cancellable with written notice.</p>
       </div>
-      <div class="bw-term-card">
-        <p class="bw-term-label">Post-Term Tail</p>
-        <p class="bw-term-val">12-Month Tail</p>
-        <p class="bw-term-copy">
-          Twelve (12) months post-expiration or termination for covered parties.
-        </p>
+      <div class="summary-card">
+        <p class="summary-label">Provider&rsquo;s Fee</p>
+        <p class="summary-val mono">3.0% Closing Fee</p>
+        <p class="summary-copy">3.0% of cash Consideration payable within 3 days of Closing.</p>
+      </div>
+      <div class="summary-card">
+        <p class="summary-label">Post-Term Tail</p>
+        <p class="summary-val mono">12 Months</p>
+        <p class="summary-copy">Twelve (12) months immediately following the Term (Section 5(b)).</p>
       </div>
     </div>
 
-    <ul class="bw-terms-list">
-      <li>
-        <strong>Monthly Retainer Cadence ($3,000/month):</strong> Following an initial 90-day
-        commitment period, ongoing advisory continues at a <strong>$3,000/month</strong> cadence
-        unless concluded under applicable wind-down terms.
-      </li>
-      <li>
-        <strong>Closing Fee (3.0% of Consideration):</strong> Upon closing of an introduced
-        transaction or investment involving an Interested Party or its assets, Client pays a
-        <strong>3.0% closing fee</strong> on Consideration.
-      </li>
-      <li>
-        <strong>Post-Term Tail (12 Months):</strong> The 3.0% closing fee obligation remains in
-        effect for a <strong>12-month post-term tail</strong> following expiration or termination
-        with respect to covered counterparties and opportunities.
-      </li>
-    </ul>
+    <!-- Full Formal 9-Section Fee Agreement -->
+    <article id="formal-agreement" class="legal-sheet" aria-label="Full Fee Agreement">
+      <div class="legal-title-bar">
+        <h2>Fee Agreement</h2>
+        <p>The Beachwood Helix Corporation &bull; Beachwood Quantum</p>
+      </div>
 
-    <h2>2. Client Execution &amp; Date</h2>
-    <div class="bw-panel">
+      <p class="preamble">
+        THIS FEE AGREEMENT (this &ldquo;Agreement&rdquo;) is made and entered into as of
+        <span id="doc-date" class="fill-blank">&nbsp;</span>
+        (the &ldquo;Effective Date&rdquo;) by and between
+        <span id="doc-client" class="fill-blank wide">&nbsp;</span>
+        (&ldquo;Client&rdquo;) and <strong>The Beachwood Helix Corporation</strong>
+        (&ldquo;Beachwood&rdquo; or &ldquo;Provider&rdquo;). The parties hereto, in consideration of
+        their mutual agreements and covenants hereinafter set forth and intending to be legally bound
+        hereby, covenant and agree as follows:
+      </p>
+
+      <div class="clause">
+        <span class="clause-title">1. Services Rendered by Provider.</span>
+        During the Term (as defined in Section 5), Provider shall use its best efforts to assist
+        Client in contacting and eliciting interest from an Interested Party or Interested Parties
+        (as defined in Section 2) to close a Transaction (as defined in Section 4) with Client (the
+        &ldquo;Services&rdquo;). The Services that Provider shall provide under this Agreement shall
+        be in addition to, and independent of, any other services which Provider may be expected to
+        provide to Client under any other agreement(s) that Provider may have with Client.
+        Accordingly, no portion of the compensation which Provider may earn under such other
+        agreement(s) will have any relationship to the Provider&rsquo;s Fee (as defined in Section
+        3(b)), nor will payment of any Provider&rsquo;s Fee have any relationship to any other sums
+        for which Client may be obligated to Provider.
+      </div>
+
+      <div class="clause">
+        <span class="clause-title">2. Interested Party.</span>
+        <ul class="subclauses">
+          <li>
+            <span class="sub-marker">(a)</span>
+            &ldquo;Interested Party&rdquo; shall mean an entity introduced to an authorized
+            representative of Client by Provider (i) in accordance with Section 2(c) hereof, (ii)
+            solely for the purpose of Closing (as defined in Section 3(e)) a Transaction, and (iii)
+            that is not subject to a Prior Relationship (as defined in Section 2(b)).
+          </li>
+          <li>
+            <span class="sub-marker">(b)</span>
+            &ldquo;Prior Relationship&rdquo; shall mean any entity, opportunity, sale, transaction,
+            funding or other agreement with which Client or any of its representatives has a prior
+            business relationship or of which Client or any of its representatives is aware prior to
+            or as of the date Provider introduces such party to Client.
+          </li>
+        </ul>
+      </div>
+
+      <div class="clause">
+        <span class="clause-title">3. Fees and Payments; Closing.</span>
+        <ul class="subclauses">
+          <li>
+            <span class="sub-marker">(a)</span>
+            In consideration of the Services, Client agrees to pay Provider on the following schedule:
+            <ul class="roman-list">
+              <li>
+                <span class="roman-marker">(i)</span>
+                <strong>$9,000.00</strong> for the initial 90 (ninety) day commitment.
+              </li>
+              <li>
+                <span class="roman-marker">(ii)</span>
+                Following the initial 90 (ninety) day commitment, Client agrees to pay
+                <strong>$3,000.00</strong>, billed on a recurring 30 (thirty) day billing cycle.
+              </li>
+              <li>
+                <span class="roman-marker">(iii)</span>
+                After the initial 90 (ninety) day period, either party may elect to discontinue the
+                engagement at any time and pay any outstanding invoice within 45 days of written
+                notice to the other party.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="sub-marker">(b)</span>
+            Client shall pay a cash fee to Provider (the &ldquo;Provider&rsquo;s Fee&rdquo;) equal
+            to (i) <strong>three percent (3.0%)</strong> of Consideration (as defined in Section
+            3(d)).
+          </li>
+          <li>
+            <span class="sub-marker">(c)</span>
+            Payment of the Provider&rsquo;s Fee by Client shall not occur prior to the Closing of
+            the Transaction and shall otherwise occur upon or within three (3) days after the Closing
+            of the Transaction; provided, that, if any portion of the Consideration is not payable at
+            the Closing (any such deferred Consideration, the &ldquo;Deferred Consideration&rdquo;),
+            Client shall not be liable, and shall not pay, to Provider any portion of the
+            Provider&rsquo;s Fee derived from such Deferred Consideration until such time as the
+            Deferred Consideration is actually paid to the Interested Party. No other fee (including
+            any expense or cost incurred by Provider with respect to the Interested Party or pursuant
+            to this Agreement) other than the Provider&rsquo;s Fee shall be payable to Provider by
+            Client without express written approval of each such fee by Client. The Provider&rsquo;s
+            Fee and payment thereof is expressly contingent upon the Closing of the Transaction.
+          </li>
+          <li>
+            <span class="sub-marker">(d)</span>
+            &ldquo;Consideration&rdquo; shall mean the cash invested solely by Client in the
+            Interested Party or the assets of the Interested Party at Closing of the Transaction.
+          </li>
+          <li>
+            <span class="sub-marker">(e)</span>
+            &ldquo;Closing&rdquo; shall mean a cash investment by Client in an Interested Party or
+            the assets of an Interested Party as evidenced by the negotiation, execution and delivery
+            of definitive documentation and wire transfers mutually acceptable to Client (in its sole
+            discretion) and an Interested Party and which takes place during the Term.
+          </li>
+        </ul>
+      </div>
+
+      <div class="clause">
+        <span class="clause-title">4. Transaction.</span>
+        <ul class="subclauses">
+          <li>
+            <span class="sub-marker">(a)</span>
+            &ldquo;Transaction&rdquo; shall mean the negotiation and Closing of a transaction or
+            series of transactions that involve funding or the purchase of a company or companies or
+            assets of companies, including, among others, oil and gas assets and properties;
+            provided, that a Transaction shall not (i) mean any of the potential opportunities,
+            sales, transactions, fundings or other agreements which are currently known to Client or
+            its representatives including, without limitation, Prior Relationships.
+          </li>
+          <li>
+            <span class="sub-marker">(b)</span>
+            Client shall not be required to enter into any Transaction except with parties and on
+            terms and conditions that are satisfactory to Client in its sole discretion and are
+            accepted by Client in its sole discretion. Nothing in this Agreement or otherwise should
+            be construed as a commitment or obligation by Client to proceed with any Transaction or to
+            engage in any further discussions regarding any Transaction with anyone. Even if
+            discussions concerning any Transaction do take place, Client shall be free to conduct the
+            process for evaluating any Transaction as Client, in its sole discretion, shall determine
+            (including changing or terminating any such process), and Client shall be free, in its
+            sole discretion, to at any time accept or reject any proposal from an Interested Party or
+            anyone relating to any Transaction, just as any Interested Party shall be free, in its
+            sole discretion, to make or not make any offer.
+          </li>
+        </ul>
+      </div>
+
+      <div class="clause">
+        <span class="clause-title">5. Term; Exclusivity.</span>
+        <ul class="subclauses">
+          <li>
+            <span class="sub-marker">(a)</span>
+            Term is the duration agreed to in Section 3(a) and as agreed to in Section 5(b).
+          </li>
+          <li>
+            <span class="sub-marker">(b)</span>
+            Following the termination of this Agreement, (a) all rights and obligations of the
+            parties hereto shall terminate except for those rights and obligations contained in
+            Sections 7, 8 and 9 of this Agreement, which shall survive termination of this Agreement
+            indefinitely and (b) Provider shall only be entitled to the Provider&rsquo;s Fee, as
+            calculated in, and pursuant to, Section 3 hereof with regard to any Transaction for which
+            there occurred a Closing during the Term or the <strong>twelve (12) month</strong> period
+            immediately following the Term.
+          </li>
+        </ul>
+      </div>
+
+      <div class="clause">
+        <span class="clause-title">6. Representations.</span>
+        <ul class="subclauses">
+          <li>
+            <span class="sub-marker">(a)</span>
+            Client and Provider each acknowledge that no representations, inducements, promises or
+            agreements, oral or written, have been made by Client or Provider, or anyone acting on
+            behalf of Client or Provider, which are not contained in this Agreement and none of the
+            parties hereto shall be bound by or liable for any alleged representation, promise,
+            inducement or statement of intention not so set forth herein.
+          </li>
+          <li>
+            <span class="sub-marker">(b)</span>
+            Provider represents and warrants that it:
+            <ul class="roman-list">
+              <li><span class="roman-marker">(i)</span> has full and complete authority to enter into this Agreement;</li>
+              <li><span class="roman-marker">(ii)</span> is an independent contractor and is not and shall not be considered Client&rsquo;s agent for any purposes whatsoever;</li>
+              <li><span class="roman-marker">(iii)</span> shall not represent itself as an agent of Client; and</li>
+              <li><span class="roman-marker">(iv)</span> is not granted any right or authority to assume or create any obligations or liability, express or implied, on Client&rsquo;s behalf, or to negotiate on behalf of or bind Client in any manner whatsoever.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="clause">
+        <span class="clause-title">7. Confidentiality / Insider Information.</span>
+        Provider may not disclose this Agreement, the contents thereof, information processes,
+        know-how, or any other nonpublic information related to Client or its investment activity, to
+        any person without the prior written consent of Client (in its sole discretion). Provider
+        agrees not to trade in the public securities of Client without the prior written consent of
+        Client (in its sole discretion).
+      </div>
+
+      <div class="clause">
+        <span class="clause-title">8. Indemnification.</span>
+        Provider agrees to indemnify and hold harmless Client and its officers, directors, employees,
+        affiliates, advisors, agents and controlling persons and entities (each, an &ldquo;Indemnified
+        Person&rdquo;) from and against any and all losses, claims, damages, liabilities, costs and
+        expenses (including, without limitation, all attorneys&rsquo; fees and expenses of settlement,
+        litigation or preparation therefor) which any Indemnified Person may incur or which may be
+        asserted against any Indemnified Person by any other person arising out of or in connection
+        with any investigation, litigation or proceeding (the &ldquo;Indemnified Liabilities&rdquo;)
+        related to or arising from this Agreement and any person or entity seeking fees or
+        compensation in any form for services rendered with respect to a Transaction, where such
+        person acted in concert with Provider.
+      </div>
+
+      <div class="clause">
+        <span class="clause-title">9. Miscellaneous.</span>
+        <ul class="subclauses">
+          <li>
+            <span class="sub-marker">(a)</span>
+            This Agreement contains the entire agreement of the parties with respect to the subject
+            matter hereof and supersedes all prior negotiations, agreements and understandings with
+            respect thereto, both written and oral. This Agreement may not be contradicted by evidence
+            of prior, contemporaneous or subsequent oral agreements of the parties. There are no
+            unwritten or oral agreements between the parties.
+          </li>
+          <li>
+            <span class="sub-marker">(b)</span>
+            This Agreement does not give rise now or in the future to an agency or partnership
+            relationship between Provider and Client or any of its affiliates, nor to any right of
+            Provider to inspect or audit any records or documents of Client or any of its affiliates.
+          </li>
+          <li>
+            <span class="sub-marker">(c)</span>
+            Any amendment, change or modification of this Agreement shall be void unless by a formal
+            written instrument signed by Client and by Provider. All provisions of this Agreement are
+            severable, and the unenforceability or invalidity of any of the provisions of this
+            Agreement shall not affect the validity or enforceability of the remaining provisions of
+            this Agreement. Should any part of this Agreement be held unenforceable, the unenforceable
+            portion or portions shall be removed (and no more), and the remaining portions of this
+            Agreement shall be enforced as fully as possible (removing the minimum amount possible).
+          </li>
+          <li>
+            <span class="sub-marker">(d)</span>
+            The terms and conditions of this Agreement shall inure to the benefit of, and be binding
+            upon, the parties and their respective successors and permitted assigns. Neither party may
+            assign any rights hereunder without the written consent of the other, such consent to be
+            given in such party&rsquo;s sole discretion; provided, that Client may, without
+            Provider&rsquo;s consent or notice to Provider, assign this Agreement or its rights or
+            obligations hereunder (in whole or part) to any affiliate of Client or in connection with
+            any (i) merger involving Client; or (ii) sale of substantially all of Client&rsquo;s
+            stock or assets. Any assignment by either party in violation of this provision shall be
+            null and void. Any permitted assignment by Client shall release Client from any and all
+            obligations and liability arising from this Agreement, or in connection with any services
+            or payments provided, or to be provided, hereunder and Provider shall look solely to the
+            assignee in connection with all matters relating to this Agreement and the services
+            hereunder.
+          </li>
+          <li>
+            <span class="sub-marker">(e)</span>
+            The headings or paragraphs, sections and other subdivisions of this Agreement are for
+            convenience only, do not constitute a part of this Agreement, and shall not be used or
+            deemed in any way to govern, limit, modify, or construe this Agreement or any part or
+            provision thereof or otherwise be given any legal effect. This Agreement is the product of
+            negotiations between the parties hereto represented by counsel and any rules of
+            construction relating to interpretation against the drafter of an agreement shall not
+            apply to this Agreement and are expressly waived.
+          </li>
+          <li>
+            <span class="sub-marker">(f)</span>
+            No term or provision of this Agreement may be waived except by a formal written instrument
+            signed by the party against whom such waiver is sought. Either party&rsquo;s failure to
+            insist at any time upon strict compliance with this Agreement or with any of the terms of
+            the Agreement or any continued course of such conduct on its part will not constitute or
+            be considered a waiver by that party of any of its rights or privileges. A waiver or
+            consent, express or implied, of or to any breach or default by any party in the
+            performance by that party of its obligations with respect to the Agreement is not a waiver
+            or consent to any other breach or default in the performance by that party of the same or
+            any other obligations of that party.
+          </li>
+          <li>
+            <span class="sub-marker">(g)</span>
+            Any number of counterparts of this Agreement, including facsimiles or electronic copies,
+            may be executed by the parties hereto. Each such counterpart shall be, and shall be deemed
+            to be, an original instrument, but all such counterparts taken together shall constitute
+            one and the same Agreement.
+          </li>
+          <li>
+            <span class="sub-marker">(h)</span>
+            This Agreement and all disputes arising out of or related to this Agreement shall be
+            governed and construed in accordance with the internal laws of the State of
+            <span id="doc-state" class="fill-blank">&nbsp;</span>
+            applicable to contracts made and to be performed entirely therein, without giving effect
+            to its conflicts of laws, principles or rules, to the extent such principles would require
+            or permit the application of the laws of another jurisdiction.
+            <span class="caps-notice">
+              EACH OF CLIENT AND PROVIDER HEREBY KNOWINGLY, VOLUNTARILY AND IRREVOCABLY WAIVES ANY
+              RIGHT IT MAY HAVE TO A TRIAL BY JURY IN RESPECT OF ANY CLAIM BASED UPON, ARISING OUT OF
+              OR IN CONNECTION WITH THIS AGREEMENT AND THE TRANSACTIONS CONTEMPLATED HEREBY.
+            </span>
+            The parties hereto hereby irrevocably consent to the exclusive jurisdiction of the state
+            and federal courts in
+            <span id="doc-venue" class="fill-blank wide">&nbsp;</span>
+            for any Claim arising from or otherwise related to this Agreement.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Witness / Signature Block -->
+      <div class="witness-block">
+        <p style="margin:0;">
+          <strong>IN WITNESS WHEREOF</strong>, each of the undersigned has caused this Agreement to be
+          executed and delivered as of the date hereinabove set forth.
+        </p>
+
+        <div class="sig-columns">
+          <div>
+            <p class="sig-party-label" id="sig-client-entity">CLIENT</p>
+            <div class="sig-line-row">
+              <span class="sig-line-label">Signature:</span>
+              <span id="sig-client-script" class="sig-line-val script"></span>
+            </div>
+            <div class="sig-line-row">
+              <span class="sig-line-label">Name:</span>
+              <span id="sig-client-name" class="sig-line-val"></span>
+            </div>
+            <div class="sig-line-row">
+              <span class="sig-line-label">Title:</span>
+              <span id="sig-client-title" class="sig-line-val"></span>
+            </div>
+          </div>
+
+          <div>
+            <p class="sig-party-label">THE BEACHWOOD HELIX CORPORATION</p>
+            <div class="sig-line-row">
+              <span class="sig-line-label">Signature:</span>
+              <span class="sig-line-val"></span>
+            </div>
+            <div class="sig-line-row">
+              <span class="sig-line-label">Name:</span>
+              <span class="sig-line-val">Joshua Alan Robbins</span>
+            </div>
+            <div class="sig-line-row">
+              <span class="sig-line-label">Title:</span>
+              <span class="sig-line-val">Authorized Signatory</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sheet-footer">
+        The Beachwood Helix Corporation &nbsp;|&nbsp; Beachwood Quantum &nbsp;|&nbsp; beachwoodquantum.com
+      </div>
+    </article>
+
+    <!-- Electronic Execution Controls (Non-Print Chrome) -->
+    <section id="execution" class="exec-panel" aria-label="Populate and Execute Agreement">
+      <h2>Client Execution &amp; PDF Generation</h2>
+      <p class="exec-intro">
+        Entering Client details below populates the Effective Date, Client entity, governing law
+        blanks (if confirmed by counsel), and signature block above. Print or save as PDF for your
+        records, then transmit the executed copy for countersignature.
+      </p>
+
       <form id="bw-agreement-form" novalidate>
-        <div class="bw-grid">
-          <div class="bw-field">
-            <label for="bw-client-name">Client Full Name</label>
-            <input id="bw-client-name" name="clientName" type="text" required placeholder="Full legal name" />
+        <div class="form-grid">
+          <div class="field">
+            <label for="bw-client-org">Client Legal Entity</label>
+            <input id="bw-client-org" type="text" required placeholder="Operating Company, LLC or Fund" />
           </div>
-          <div class="bw-field">
-            <label for="bw-client-org">Company / Entity</label>
-            <input id="bw-client-org" name="clientOrg" type="text" required placeholder="Operating entity or fund" />
+          <div class="field">
+            <label for="bw-sig-date">Effective Date</label>
+            <input id="bw-sig-date" type="date" required />
           </div>
-          <div class="bw-field">
-            <label for="bw-client-email">Email Address</label>
-            <input id="bw-client-email" name="clientEmail" type="email" required placeholder="name@company.com" />
+          <div class="field">
+            <label for="bw-client-name">Authorized Signatory Name</label>
+            <input id="bw-client-name" type="text" required placeholder="Full legal name" />
           </div>
-        </div>
-
-        <div class="bw-grid">
-          <div class="bw-field">
+          <div class="field">
+            <label for="bw-client-title">Title</label>
+            <input id="bw-client-title" type="text" required placeholder="Managing Partner, President, etc." />
+          </div>
+          <div class="field">
             <label for="bw-typed-sig">Typed Electronic Signature</label>
-            <input id="bw-typed-sig" name="typedSignature" class="bw-sig-input" type="text" required placeholder="Type full name to sign" />
+            <input id="bw-typed-sig" class="sig-input" type="text" required placeholder="Type full name to sign" />
           </div>
-          <div class="bw-field">
-            <label for="bw-sig-date">Date Signed</label>
-            <input id="bw-sig-date" name="signedDate" type="date" required />
+          <div class="field">
+            <label for="bw-client-email">Client Email</label>
+            <input id="bw-client-email" type="email" required placeholder="name@company.com" />
+          </div>
+          <div class="field">
+            <label for="bw-gov-state">Governing State (Optional / Per Counsel)</label>
+            <input id="bw-gov-state" type="text" placeholder="Leave blank for counsel confirmation" />
+          </div>
+          <div class="field">
+            <label for="bw-gov-venue">Venue / County &amp; State (Optional)</label>
+            <input id="bw-gov-venue" type="text" placeholder="Leave blank for counsel confirmation" />
           </div>
         </div>
 
-        <label class="bw-consent">
+        <label class="consent-row">
           <input id="bw-agree-check" type="checkbox" required />
           <span>
-            I accept the terms above—including a $3,000/month ongoing cadence after an initial
-            90-day commitment, a 3.0% closing fee on Consideration, and a 12-month post-term
-            tail—and intend my typed signature and date to serve as my electronic execution.
+            I confirm that I am authorized to execute this Fee Agreement on behalf of the Client
+            entity named above and intend my typed signature and Effective Date to populate the
+            Agreement for countersignature by The Beachwood Helix Corporation.
           </span>
         </label>
 
-        <div class="bw-actions">
-          <button type="submit" class="bw-btn bw-btn-primary">Record Signature &amp; Lock Date</button>
-          <button type="button" id="bw-print-btn" class="bw-btn bw-btn-secondary">Print / Save as PDF</button>
+        <div class="action-row">
+          <button type="submit" class="btn btn-primary">Record Signature &amp; Lock Copy</button>
+          <button type="button" id="bw-print-btn" class="btn btn-secondary">Print / Save Formal PDF</button>
+          <button type="button" id="bw-email-btn" class="btn btn-secondary">Prepare Execution Email</button>
         </div>
 
-        <p id="bw-status" class="bw-status" role="status" aria-live="polite"></p>
+        <p id="bw-status" class="status-line" role="status" aria-live="polite"></p>
       </form>
-    </div>
+    </section>
 
-    <h2>3. Post-Qualification Settlement Rails</h2>
-    <div class="bw-panel">
+    <!-- Secure Post-Execution Settlement Notice -->
+    <section class="settlement-panel" aria-label="Post-Execution Settlement Notice">
+      <h3>Settlement &amp; Onboarding Instructions</h3>
       <p>
-        For approved, executed mandates under <strong>Beachwood Helix Corporation</strong>,
-        settlement is supported via automated card billing or direct bank transfer. Replace the
-        payment link placeholder once your live billing URL is ready.
+        Upon receipt of an executed Fee Agreement and countersignature by
+        <strong>The Beachwood Helix Corporation</strong>, direct ACH / domestic wire settlement
+        instructions or recurring invoice billing details are issued privately to the Client&rsquo;s
+        designated finance contact.
       </p>
+      <p>
+        For mandate desk correspondence or counsel redlines, write to
+        <a href="mailto:joshua@beachwoodquantum.com">joshua@beachwoodquantum.com</a>.
+      </p>
+    </section>
+  </main>
 
-      <div class="bw-settlement-grid">
-        <div class="bw-settlement-card">
-          <div>
-            <h3>Automated Card Billing</h3>
-            <p class="bw-term-copy">
-              Settle the <strong>$3,000/month</strong> ongoing cadence following the initial
-              90-day commitment via your active payment link or issued invoice.
-            </p>
-          </div>
-          <div style="margin-top: 1rem;">
-            <a href="#REPLACE_WITH_STRIPE_PAYMENT_LINK" class="bw-btn bw-btn-primary" rel="noopener noreferrer">
-              Open Billing Link ($3,000/month)
-            </a>
-          </div>
-        </div>
-
-        <div class="bw-settlement-card">
-          <div>
-            <h3>Direct ACH / Domestic Wire</h3>
-            <p class="bw-term-copy">
-              Include your entity name and mandate reference on all transfers:
-            </p>
-            <table class="bw-wire-table" aria-label="ACH and Wire Settlement Details">
-              <tr>
-                <td class="bw-wire-key">Beneficiary</td>
-                <td class="bw-wire-val">Beachwood Helix Corporation</td>
-              </tr>
-              <tr>
-                <td class="bw-wire-key">Address</td>
-                <td class="bw-wire-val">1137 Mermaid Drive, Annapolis, MD 21409</td>
-              </tr>
-              <tr>
-                <td class="bw-wire-key">Bank</td>
-                <td class="bw-wire-val">First United Bank and Trust</td>
-              </tr>
-              <tr>
-                <td class="bw-wire-key">Account</td>
-                <td class="bw-wire-val">6706037</td>
-              </tr>
-              <tr>
-                <td class="bw-wire-key">Routing</td>
-                <td class="bw-wire-val">103100881</td>
-              </tr>
-            </table>
-          </div>
-        </div>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <p><strong>Beachwood Quantum</strong> &mdash; The Beachwood Helix Corporation</p>
+        <p>Annapolis, Maryland &bull; Energy Capital, Systems &amp; Research</p>
       </div>
-
-      <div class="bw-principal-signoff">
-        <strong>Authorized Counterparty:</strong> Joshua Alan Robbins &mdash; Beachwood Helix Corporation
-        &bull; <a href="mailto:joshua@beachwoodquantum.com">joshua@beachwoodquantum.com</a>
-        &bull; 667-493-5648
+      <div>
+        <p>
+          <a href="mailto:joshua@beachwoodquantum.com">joshua@beachwoodquantum.com</a>
+          &bull; 667-493-5648
+        </p>
+        <p>
+          <a href="index.html">Overview</a> &bull;
+          <a href="gem.html">GEM System</a>
+        </p>
       </div>
     </div>
-  </main>
+  </footer>
 
   <script>
     (function () {
       const form = document.getElementById("bw-agreement-form");
+      const orgInput = document.getElementById("bw-client-org");
       const dateInput = document.getElementById("bw-sig-date");
-      const sigInput = document.getElementById("bw-typed-sig");
       const nameInput = document.getElementById("bw-client-name");
+      const titleInput = document.getElementById("bw-client-title");
+      const sigInput = document.getElementById("bw-typed-sig");
+      const emailInput = document.getElementById("bw-client-email");
+      const stateInput = document.getElementById("bw-gov-state");
+      const venueInput = document.getElementById("bw-gov-venue");
       const checkInput = document.getElementById("bw-agree-check");
+
+      const docDate = document.getElementById("doc-date");
+      const docClient = document.getElementById("doc-client");
+      const docState = document.getElementById("doc-state");
+      const docVenue = document.getElementById("doc-venue");
+
+      const sigClientEntity = document.getElementById("sig-client-entity");
+      const sigClientScript = document.getElementById("sig-client-script");
+      const sigClientName = document.getElementById("sig-client-name");
+      const sigClientTitle = document.getElementById("sig-client-title");
+
       const printBtn = document.getElementById("bw-print-btn");
+      const emailBtn = document.getElementById("bw-email-btn");
       const statusEl = document.getElementById("bw-status");
 
       if (dateInput && !dateInput.value) {
         dateInput.value = new Date().toISOString().slice(0, 10);
       }
 
+      function formatDisplayDate(iso) {
+        if (!iso) return "\u00a0";
+        const parts = iso.split("-");
+        if (parts.length !== 3) return iso;
+        const months = [
+          "January", "February", "March", "April", "May", "June",
+          "July", "August", "September", "October", "November", "December"
+        ];
+        const mIdx = Number(parts[1]) - 1;
+        return `${months[mIdx] || parts[1]} ${Number(parts[2])}, ${parts[0]}`;
+      }
+
+      function syncDocument() {
+        const org = orgInput.value.trim();
+        const dateStr = formatDisplayDate(dateInput.value);
+        const name = nameInput.value.trim();
+        const title = titleInput.value.trim();
+        const sig = sigInput.value.trim();
+        const govState = stateInput.value.trim();
+        const govVenue = venueInput.value.trim();
+
+        docDate.textContent = dateStr || "\u00a0";
+        docClient.textContent = org || "\u00a0";
+        docState.textContent = govState || "\u00a0";
+        docVenue.textContent = govVenue || "\u00a0";
+
+        sigClientEntity.textContent = org ? org.toUpperCase() : "CLIENT";
+        sigClientScript.textContent = sig;
+        sigClientName.textContent = name;
+        sigClientTitle.textContent = title;
+      }
+
+      [orgInput, dateInput, nameInput, titleInput, sigInput, stateInput, venueInput].forEach((el) => {
+        el.addEventListener("input", syncDocument);
+      });
+
       form.addEventListener("submit", function (event) {
         event.preventDefault();
-        const signer = sigInput.value.trim() || nameInput.value.trim();
+        syncDocument();
+
+        const org = orgInput.value.trim();
+        const name = nameInput.value.trim();
+        const title = titleInput.value.trim();
+        const sig = sigInput.value.trim();
+        const email = emailInput.value.trim();
         const signedOn = dateInput.value;
 
-        if (!signer || !signedOn || !checkInput.checked) {
+        if (!org || !name || !title || !sig || !email || !signedOn || !checkInput.checked) {
           statusEl.textContent =
-            "Complete client details, typed signature, date, and acceptance box before recording.";
+            "Complete Client entity, Effective Date, signatory details, typed signature, email, and confirmation box before recording.";
           return;
         }
 
         statusEl.textContent =
-          "Executed electronically by " + signer + " on " + signedOn +
-          ". Use Print / Save as PDF to retain a copy.";
+          `Agreement populated for ${org} (signed by ${sig} on ${formatDisplayDate(signedOn)}). Use Print / Save Formal PDF to save your copy, then click Prepare Execution Email.`;
       });
 
       printBtn.addEventListener("click", function () {
+        syncDocument();
         window.print();
       });
+
+      emailBtn.addEventListener("click", function () {
+        syncDocument();
+        const org = orgInput.value.trim() || "Client Entity";
+        const name = nameInput.value.trim() || "Authorized Signatory";
+        const title = titleInput.value.trim() || "";
+        const dateStr = formatDisplayDate(dateInput.value);
+        const govState = stateInput.value.trim() || "To be confirmed by counsel";
+
+        const subject = encodeURIComponent(`Executed Fee Agreement — ${org}`);
+        const body = encodeURIComponent(
+          `The Beachwood Helix Corporation Mandate Desk,\n\n` +
+          `Attached / ready for countersignature is the executed Fee Agreement for ${org}.\n\n` +
+          `Effective Date: ${dateStr}\n` +
+          `Authorized Signatory: ${name}${title ? " (" + title + ")" : ""}\n` +
+          `Governing Law Preference: ${govState}\n\n` +
+          `Please attach the saved PDF copy and reply with countersignature and direct settlement instructions.`
+        );
+
+        statusEl.textContent =
+          "Prepared execution notice email to joshua@beachwoodquantum.com. Attach your saved PDF copy before sending.";
+        window.location.href = `mailto:joshua@beachwoodquantum.com?subject=${subject}&body=${body}`;
+      });
+
+      syncDocument();
     })();
   </script>
 </body>
